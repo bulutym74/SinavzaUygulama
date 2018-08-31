@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/nav_bransOgretmeni"
+        android:icon="@drawable/presentation"
+        android:title=""/>
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/profile"
+        android:iconTint="@color/black"
+        android:title=""/>
+
+    <item
+        android:id="@+id/nav_danismanOgretmen"
+        android:icon="@drawable/danisman"
+        android:title=""/>
+
+</menu>

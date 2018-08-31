@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Geciken Ödevler"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/yokView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="275dp"
+                android:layout_height="255dp"
+                android:layout_gravity="center"
+                android:src="@drawable/img_boskutu" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Geciken ödev bulunmamaktadır"
+                android:textColor="@color/black"
+                android:textSize="32sp" />
+        </LinearLayout>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/swipe">
+
+            <ExpandableListView
+                android:id="@+id/exp_lv_geciken_odevler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:childDivider="@null"
+                android:divider="@null"
+                android:dividerHeight="10dp"
+                android:groupIndicator="@null"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
+
+    </FrameLayout>
+
+
+</LinearLayout>

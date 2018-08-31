@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_uyeOl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.LoginFragment">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_devam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/lightgreen"
+        android:src="@drawable/right_arrow"
+        android:tint="@color/black"
+        app:borderWidth="0dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|top"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Üye Ol"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
+
+        </android.support.v7.widget.Toolbar>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/login"
+            android:tint="@color/black" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/username_TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/username_TextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="E-mail"
+                android:inputType="textEmailAddress" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/password_TextInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorAccent">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/password_TextField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:hint="Şifre"
+                    android:inputType="textPassword" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="7dp" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/bagliLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/text_bagliyim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="20dp"
+                android:text="Öğretmene Bağlıyım"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <CheckBox
+                android:id="@+id/cbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:layout_marginEnd="12dp" />
+
+        </FrameLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:visibility="invisible"
+            android:id="@+id/et_kod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/code"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="Kod"
+                android:maxLength="6" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

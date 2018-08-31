@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:borderWidth="0dp"
+        android:backgroundTint="@color/lightgreen"
+        android:src="@drawable/tick"
+        android:tint="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Puan Hesaplama"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
+
+        </android.support.v7.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|start"
+                        android:text="Daha Önce Yerleştim"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+                    <CheckBox
+                        android:id="@+id/cb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="14dp"
+                        android:layout_gravity="center|end"/>
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|start"
+                        android:text="Diploma Notu"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                    <EditText
+                        android:nextFocusDown="@+id/et1"
+                        android:id="@+id/et19"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|end"
+                        android:hint=" 100 "
+                        android:gravity="center"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="TYT"
+                    android:textColor="@color/primaryOrange"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="13dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/cerceve_purple"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Türkçe"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/net1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="40"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/net1_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="40"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:id="@+id/et1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="Doğru"
+                            android:inputType="number"
+                            android:nextFocusDown="@+id/et2"
+                            android:textSize="16sp" />
+
+
+                        <EditText
+                            android:imeOptions="actionDone"
+                            android:id="@+id/et2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:gravity="center"
+                            android:hint="Yanlış"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Mat"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/net2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="40"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/net2_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="40"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:nextFocusDown="@+id/et4"
+                            android:id="@+id/et3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="Doğru"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:imeOptions="actionDone"
+                            android:id="@+id/et4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:gravity="center"
+                            android:hint="Yanlış"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fen"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/net3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="20"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/net3_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="20"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:nextFocusDown="@+id/et6"
+                            android:id="@+id/et5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="Doğru"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:imeOptions="actionDone"
+                            android:id="@+id/et6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:gravity="center"
+                            android:hint="Yanlış"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Sosyal"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/net4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="20"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/net4_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="20"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:nextFocusDown="@+id/et8"
+                            android:id="@+id/et7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="Doğru"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:imeOptions="actionDone"
+                            android:id="@+id/et8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:gravity="center"
+                            android:hint="Yanlış"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="AYT"
+                    android:textColor="@color/primaryOrange"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="80dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/cerceve_purple"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="5dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Mat"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/net5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="40"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/net5_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="40"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:nextFocusDown="@+id/et10"
+                            android:id="@+id/et9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="Doğru"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:imeOptions="actionDone"
+                            android:id="@+id/et10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:gravity="center"
+                            android:hint="Yanlış"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Fen"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/net6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="40"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/net6_6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="40"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:nextFocusDown="@+id/et12"
+                            android:id="@+id/et11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="Doğru"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:imeOptions="actionDone"
+                            android:id="@+id/et12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:gravity="center"
+                            android:hint="Yanlış"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Edb/Sos-1"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/net7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="40"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/net7_7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="40"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:nextFocusDown="@+id/et14"
+                            android:id="@+id/et13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="Doğru"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:imeOptions="actionDone"
+                            android:id="@+id/et14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:gravity="center"
+                            android:hint="Yanlış"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Sos-2"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/net8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="40"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/net8_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="40"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:nextFocusDown="@+id/et16"
+                            android:id="@+id/et15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="Doğru"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:imeOptions="actionDone"
+                            android:id="@+id/et16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:gravity="center"
+                            android:hint="Yanlış"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Dil"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/net9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="80"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/net9_9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="80"
+                            android:textColor="@color/lightgray"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:nextFocusDown="@+id/et18"
+                            android:id="@+id/et17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:hint="Doğru"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+                        <EditText
+                            android:imeOptions="actionDone"
+                            android:id="@+id/et18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:gravity="center"
+                            android:hint="Yanlış"
+                            android:inputType="number"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</FrameLayout>

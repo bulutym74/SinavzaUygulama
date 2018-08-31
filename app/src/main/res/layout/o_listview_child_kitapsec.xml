@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/txt_items"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medium Text"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:layout_gravity="center|start"
+        android:textStyle="bold"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:id="@+id/testSayiKitap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|end"
+        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="40dp"
+        android:text="4 test"
+        android:textSize="18sp"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_gravity="center|end"
+        app:srcCompat="@drawable/ic_arrow_right" />
+
+
+</FrameLayout>
+

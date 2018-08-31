@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="140dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp">
+
+    <LinearLayout
+        android:id="@+id/lay"
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:background="@drawable/cerceve_orange"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/diagonal_rect"
+            android:padding="10dp"
+            android:src="@drawable/icon_analiz" />
+
+        <TextView
+            android:id="@+id/ozet_hori_ust"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="ANALİZ SAYISI"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/info2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="2"
+            android:textColor="@color/darkgray" />
+
+    </LinearLayout>
+
+</LinearLayout>

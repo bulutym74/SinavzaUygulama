@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <android.support.design.widget.FloatingActionButton
+        android:visibility="gone"
+        android:id="@+id/btn_devam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/lightgreen"
+        android:src="@drawable/tick"
+        android:tint="@color/black"
+        app:borderWidth="0dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Onay Bekleniyor"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
+
+            <ImageView
+                android:id="@+id/log_out"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center|end"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/logout"
+                android:padding="0dp"
+                style="?android:attr/borderlessButtonStyle"/>
+
+        </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:visibility="visible"
+            android:id="@+id/onayBekleniyorView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_marginTop="100dp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:src="@drawable/hourglass" />
+
+
+            <TextView
+                android:id="@+id/txt_onay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="55dp"
+                android:gravity="center"
+                android:text="Hesabınızın öğretmeniniz tarafından onaylanması bekleniyor"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/kayıtReddedildiView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_marginTop="30dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:src="@drawable/forbidden" />
+
+            <TextView
+                android:id="@+id/txt_ret1"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="Kaydınız öğretmen tarafından reddedildi"
+                android:textColor="@color/black"
+                android:textSize="32sp" />
+
+            <TextView
+                android:id="@+id/txt_ret2"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:text="Yeni bir öğretmen koduyla kayıt olmayı deneyin"
+                android:textColor="@color/darkgray"
+                android:textSize="22sp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/et_kod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/code"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:hint="Kod"
+                    android:imeOptions="actionDone"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

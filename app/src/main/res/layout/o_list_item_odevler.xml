@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/son_eleman"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="2dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackgroundBorderless">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:foreground="@drawable/cerceve_orange">
+
+
+        <FrameLayout
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@drawable/light_orange_radius" />
+
+        <FrameLayout
+            android:layout_width="23dp"
+            android:layout_height="200dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="102dp"
+            android:layout_marginTop="-50dp"
+            android:background="@color/white"
+            android:rotation="30" />
+
+        <FrameLayout
+            android:layout_width="2dp"
+            android:layout_height="200dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="98dp"
+            android:layout_marginTop="-50dp"
+            android:background="@color/primaryOrange"
+            android:rotation="30" />
+
+        <TextView
+            android:id="@+id/tv_konu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center"
+            android:layout_marginStart="8dp"
+            android:paddingEnd="90dp"
+            android:text="Trigonometri"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_test"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:layout_marginEnd="8dp"
+            android:gravity="end"
+            android:text="00 Test"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </FrameLayout>
+
+</LinearLayout>

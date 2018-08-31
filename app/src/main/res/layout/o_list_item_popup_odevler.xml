@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_weight="1"
+        android:id="@+id/tv_popup_odevler_kitapAdı"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/darkgray"
+        android:text="Ali Furkan Budak"
+        android:textSize="16sp"
+        android:layout_marginStart="8dp"/>
+
+    <LinearLayout
+        android:layout_gravity="end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_popup_odevler_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            android:textSize="16sp"
+            android:textColor="@color/darkgray"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Test"
+            android:textSize="16sp"
+            android:textColor="@color/darkgray"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

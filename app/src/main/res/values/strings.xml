@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">SınavZA</string>
+    <string name="title_activity_anasayfa">AnasayfaActivity</string>
+    <string name="title_ozet">Özet</string>
+    <string name="title_odevler">Ödevler</string>
+    <string name="title_puanHesaplama">Puan Hesaplama</string>
+    <string name="title_dahaFazla">Daha Fazla</string>
+
+    <string-array name="gruplar">
+        <item>Öğrenci</item>
+        <item>Öğretmen</item>
+        <item>Veli</item>
+    </string-array>
+
+    <string-array name="gruplar_uyeOl">
+        <item>Öğrenci</item>
+        <item>Öğretmen</item>
+    </string-array>
+
+    <string-array name="gruplar_alan">
+        <item>Sayısal</item>
+        <item>Eşit Ağırlık</item>
+        <item>Sözel</item>
+        <item>YOK</item>
+    </string-array>
+
+</resources>

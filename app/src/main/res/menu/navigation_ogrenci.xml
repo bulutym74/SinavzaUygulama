@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_ozet"
+        android:icon="@drawable/dashboard"
+        android:title=""/>
+
+    <item
+        android:id="@+id/nav_odevler"
+        android:icon="@drawable/study"
+        android:title=""/>
+
+    <!--<item
+        android:id="@+id/nav_puanHesaplama"
+        android:icon="@drawable/calculator"
+        android:title=""/>
+
+    <item
+        android:id="@+id/nav_tercihYap"
+        android:icon="@drawable/university"
+        android:title=""/>-->
+
+    <item
+        android:id="@+id/nav_dahaFazla"
+        android:icon="@drawable/more"
+        android:title="" />
+
+</menu>

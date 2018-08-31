@@ -1,0 +1,204 @@
+package com.example.fethi.sinavzauygulama.activities;
+
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.os.Bundle;
+import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.fethi.sinavzauygulama.R;
+import com.example.fethi.sinavzauygulama.diger.Islevsel;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import io.realm.Realm;
+
+import static io.realm.internal.SyncObjectServerFacade.getApplicationContext;
+
+public class OgretmenUyeOlKurumsuzFragment extends Fragment {
+
+    FloatingActionButton btn_devam;
+    LinearLayout linearLayout;
+    AppCompatEditText isim,soyisim,tel;
+
+    Realm realm = Realm.getDefaultInstance();
+    String token;
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.a_fragment_ogretmen_uyeol_kurumsuz, container, false);
+
+        isim = view.findViewById(R.id.et_isim);
+        soyisim = view.findViewById(R.id.et_soyisim);
+        tel = view.findViewById(R.id.et_tel);
+        btn_devam = view.findViewById(R.id.button_devam);
+
+        final Toolbar toolbar = view.findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_left);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        onBackPressed();
+                    }
+                }, 100);
+            }
+        });
+
+        linearLayout = view.findViewById(R.id.activity);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isim.clearFocus();
+                soyisim.clearFocus();
+                tel.clearFocus();
+                //klavye gizle
+                InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(linearLayout.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }
+        });
+
+        btn_devam = view.findViewById(R.id.btn_devam);
+        btn_devam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (isim.getText().toString().isEmpty()){
+                    isim.setError("İsim giriniz");
+                    return;
+                }
+                if (soyisim.getText().toString().isEmpty()){
+                    soyisim.setError("Soyisim giriniz");
+                    return;
+                }
+                if (tel.getText().toString().isEmpty()){
+                    tel.setError("Telefon numarası giriniz");
+                    return;
+                }
+                final ProgressDialog dialog = ProgressDialog.show(getActivity(), "Yükleniyor", "Lütfen bekleyin...", true);
+                dialog.show();
+
+                final JSONObject parameters = new JSONObject();
+
+                try {
+                    parameters.accumulate("name", isim.getText().toString());
+                    parameters.accumulate("lastname", soyisim.getText().toString());
+                    parameters.accumulate("mobile", tel.getText().toString());
+                    parameters.accumulate("tcno","");
+                    parameters.accumulate("siniflar", new JSONArray());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                    }
+                });
+
+                JsonObjectRequest objectRequest = new JsonObjectRequest(
+                        Request.Method.POST,
+                        Islevsel.ogretmenTamamlaURL,
+                        parameters,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(final JSONObject response) {
+
+                                dialog.dismiss();
+                                try {
+                                    if (response.getBoolean("isFailed")) {
+                                        Log.e("FAILED : ", response.getString("message"));
+                                    } else {
+                                        Log.e("RESPONSE : ", response.toString());
+
+                                        realm.executeTransaction(new Realm.Transaction() {
+                                            @Override
+                                            public void execute(Realm realm) {
+                                                try {
+                                                    realm.where(UserInfoItem.class).findAll().get(0).setId(response.getInt("id"));
+                                                } catch (JSONException e) {
+                                                    e.printStackTrace();
+                                                }
+                                            }
+                                        });
+                                        Intent intent = new Intent(getActivity(), OgretmenAnasayfaActivity.class);
+                                        intent.putExtra("tur",1);
+                                        intent.putExtra("ret",false);
+                                        startActivity(intent);
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.e("ERROR : ", error.toString());
+
+                                dialog.dismiss();
+                                Toast toast = Toast.makeText(getApplicationContext(), "Bağlantı hatası!", Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.BOTTOM, 0, 300);
+                                toast.show();
+                            }
+                        }
+                ) {
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                        final Map<String, String> headers = new HashMap<>();
+                        headers.putAll(super.getHeaders());
+
+                        headers.put("Authorization", "Bearer " + token);
+
+                        return headers;
+                    }
+                };
+
+                requestQueue.add(objectRequest);
+
+
+            }
+        });
+
+        return view;
+    }
+    public void onBackPressed()
+    {
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        fm.popBackStack();
+    }
+}

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btn_devam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:borderWidth="0dp"
+        android:backgroundTint="@color/lightgreen"
+        android:src="@drawable/tick"
+        android:tint="@color/black"/>
+
+    <LinearLayout
+        android:id="@+id/activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Şifre Değiştir"
+                android:textColor="@color/black"
+                android:textSize="22sp"/>
+
+        </android.support.v7.widget.Toolbar>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/yeniSifre_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorAccent">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/yeniSifre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:hint="Yeni Şifre"
+                android:inputType="textPassword" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/yeniSifreOnayla_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/colorAccent">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/yeniSifreOnayla"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:hint="Yeni Şifre Onayla"
+                android:inputType="textPassword" />
+
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
