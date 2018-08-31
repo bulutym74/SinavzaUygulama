@@ -260,17 +260,17 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
 
         switch (testItem.getStatus()) {
             case 0:
-                viewHolder.img_empty.setImageResource(R.drawable.empty);
+                viewHolder.img_empty.setVisibility(View.VISIBLE);
                 viewHolder.img_half.setVisibility(View.GONE);
                 viewHolder.img_full.setVisibility(View.GONE);
                 break;
             case 1:
-                viewHolder.img_half.setImageResource(R.drawable.half);
+                viewHolder.img_half.setVisibility(View.VISIBLE);
                 viewHolder.img_empty.setVisibility(View.GONE);
                 viewHolder.img_full.setVisibility(View.GONE);
                 break;
             case 2:
-                viewHolder.img_full.setImageResource(R.drawable.full);
+                viewHolder.img_full.setVisibility(View.VISIBLE);
                 viewHolder.img_half.setVisibility(View.GONE);
                 viewHolder.img_empty.setVisibility(View.GONE);
                 break;

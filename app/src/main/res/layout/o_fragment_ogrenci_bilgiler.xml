@@ -57,7 +57,7 @@
                     android:src="@drawable/done_outlined" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="105dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="12dp"
@@ -69,8 +69,8 @@
                     android:id="@+id/txt_onaylanan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="30dp"
+                    android:layout_gravity="center|start"
+                    android:layout_marginStart="25dp"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -89,7 +89,7 @@
                     android:src="@drawable/cancel_outlined" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="105dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="12dp"
@@ -102,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|start"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="25dp"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -121,7 +121,7 @@
                     android:src="@drawable/spinner_of_dots" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="105dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="12dp"
@@ -134,7 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|start"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="25dp"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
