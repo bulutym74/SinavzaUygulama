@@ -56,6 +56,7 @@ public class Islevsel {
     public static String odevOnayRetURL = rootURL + "/api/odevOnayRet";
     public static String danismanOgrenciGecikenlerURL = rootURL + "/api/danismanOgrenciGecikenler";
     public static String danismanVerilenOdevlerURL = rootURL + "/api/danismanVerilenOdevler";
+    public static String bransOgretmenKitaplarURL = rootURL + "/api/bransOgretmenKitaplar";
 
 
 
@@ -100,5 +101,6 @@ public class Islevsel {
         odevOnayRetURL = rootURL + "/api/odevOnayRet/"+id;
         danismanOgrenciGecikenlerURL = rootURL + "/api/danismanOgrenciGecikenler/"+id;
         danismanVerilenOdevlerURL = rootURL + "/api/danismanVerilenOdevler/"+id;
+        bransOgretmenKitaplarURL = rootURL + "/api/bransOgretmenKitaplar/"+id;
     }
 }

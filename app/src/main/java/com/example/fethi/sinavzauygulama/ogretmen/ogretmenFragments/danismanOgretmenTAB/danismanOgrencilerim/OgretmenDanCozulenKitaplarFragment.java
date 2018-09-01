@@ -130,7 +130,7 @@ public class OgretmenDanCozulenKitaplarFragment extends Fragment implements Swip
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.POST,
-                Islevsel.cozulenKitapYuzdeleriURL,
+                Islevsel.danismanOgrenciCozulenlerURL,
                 parameters,
                 new Response.Listener<JSONObject>() {
                     @Override

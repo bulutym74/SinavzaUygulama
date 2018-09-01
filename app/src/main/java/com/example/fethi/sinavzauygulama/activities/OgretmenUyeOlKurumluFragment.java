@@ -84,6 +84,7 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
     TextView tv_secim;
     FrameLayout arkaplan;
     Toolbar toolbar;
+    ImageView log_out;
 
     ViewGroup transitionsContainer;
     boolean visible;
@@ -123,18 +124,20 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
         sayi_sinif = view.findViewById(R.id.sayi_sinif);
         copkutusu_sinif = view.findViewById(R.id.copkutusu_sinif);
 
-        final Toolbar toolbar = view.findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_left);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        log_out = view.findViewById(R.id.log_out);
+        log_out.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        onBackPressed();
+            public void onClick(View view) {
+
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        realm.where(UserInfoItem.class).findAll().deleteAllFromRealm();
                     }
-                }, 100);
+                });
+
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
             }
         });
 

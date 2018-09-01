@@ -426,8 +426,14 @@ public class OgretmenBraOnayBekleyenOdevlerFragment extends Fragment implements 
     public void isEmpty() {
         if (dersler.isEmpty()) {
             yokView.setVisibility(View.VISIBLE);
-        } else
+            fab_check.setVisibility(View.GONE);
+            fab_cancel.setVisibility(View.GONE);
+        } else {
             yokView.setVisibility(View.GONE);
+            fab_check.setVisibility(View.VISIBLE);
+            fab_cancel.setVisibility(View.VISIBLE);
+        }
+
     }
 
     @Override

@@ -23,6 +23,32 @@
 
     </android.support.v7.widget.Toolbar>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seçilen soru sayısı:"
+            android:textColor="@color/darkgray"
+            android:textSize="16sp"
+            android:layout_marginEnd="12dp"/>
+
+        <TextView
+            android:id="@+id/secili_soru"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="111"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+
     <ExpandableListView
         android:id="@+id/expand_lv_testSec"
         android:layout_width="match_parent"

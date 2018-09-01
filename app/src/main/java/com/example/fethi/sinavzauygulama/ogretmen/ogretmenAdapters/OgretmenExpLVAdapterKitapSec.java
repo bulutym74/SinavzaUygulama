@@ -1,6 +1,7 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,8 @@ import com.example.fethi.sinavzauygulama.R;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.DersItem;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.KitapItem;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.KonuItem;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.bransOgretmeniTAB.odevlendir.OgretmenBraKitapSecFragment;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.danismanOdevlendir.OgretmenDanKitapSecFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -131,6 +134,7 @@ public class OgretmenExpLVAdapterKitapSec extends BaseExpandableListAdapter {
                 }
             }
         }
+
         if (seciliTest != 0) {
             viewHolder.testSayiKitap.setText(seciliTest + " Test");
         } else {

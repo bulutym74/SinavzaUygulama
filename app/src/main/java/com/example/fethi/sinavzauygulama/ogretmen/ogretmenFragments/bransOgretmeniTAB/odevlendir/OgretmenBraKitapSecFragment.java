@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -59,10 +60,11 @@ public class OgretmenBraKitapSecFragment extends Fragment {
     String token;
     Realm realm = Realm.getDefaultInstance();
     LinearLayout ortakKitapYokView;
+    public TextView secili_soru;
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.o_fragment_kitapsec, container, false);
 
         ortakKitapYokView = view.findViewById(R.id.ortakKitapYokView);
@@ -81,6 +83,21 @@ public class OgretmenBraKitapSecFragment extends Fragment {
                 }, 100);
             }
         });
+        secili_soru = view.findViewById(R.id.secili_soru);
+
+        int count = 0;
+        for (OdevSecDersItem ders : dersler) {
+            for (OdevSecKitapItem kitap : ders.getKitaplar()) {
+                for (OdevSecKonuItem konu : kitap.getKonular()) {
+                    for (OdevSecTestItem test : konu.getTestler()) {
+                        if (test.isSelected()) {
+                            count += test.getSoruSayisi();
+                        }
+                    }
+                }
+            }
+        }
+        secili_soru.setText("" +count);
 
         ExpandableListView expandlist_view_kitapsec = view.findViewById(R.id.expand_lv_kitapSec);
         fab_kitapSec = view.findViewById(R.id.fab_kitapSec);
@@ -91,6 +108,7 @@ public class OgretmenBraKitapSecFragment extends Fragment {
                 OgretmenBraTarihSecFragment nextFrag = new OgretmenBraTarihSecFragment();
                 nextFrag.seciliSiniflar = seciliSiniflar;
 
+
                 for (OdevSecDersItem ders : dersler) {
                     OdevSecDersItem tempDers = new OdevSecDersItem(ders.getDersAdi(), new ArrayList<OdevSecKitapItem>());
 
@@ -100,8 +118,10 @@ public class OgretmenBraKitapSecFragment extends Fragment {
                             OdevSecKonuItem tempKonu = new OdevSecKonuItem(konu.getKonuAdi(), new ArrayList<OdevSecTestItem>());
 
                             for (OdevSecTestItem test : konu.getTestler()) {
-                                if (test.isSelected())
+                                if (test.isSelected()) {
                                     tempKonu.getTestler().add(test);
+
+                                }
                             }
                             if (!tempKonu.getTestler().isEmpty())
                                 tempKitap.getKonular().add(tempKonu);
@@ -112,6 +132,8 @@ public class OgretmenBraKitapSecFragment extends Fragment {
                     if (!tempDers.getKitaplar().isEmpty())
                         nextFrag.seciliDersler.add(tempDers);
                 }
+
+
 
                 if (nextFrag.seciliDersler.size() == 0){
                     Toast toast = Toast.makeText(getApplicationContext(), "Lütfen test seçiniz", Toast.LENGTH_SHORT);

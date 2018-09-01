@@ -26,6 +26,7 @@ import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -66,6 +67,7 @@ public class OgrenciUyeOlKurumluFragment extends Fragment {
     TextView secildimi;
     boolean visible;
     ViewGroup transitionsContainer;
+    ImageView log_out;
 
     private RecyclerView rv_sinifsec;
     private RecyclerView.Adapter adapter;
@@ -99,18 +101,20 @@ public class OgrenciUyeOlKurumluFragment extends Fragment {
         secildimi = view.findViewById(R.id.secildimi);
         back = view.findViewById(R.id.back);
 
-        final Toolbar toolbar = view.findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_left);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        log_out = view.findViewById(R.id.log_out);
+        log_out.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        onBackPressed();
+            public void onClick(View view) {
+
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        realm.where(UserInfoItem.class).findAll().deleteAllFromRealm();
                     }
-                }, 100);
+                });
+
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
             }
         });
 

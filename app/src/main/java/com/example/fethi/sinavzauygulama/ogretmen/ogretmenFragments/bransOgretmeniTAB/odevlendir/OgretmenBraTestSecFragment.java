@@ -25,11 +25,12 @@ public class OgretmenBraTestSecFragment extends Fragment {
     public ExpandableListView expand_lv_testsec;
 
     private TextView title;
+    public TextView secili_soru;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.o_fragment_testsec,container,false);
+        View view = inflater.inflate(R.layout.o_fragment_testsec, container, false);
 
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_left);
@@ -45,19 +46,20 @@ public class OgretmenBraTestSecFragment extends Fragment {
                 }, 100);
             }
         });
+        secili_soru = view.findViewById(R.id.secili_soru);
 
         expand_lv_testsec = view.findViewById(R.id.expand_lv_testSec);
         title = view.findViewById(R.id.title);
         title.setText(seciliKitap.getKitapAdi());
 
-
-        expand_adapter = new OgretmenExpLVAdapterTestSec(getActivity(),seciliKitap);
+        expand_adapter = new OgretmenExpLVAdapterTestSec(getActivity(), seciliKitap, this,0);
         expand_lv_testsec.setAdapter(expand_adapter);
+        expand_adapter.updateSoru();
 
         return view;
     }
-    public void onBackPressed()
-    {
+
+    public void onBackPressed() {
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.popBackStack();
     }

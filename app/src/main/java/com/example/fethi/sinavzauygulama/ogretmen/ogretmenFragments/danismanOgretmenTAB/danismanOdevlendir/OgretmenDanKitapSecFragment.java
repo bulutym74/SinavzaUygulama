@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -59,6 +60,7 @@ public class OgretmenDanKitapSecFragment extends Fragment {
     String token;
     Realm realm = Realm.getDefaultInstance();
     LinearLayout ortakKitapYokView;
+    public TextView secili_soru;
 
     @Nullable
     @Override
@@ -81,6 +83,21 @@ public class OgretmenDanKitapSecFragment extends Fragment {
                 }, 100);
             }
         });
+        secili_soru = view.findViewById(R.id.secili_soru);
+
+        int count = 0;
+        for (OdevSecDersItem ders : dersler) {
+            for (OdevSecKitapItem kitap : ders.getKitaplar()) {
+                for (OdevSecKonuItem konu : kitap.getKonular()) {
+                    for (OdevSecTestItem test : konu.getTestler()) {
+                        if (test.isSelected()) {
+                            count += test.getSoruSayisi();
+                        }
+                    }
+                }
+            }
+        }
+        secili_soru.setText("" +count);
 
         ExpandableListView expandlist_view_kitapsec = view.findViewById(R.id.expand_lv_kitapSec);
         fab_kitapSec = view.findViewById(R.id.fab_kitapSec);
@@ -99,7 +116,7 @@ public class OgretmenDanKitapSecFragment extends Fragment {
                         for (OdevSecKonuItem konu : kitap.getKonular()) {
                             OdevSecKonuItem tempKonu = new OdevSecKonuItem(konu.getKonuAdi(), new ArrayList<OdevSecTestItem>());
 
-                            for (OdevSecTestItem test : konu.getTestler()){
+                            for (OdevSecTestItem test : konu.getTestler()) {
                                 if (test.isSelected())
                                     tempKonu.getTestler().add(test);
                             }
@@ -113,7 +130,7 @@ public class OgretmenDanKitapSecFragment extends Fragment {
                         nextFrag.seciliDersler.add(tempDers);
                 }
 
-                if (nextFrag.seciliDersler.size() == 0){
+                if (nextFrag.seciliDersler.size() == 0) {
                     Toast toast = Toast.makeText(getApplicationContext(), "Lütfen test seçiniz", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.BOTTOM, 0, 300);
                     toast.show();
@@ -128,7 +145,7 @@ public class OgretmenDanKitapSecFragment extends Fragment {
             }
         });
 
-        if (dersler.size()==0)parseJSON();
+        if (dersler.size() == 0) parseJSON();
 
         expand_adapter = new OgretmenExpLVAdapterKitapSec(getActivity(), dersler);
         expandlist_view_kitapsec.setAdapter(expand_adapter);
@@ -196,7 +213,7 @@ public class OgretmenDanKitapSecFragment extends Fragment {
                                 for (int i = 0; i < res.getJSONArray("dersler").length(); i++) {
 
                                     JSONObject ders = res.getJSONArray("dersler").getJSONObject(i);
-                                    OdevSecDersItem dersItem = new OdevSecDersItem(ders.getString("name"),new ArrayList<OdevSecKitapItem>());
+                                    OdevSecDersItem dersItem = new OdevSecDersItem(ders.getString("name"), new ArrayList<OdevSecKitapItem>());
 
                                     for (int j = 0; j < ders.getJSONArray("kitaplar").length(); j++) {
                                         JSONObject kitap = ders.getJSONArray("kitaplar").getJSONObject(j);
@@ -208,7 +225,7 @@ public class OgretmenDanKitapSecFragment extends Fragment {
 
                                             for (int m = 0; m < konu.getJSONArray("testler").length(); m++) {
                                                 JSONObject test = konu.getJSONArray("testler").getJSONObject(m);
-                                                OdevSecTestItem testItem = new OdevSecTestItem(test.getString("name"), test.getInt("soru"), test.getInt("id"),test.getInt("status"));
+                                                OdevSecTestItem testItem = new OdevSecTestItem(test.getString("name"), test.getInt("soru"), test.getInt("id"), test.getInt("status"));
 
                                                 konuItem.getTestler().add(testItem);
                                             }
@@ -253,6 +270,7 @@ public class OgretmenDanKitapSecFragment extends Fragment {
         };
         requestQueue.add(objectRequest);
     }
+
     public void isEmpty() {
         if (dersler.isEmpty()) {
             ortakKitapYokView.setVisibility(View.VISIBLE);

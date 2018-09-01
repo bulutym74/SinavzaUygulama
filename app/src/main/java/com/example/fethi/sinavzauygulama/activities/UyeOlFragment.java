@@ -41,6 +41,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -128,16 +129,13 @@ public class UyeOlFragment extends Fragment {
                 if (index == 0) {
                     et_kod.setVisibility(View.VISIBLE);
                     bagliLayout.setVisibility(View.GONE);
-                    et_kod.setHint("Ögretmen Kodu");
                 } else {
                     text_bagliyim.setText("Kuruma Bağlıyım");
                     et_kod.setVisibility(View.INVISIBLE);
                     bagliLayout.setVisibility(View.VISIBLE);
-                    et_kod.setHint("Kurum Kodu");
                 }
 
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -178,35 +176,30 @@ public class UyeOlFragment extends Fragment {
                     return;
                 }
 
-                if (password.getText().toString().isEmpty()) {
+                String sifre = password.getText().toString();
+
+                if (sifre.isEmpty()) {
                     inputLayout.setPasswordVisibilityToggleEnabled(false);
                     password.setError("Bu alan boş olamaz");
                     return;
                 }
-                if (password.getText().toString().length() < 6) {
+                if (sifre.length() < 6) {
                     inputLayout.setPasswordVisibilityToggleEnabled(false);
                     password.setError("En az 6 karakter");
                     return;
                 }
-                String sifre = password.getText().toString();
 
-                Map<Character, Integer> map = new HashMap<>();
-                int cnt = 0;
-                for (int i = 0; i < sifre.length(); i++) {
-                    char c = sifre.charAt(i);
-                    if (map.containsKey(c)) {
-                        cnt = map.get(c);
-                        map.put(c, ++cnt);
-                    } else {
-                        map.put(c, 1);
-                    }
-                }
+                Set<Character> mySet = new HashSet();
 
-                if (cnt >= 3) {
+                for (char c : sifre.toCharArray())
+                    mySet.add(c);
+
+                if (mySet.size() < 3) {
                     inputLayout.setPasswordVisibilityToggleEnabled(false);
-                    password.setError("Aynı karakter 2 den fazla kullanılamaz");
+                    password.setError("En az 3 farklı karakter kullanılmalı!");
                     return;
                 }
+
                 if (code.getText().toString().length() < 6 && index==0) {
                     code.setError("Hatalı kod");
                     return;

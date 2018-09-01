@@ -155,7 +155,7 @@ public class OgretmenBraKitapEkleFragment extends Fragment implements SwipeRefre
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                Islevsel.danismanOgretmenSiniflarURL,
+                Islevsel.ogretmenSiniflarURL,
                 new JSONObject(),
                 new Response.Listener<JSONObject>() {
                     @Override

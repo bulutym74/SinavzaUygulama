@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -47,6 +48,7 @@ public class OgretmenUyeOlKurumsuzFragment extends Fragment {
     FloatingActionButton btn_devam;
     LinearLayout linearLayout;
     AppCompatEditText isim,soyisim,tel;
+    ImageView log_out;
 
     Realm realm = Realm.getDefaultInstance();
     String token;
@@ -61,18 +63,20 @@ public class OgretmenUyeOlKurumsuzFragment extends Fragment {
         tel = view.findViewById(R.id.et_tel);
         btn_devam = view.findViewById(R.id.button_devam);
 
-        final Toolbar toolbar = view.findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_left);
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        log_out = view.findViewById(R.id.log_out);
+        log_out.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        onBackPressed();
+            public void onClick(View view) {
+
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        realm.where(UserInfoItem.class).findAll().deleteAllFromRealm();
                     }
-                }, 100);
+                });
+
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -1,6 +1,8 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
@@ -15,8 +17,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.fethi.sinavzauygulama.R;
+import com.example.fethi.sinavzauygulama.activities.OgrenciUyeOlKurumluFragment;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.KitapItem;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.TestItem;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.bransOgretmeniTAB.odevlendir.OgretmenBraTestSecFragment;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.danismanOdevlendir.OgretmenDanTestSecFragment;
 import com.transitionseverywhere.Fade;
 import com.transitionseverywhere.TransitionManager;
 import com.transitionseverywhere.TransitionSet;
@@ -34,11 +39,15 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
     public LayoutInflater inflater;
     ImageView img_arrow;
     boolean visible;
+    private Fragment fragment;
+    int durum;
 
 
-    public OgretmenExpLVAdapterTestSec(Context context, OdevSecKitapItem seciliKitap) {
+    public OgretmenExpLVAdapterTestSec(Context context, OdevSecKitapItem seciliKitap, Fragment fragment, int durum) {
         this.context = context;
         this.seciliKitap = seciliKitap;
+        this.fragment = fragment;
+        this.durum = durum;
     }
 
     @Override
@@ -123,8 +132,13 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
             @Override
             public void onClick(View view) {
 
-                for (OdevSecTestItem test : konuItem.getTestler())
-                    test.setSelected(true);
+                for (OdevSecTestItem test : konuItem.getTestler()) {
+                    if (test.getStatus() == 2)
+                        test.setSelected(false);
+                    else
+                        test.setSelected(true);
+                }
+
 
                 konuItem.setSelected(true);
 
@@ -139,7 +153,9 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
                 viewHolder.add_big.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
                 viewHolder.check_big.setVisibility(visible ? View.INVISIBLE : View.VISIBLE);
 
+                updateSoru();
                 notifyDataSetChanged();
+
             }
         });
         viewHolder.check_big.setOnClickListener(new View.OnClickListener() {
@@ -162,6 +178,7 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
                 viewHolder.check_big.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
                 viewHolder.add_big.setVisibility(visible ? View.INVISIBLE : View.VISIBLE);
 
+                updateSoru();
                 notifyDataSetChanged();
 
             }
@@ -184,6 +201,18 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
 
         } else {
             viewHolder.add_big.setVisibility(View.VISIBLE);
+            viewHolder.check_big.setVisibility(View.GONE);
+        }
+
+        Boolean status2 = true;
+        for (OdevSecTestItem test : konuItem.getTestler()) {
+            if (test.getStatus() != 2) {
+                status2 = false;
+                break;
+            }
+        }
+        if (status2) {
+            viewHolder.add_big.setVisibility(View.GONE);
             viewHolder.check_big.setVisibility(View.GONE);
         }
 
@@ -216,6 +245,7 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
         viewHolder.child_test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 testItem.setSelected(!testItem.isSelected());
                 if (testItem.isSelected()) {
                     Boolean allSelected = true;
@@ -254,7 +284,9 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
                     viewHolder.check.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
                     viewHolder.add.setVisibility(visible ? View.INVISIBLE : View.VISIBLE);
                 }
+                updateSoru();
                 notifyDataSetChanged();
+
             }
         });
 
@@ -291,6 +323,11 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
             viewHolder.check.setVisibility(View.GONE);
         }
 
+        if (testItem.getStatus() == 2) {
+            viewHolder.add.setVisibility(View.GONE);
+            viewHolder.check.setVisibility(View.GONE);
+            viewHolder.child_test.setClickable(false);
+        }
 
         return view;
     }
@@ -315,12 +352,26 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
         TextView testSoru;
         FrameLayout child_test;
         ViewGroup transitionsContainer;
-        ImageView img_half,img_full,img_empty;
+        ImageView img_half, img_full, img_empty;
     }
 
     public int dpToPx(int dp) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+    }
+
+    public void updateSoru() {
+        int count = 0;
+        for (OdevSecKonuItem konu : seciliKitap.getKonular()) {
+            for (OdevSecTestItem test : konu.getTestler()) {
+                if (test.isSelected())
+                    count += test.getSoruSayisi();
+            }
+        }
+        if (durum == 0)
+            ((OgretmenBraTestSecFragment) fragment).secili_soru.setText("" + count);
+        else if (durum == 1)
+            ((OgretmenDanTestSecFragment) fragment).secili_soru.setText("" + count);
     }
 
 }

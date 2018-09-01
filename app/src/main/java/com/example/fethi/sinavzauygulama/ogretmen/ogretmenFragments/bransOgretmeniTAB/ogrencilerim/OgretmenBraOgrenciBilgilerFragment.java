@@ -120,7 +120,7 @@ public class OgretmenBraOgrenciBilgilerFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 OgretmenBraCozulenKitaplarFragment nextFrag = new OgretmenBraCozulenKitaplarFragment();
-                //nextFrag.seciliOgrenci = seciliOgrenci;
+                nextFrag.seciliOgrenci = seciliOgrenci;
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
                         .replace(R.id.fragment_container, nextFrag, "findThisFragment")

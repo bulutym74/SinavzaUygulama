@@ -142,7 +142,7 @@ public class OgretmenBraKitapDetayFragment extends Fragment {
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                Islevsel.danismanOgretmenKitaplarURL,
+                Islevsel.bransOgretmenKitaplarURL,
                 new JSONObject(),
                 new Response.Listener<JSONObject>() {
                     @Override

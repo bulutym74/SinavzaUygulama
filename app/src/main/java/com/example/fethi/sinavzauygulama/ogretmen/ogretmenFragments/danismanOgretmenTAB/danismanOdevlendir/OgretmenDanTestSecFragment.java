@@ -25,6 +25,7 @@ public class OgretmenDanTestSecFragment extends Fragment {
     public ExpandableListView expand_lv_testsec;
 
     private TextView title;
+    public TextView secili_soru;
 
     @Nullable
     @Override
@@ -45,14 +46,15 @@ public class OgretmenDanTestSecFragment extends Fragment {
                 }, 100);
             }
         });
+        secili_soru = view.findViewById(R.id.secili_soru);
 
         expand_lv_testsec = view.findViewById(R.id.expand_lv_testSec);
         title = view.findViewById(R.id.title);
         title.setText(seciliKitap.getKitapAdi());
 
-
-        expand_adapter = new OgretmenExpLVAdapterTestSec(getActivity(),seciliKitap);
+        expand_adapter = new OgretmenExpLVAdapterTestSec(getActivity(),seciliKitap,this,1);
         expand_lv_testsec.setAdapter(expand_adapter);
+        expand_adapter.updateSoru();
 
         return view;
     }
