@@ -1,6 +1,7 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.danismanOdevlendir;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -49,6 +50,8 @@ import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.OgretmenListI
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.OgretmenListItemPopUpSiniflarAdapter;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.OgretmenListItemSiniflarAdapter;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.SinifItem;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.bransOgretmeniTAB.odevlendir.OgretmenBraKitapSecFragment;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.OgretmenDanismanOgretmenFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -89,7 +92,6 @@ public class OgretmenDanOdevOzetiFragment extends Fragment {
     FloatingActionButton fab_odevOzeti;
     TextView trh_baslama, trh_bitis;
     ViewGroup transitionsContainer;
-    boolean visible;
 
     @Nullable
     @Override
@@ -354,6 +356,18 @@ public class OgretmenDanOdevOzetiFragment extends Fragment {
                                         Toast toast = Toast.makeText(getApplicationContext(), "Ödevler başarıyla gönderildi", Toast.LENGTH_SHORT);
                                         toast.setGravity(Gravity.BOTTOM, 0, 300);
                                         toast.show();
+
+                                        Handler handler = new Handler();
+                                        handler.postDelayed(new Runnable() {
+                                            public void run() {
+                                                OgretmenDanismanOgretmenFragment nextFrag = new OgretmenDanismanOgretmenFragment();
+                                                getActivity().getSupportFragmentManager().beginTransaction()
+                                                        .replace(R.id.fragment_container, nextFrag, "findThisFragment")
+                                                        .addToBackStack(null)
+                                                        .commit();
+                                            }
+                                        }, 500);
+
 
                                     }
                                     adapter.notifyDataSetChanged();

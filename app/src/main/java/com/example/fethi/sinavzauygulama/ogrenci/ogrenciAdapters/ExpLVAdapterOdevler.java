@@ -22,7 +22,6 @@ public class ExpLVAdapterOdevler extends BaseExpandableListAdapter  {
 
     ArrayList<DersItem> dersler;
     public Context context;
-    public LayoutInflater inflater;
 
     public ExpLVAdapterOdevler(Context context,ArrayList<DersItem> dersler)
     {
@@ -72,7 +71,7 @@ public class ExpLVAdapterOdevler extends BaseExpandableListAdapter  {
         final GroupViewHolder viewHolder;
         if(view == null)
         {
-            inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.listview_header_odevler,null);
         }
         viewHolder = new GroupViewHolder();
@@ -107,7 +106,7 @@ public class ExpLVAdapterOdevler extends BaseExpandableListAdapter  {
         final ChildViewHolder viewHolder;
         if(view==null)
         {
-            inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.listview_child_odevler, null);
 
         }

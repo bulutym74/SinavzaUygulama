@@ -298,7 +298,7 @@ public class ExpLVAdapterKonular extends BaseExpandableListAdapter {
                                                     toast1.setGravity(Gravity.BOTTOM, 0, 300);
                                                     toast1.show();
                                                 }
-                                            }, 800);
+                                            }, 1000);
 
                                             seciliKitap.getKonular().remove(groupPosition);
 

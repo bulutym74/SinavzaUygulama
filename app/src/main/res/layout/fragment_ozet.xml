@@ -2,12 +2,12 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <android.support.v7.widget.Toolbar
@@ -28,310 +28,320 @@
 
         </android.support.v7.widget.Toolbar>
 
-        <HorizontalScrollView
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none">
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <Space
-                    android:layout_width="8dp"
-                    android:layout_height="match_parent" />
-
-                <LinearLayout
-                    android:id="@+id/card1"
+                <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
-                    android:background="@drawable/cerceve_green"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp">
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
 
                     <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center|top"
-                        android:orientation="vertical">
+                        <Space
+                            android:layout_width="8dp"
+                            android:layout_height="match_parent" />
 
-                        <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_marginTop="7dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/test" />
+                        <LinearLayout
+                            android:id="@+id/card1"
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                            android:background="@drawable/cerceve_green"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp">
 
-                        <TextView
-                            android:id="@+id/title1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:text="Çözülen Soru"
-                            android:textColor="@color/black"
-                            android:textSize="20sp" />
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|top"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_marginTop="7dp"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/test" />
+
+                                <TextView
+                                    android:id="@+id/title1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="Çözülen Soru"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
 
 
-                        <TextView
-                            android:id="@+id/cozulenSoru"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="18dp"
-                            android:textColor="@color/darkgray"
-                            android:textSize="16sp" />
+                                <TextView
+                                    android:id="@+id/cozulenSoru"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="18dp"
+                                    android:textColor="@color/darkgray"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="8dp"
+                            android:layout_height="match_parent" />
+
+                        <LinearLayout
+                            android:id="@+id/card2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                            android:background="@drawable/cerceve_green"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp">
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|top"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_marginTop="7dp"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/alert" />
+
+                                <TextView
+                                    android:id="@+id/title2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="Gecikenler"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/yapilmamisTest"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:textColor="@color/darkgray"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/yapilmamisSoru"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:textColor="@color/darkgray"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="8dp"
+                            android:layout_height="match_parent" />
+
+                        <LinearLayout
+                            android:id="@+id/card3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                            android:background="@drawable/cerceve_green"
+                            android:layout_marginBottom="5dp"
+                            android:layout_marginTop="5dp">
+
+                            <LinearLayout
+
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center|top"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="32dp"
+                                    android:layout_height="32dp"
+                                    android:layout_marginTop="7dp"
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/time" />
+
+                                <TextView
+                                    android:id="@+id/title3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="En Yakın Ödev"
+                                    android:textColor="@color/black"
+                                    android:textSize="20sp" />
+
+                                <TextView
+                                    android:id="@+id/enYakinOdev"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:textColor="@color/darkgray"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:id="@+id/enYakinOdevTarih"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:textColor="@color/darkgray"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <Space
+                            android:layout_width="8dp"
+                            android:layout_height="match_parent" />
 
                     </LinearLayout>
 
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="8dp"
-                    android:layout_height="match_parent" />
+                </HorizontalScrollView>
 
                 <LinearLayout
-                    android:id="@+id/card2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
-                    android:background="@drawable/cerceve_green"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp">
-
-                    <LinearLayout
-
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center|top"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_marginTop="7dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/alert" />
-
-                        <TextView
-                            android:id="@+id/title2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:text="Gecikenler"
-                            android:textColor="@color/black"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:id="@+id/yapilmamisTest"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:textColor="@color/darkgray"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/yapilmamisSoru"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:textColor="@color/darkgray"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="8dp"
-                    android:layout_height="match_parent" />
-
-                <LinearLayout
-                    android:id="@+id/card3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
-                    android:background="@drawable/cerceve_green"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp">
-
-                    <LinearLayout
-
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center|top"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:layout_marginTop="7dp"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/time" />
-
-                        <TextView
-                            android:id="@+id/title3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:text="En Yakın Ödev"
-                            android:textColor="@color/black"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:id="@+id/enYakinOdev"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:textColor="@color/darkgray"
-                            android:textSize="16sp" />
-
-                        <TextView
-                            android:id="@+id/enYakinOdevTarih"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
-                            android:textColor="@color/darkgray"
-                            android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="8dp"
-                    android:layout_height="match_parent" />
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
-
-
-        <LinearLayout
-            android:id="@+id/progressView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:orientation="vertical"
-            android:paddingTop="17dp"
-            android:layout_gravity="bottom"
-            android:paddingBottom="20dp">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="8dp"
-                    android:text="Yapılan Ödevler"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/txt_yuzde"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="8dp"
-                    android:textColor="@color/black"
-                    android:textSize="17sp" />
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipToPadding="false"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="10dp"
-                    android:max="100"
-                    android:progressDrawable="@drawable/progressbar" />
-
-
-            </FrameLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom"
-            android:orientation="vertical"
-            android:gravity="bottom">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Ödevler"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="10dp"/>
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:visibility="gone"
-                    android:id="@+id/odevYokView"
+                    android:id="@+id/progressView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
                     android:orientation="vertical"
-                    android:background="@color/white">
+                    android:paddingTop="17dp"
+                    android:layout_gravity="bottom"
+                    android:paddingBottom="20dp">
 
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:layout_width="200dp"
-                        android:layout_height="185dp"
-                        android:src="@drawable/img_boskutu"/>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="8dp"
+                            android:text="Yapılan Ödevler"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/txt_yuzde"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="8dp"
+                            android:textColor="@color/black"
+                            android:textSize="17sp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ProgressBar
+                            android:id="@+id/progressBar"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginTop="10dp"
+                            android:max="100"
+                            android:progressDrawable="@drawable/progressbar" />
+
+
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical"
+                    android:gravity="bottom">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Ödevler"
                         android:textColor="@color/black"
                         android:textSize="22sp"
-                        android:gravity="center"
                         android:layout_gravity="bottom"
-                        android:text="Tanımlı ödeviniz bulunmamaktadır"/>
-                </LinearLayout>
+                        android:layout_marginBottom="10dp"/>
 
-
-                <android.support.v4.widget.SwipeRefreshLayout
-                    android:id="@+id/swipe"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <android.support.v7.widget.RecyclerView
-                        android:visibility="visible"
-                        android:id="@+id/recycleView_ozet"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom" />
+                        android:layout_height="wrap_content">
 
-                </android.support.v4.widget.SwipeRefreshLayout>
-            </FrameLayout>
+                        <LinearLayout
+                            android:visibility="gone"
+                            android:id="@+id/odevYokView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:background="@color/white">
+
+                            <ImageView
+                                android:layout_gravity="center"
+                                android:layout_width="200dp"
+                                android:layout_height="185dp"
+                                android:src="@drawable/img_boskutu"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/black"
+                                android:textSize="22sp"
+                                android:gravity="center"
+                                android:layout_gravity="bottom"
+                                android:text="Tanımlı ödeviniz bulunmamaktadır"/>
+                        </LinearLayout>
+
+                        <android.support.v7.widget.RecyclerView
+                            android:visibility="visible"
+                            android:id="@+id/recycleView_ozet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom" />
 
 
-        </LinearLayout>
+                    </FrameLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+
 
 
     </LinearLayout>

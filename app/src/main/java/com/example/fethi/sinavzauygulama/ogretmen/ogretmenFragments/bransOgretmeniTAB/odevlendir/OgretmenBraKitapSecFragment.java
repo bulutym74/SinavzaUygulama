@@ -61,6 +61,7 @@ public class OgretmenBraKitapSecFragment extends Fragment {
     Realm realm = Realm.getDefaultInstance();
     LinearLayout ortakKitapYokView;
     public TextView secili_soru;
+    LinearLayout view_seciliSoru;
 
     @Nullable
     @Override
@@ -84,20 +85,7 @@ public class OgretmenBraKitapSecFragment extends Fragment {
             }
         });
         secili_soru = view.findViewById(R.id.secili_soru);
-
-        int count = 0;
-        for (OdevSecDersItem ders : dersler) {
-            for (OdevSecKitapItem kitap : ders.getKitaplar()) {
-                for (OdevSecKonuItem konu : kitap.getKonular()) {
-                    for (OdevSecTestItem test : konu.getTestler()) {
-                        if (test.isSelected()) {
-                            count += test.getSoruSayisi();
-                        }
-                    }
-                }
-            }
-        }
-        secili_soru.setText("" +count);
+        view_seciliSoru = view.findViewById(R.id.view_seciliSoru);
 
         ExpandableListView expandlist_view_kitapsec = view.findViewById(R.id.expand_lv_kitapSec);
         fab_kitapSec = view.findViewById(R.id.fab_kitapSec);
@@ -150,7 +138,22 @@ public class OgretmenBraKitapSecFragment extends Fragment {
             }
         });
 
+        int count = 0;
+        for (OdevSecDersItem ders : dersler) {
+            for (OdevSecKitapItem kitap : ders.getKitaplar()) {
+                for (OdevSecKonuItem konu : kitap.getKonular()) {
+                    for (OdevSecTestItem test : konu.getTestler()) {
+                        if (test.isSelected()) {
+                            count += test.getSoruSayisi();
+                        }
+                    }
+                }
+            }
+        }
+        secili_soru.setText("" +count);
+
         if (dersler.size() == 0) parseJSON();
+        else view_seciliSoru.setVisibility(View.VISIBLE);
 
         expand_adapter = new OgretmenExpLVAdapterKitapSec(getActivity(), dersler);
         expandlist_view_kitapsec.setAdapter(expand_adapter);
@@ -181,7 +184,7 @@ public class OgretmenBraKitapSecFragment extends Fragment {
 
         final JSONObject parameters = new JSONObject();
 
-        JSONArray seciliOgrenciler = new JSONArray();
+        final JSONArray seciliOgrenciler = new JSONArray();
         for (SinifItem sinif : seciliSiniflar) {
             for (OgrenciItem ogrenci : sinif.getOgrenciler())
                 seciliOgrenciler.put(ogrenci.getId());
@@ -241,6 +244,7 @@ public class OgretmenBraKitapSecFragment extends Fragment {
                                 }
 
                             }
+
                             isEmpty();
                             expand_adapter.notifyDataSetChanged();
                         } catch (JSONException e) {
@@ -278,8 +282,12 @@ public class OgretmenBraKitapSecFragment extends Fragment {
     public void isEmpty() {
         if (dersler.isEmpty()) {
             ortakKitapYokView.setVisibility(View.VISIBLE);
-        } else
+            view_seciliSoru.setVisibility(View.GONE);
+        } else{
             ortakKitapYokView.setVisibility(View.GONE);
+            view_seciliSoru.setVisibility(View.VISIBLE);
+        }
+
     }
 
     public void onBackPressed() {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SınavZA</string>
+    <string name="app_name">sınavza</string>
     <string name="title_activity_anasayfa">AnasayfaActivity</string>
     <string name="title_ozet">Özet</string>
     <string name="title_odevler">Ödevler</string>

@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.fethi.sinavzauygulama.diger.BottomNavigationViewHelper;
+import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.ozetTAB.OzetFragment;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.bransOgretmeniTAB.OgretmenBransOgretmeniFragment;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.OgretmenDanismanOgretmenFragment;
 import com.example.fethi.sinavzauygulama.R;
@@ -64,19 +65,26 @@ public class OgretmenAnasayfaActivity extends AppCompatActivity implements Botto
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         Fragment fragment = null;
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 
         switch (item.getItemId()) {
 
             case R.id.nav_bransOgretmeni:
-                fragment = new OgretmenBransOgretmeniFragment();
+                if (!(currentFragment instanceof OgretmenBransOgretmeniFragment)) {
+                    fragment = new OgretmenBransOgretmeniFragment();
+                }
                 break;
 
             case R.id.nav_profile:
-                fragment = new OgretmenProfileFragment();
+                if (!(currentFragment instanceof OgretmenProfileFragment)) {
+                    fragment = new OgretmenProfileFragment();
+                }
                 break;
 
             case R.id.nav_danismanOgretmen:
-                fragment = new OgretmenDanismanOgretmenFragment();
+                if (!(currentFragment instanceof OgretmenDanismanOgretmenFragment)) {
+                    fragment = new OgretmenDanismanOgretmenFragment();
+                }
                 break;
 
         }

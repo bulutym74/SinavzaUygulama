@@ -53,6 +53,7 @@ public class OdevlerFragment extends Fragment implements SwipeRefreshLayout.OnRe
     Realm realm = Realm.getDefaultInstance();
 
     LinearLayout odevYokView;
+    public int seciliId;
 
     @Nullable
     @Override
@@ -66,6 +67,10 @@ public class OdevlerFragment extends Fragment implements SwipeRefreshLayout.OnRe
         expand_adapter = new ExpLVAdapterOdevler(getActivity(), dersler);
         expandlist_view_odevler.setAdapter(expand_adapter);
         expandlist_view_odevler.setClickable(true);
+
+        expandlist_view_odevler.setSelectedGroup(seciliId);
+        expand_adapter.notifyDataSetChanged();
+
 
         expandlist_view_odevler.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
@@ -90,14 +95,14 @@ public class OdevlerFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 getResources().getColor(R.color.primaryOrange),
                 getResources().getColor(R.color.lightgreen));
 
-        if (dersler.size()==0)
-        refreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                refreshLayout.setRefreshing(true);
-                parseJSON();
-            }
-        });
+        if (dersler.size() == 0)
+            refreshLayout.post(new Runnable() {
+                @Override
+                public void run() {
+                    refreshLayout.setRefreshing(true);
+                    parseJSON();
+                }
+            });
 
         return view;
     }
@@ -144,7 +149,7 @@ public class OdevlerFragment extends Fragment implements SwipeRefreshLayout.OnRe
                                             for (int l = 0; l < odevKonu.getJSONArray("testler").length(); l++) {
 
                                                 JSONObject odevTest = (JSONObject) odevKonu.getJSONArray("testler").get(l);
-                                                TestItem testItem = new TestItem(odevTest.getString("name"), odevTest.getInt("soru"), odevTest.getString("tarih"),odevTest.getInt("id"));
+                                                TestItem testItem = new TestItem(odevTest.getString("name"), odevTest.getInt("soru"), odevTest.getString("tarih"), odevTest.getInt("id"));
 
                                                 konuItem.getTestler().add(testItem);
                                             }

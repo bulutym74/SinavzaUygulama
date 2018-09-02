@@ -150,7 +150,7 @@ public class OgretmenBraOgrenciBilgilerFragment extends Fragment {
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.POST,
-                Islevsel.danismanOgrenciOzetURL,
+                Islevsel.sinifOgrenciOzetURL,
                 parameters,
                 new Response.Listener<JSONObject>() {
                     @Override

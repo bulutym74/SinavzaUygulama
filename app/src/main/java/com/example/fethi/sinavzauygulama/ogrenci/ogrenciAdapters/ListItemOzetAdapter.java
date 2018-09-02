@@ -2,6 +2,7 @@ package com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.fethi.sinavzauygulama.R;
+import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.ozetTAB.OzetFragment;
 
 import java.util.List;
 
@@ -17,12 +19,13 @@ public class ListItemOzetAdapter extends RecyclerView.Adapter<ListItemOzetAdapte
 
     private List<ListItemOzet> listItemOzets;
     private Context context;
+    Fragment fragment;
 
-    public ListItemOzetAdapter(List<ListItemOzet> listItemOzets, Context context) {
+    public ListItemOzetAdapter(List<ListItemOzet> listItemOzets, Context context,Fragment fragment) {
         this.listItemOzets = listItemOzets;
         this.context = context;
+        this.fragment = fragment;
     }
-
 
     @NonNull
     @Override
@@ -41,6 +44,7 @@ public class ListItemOzetAdapter extends RecyclerView.Adapter<ListItemOzetAdapte
         }
 
         ListItemOzet listItemOzet = listItemOzets.get(position);
+        ((OzetFragment)fragment).seciliId = listItemOzet.getId();
 
         holder.tv_ders.setText(listItemOzet.getDers());
         holder.tv_test.setText(""+listItemOzet.getTest());

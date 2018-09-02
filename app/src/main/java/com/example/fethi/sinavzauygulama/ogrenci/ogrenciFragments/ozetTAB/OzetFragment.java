@@ -71,6 +71,7 @@ public class OzetFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     JSONObject res;
     String token;
     Realm realm = Realm.getDefaultInstance();
+    public int seciliId;
 
     @Nullable
     @Override
@@ -92,7 +93,7 @@ public class OzetFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         recycleView_ozet.setHasFixedSize(true);
         recycleView_ozet.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        adapter = new ListItemOzetAdapter(listItemOzets, getActivity());
+        adapter = new ListItemOzetAdapter(listItemOzets, getActivity(),this);
         recycleView_ozet.setAdapter(adapter);
 
         card1 = view.findViewById(R.id.card1);
@@ -208,6 +209,7 @@ public class OzetFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                     public void run() {
                         navigation.setSelectedItemId(R.id.nav_odevler);
                         OdevlerFragment nextFrag = new OdevlerFragment();
+                        nextFrag.seciliId = seciliId;
                         getActivity().getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.fragment_container, nextFrag, "frag")
                                 .addToBackStack(null)

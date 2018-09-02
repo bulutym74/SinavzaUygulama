@@ -45,6 +45,7 @@ import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.OgretmenListI
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.OgretmenListItemPopUpSiniflarAdapter;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.OgretmenListItemSiniflarAdapter;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.SinifItem;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.bransOgretmeniTAB.OgretmenBransOgretmeniFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -295,6 +296,17 @@ public class OgretmenBraKitapDetayOzetFragment extends Fragment {
                                         Toast toast = Toast.makeText(getActivity(), "Kitaplar başarıyla eklendi", Toast.LENGTH_SHORT);
                                         toast.setGravity(Gravity.BOTTOM, 0, 300);
                                         toast.show();
+
+                                        Handler handler = new Handler();
+                                        handler.postDelayed(new Runnable() {
+                                            public void run() {
+                                                OgretmenBransOgretmeniFragment nextFrag = new OgretmenBransOgretmeniFragment();
+                                                getActivity().getSupportFragmentManager().beginTransaction()
+                                                        .replace(R.id.fragment_container, nextFrag, "findThisFragment")
+                                                        .addToBackStack(null)
+                                                        .commit();
+                                            }
+                                        }, 500);
 
                                     }
                                 } catch (JSONException e) {

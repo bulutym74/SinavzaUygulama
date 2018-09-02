@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.fethi.sinavzauygulama.R;
@@ -22,6 +23,7 @@ import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.odevlerTAB.Ode
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.ozetTAB.OzetFragment;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.puanHesaplamaTAB.PuanHesaplamaFragment;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.tercihYapTAB.TercihYapFragment;
+import com.viven.fragmentstatemanager.FragmentStateManager;
 
 import static io.realm.internal.SyncObjectServerFacade.getApplicationContext;
 
@@ -32,6 +34,7 @@ public class OgrenciAnasayfaActivity extends AppCompatActivity implements Bottom
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ogrenci_anasayfa);
+
 
         BottomNavigationView navigation = findViewById(R.id.navigation_ogrenci);
         navigation.setOnNavigationItemSelectedListener(this);
@@ -56,6 +59,7 @@ public class OgrenciAnasayfaActivity extends AppCompatActivity implements Bottom
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.fragment_container, fragment)
+                    .addToBackStack(null)
                     .commit();
             return true;
         }
@@ -66,27 +70,38 @@ public class OgrenciAnasayfaActivity extends AppCompatActivity implements Bottom
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         Fragment fragment = null;
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 
         switch (item.getItemId()) {
 
             case R.id.nav_ozet:
-                fragment = new OzetFragment();
+                if (!(currentFragment instanceof OzetFragment)) {
+                    fragment = new OzetFragment();
+                }
                 break;
 
             case R.id.nav_odevler:
-                fragment = new OdevlerFragment();
+                if (!(currentFragment instanceof OdevlerFragment)) {
+                    fragment = new OdevlerFragment();
+                }
                 break;
 
             /*case R.id.nav_puanHesaplama:
-                fragment = new PuanHesaplamaFragment();
+                if (!(currentFragment instanceof PuanHesaplamaFragment)) {
+                    fragment = new PuanHesaplamaFragment();
+                }
                 break;
 
             case R.id.nav_tercihYap:
-                fragment = new TercihYapFragment();
+                if (!(currentFragment instanceof TercihYapFragment)) {
+                    fragment = new TercihYapFragment();
+                }
                 break;*/
 
             case R.id.nav_dahaFazla:
-                fragment = new DahaFazlaFragment();
+                if (!(currentFragment instanceof DahaFazlaFragment)) {
+                    fragment = new DahaFazlaFragment();
+                }
                 break;
         }
 
@@ -94,27 +109,27 @@ public class OgrenciAnasayfaActivity extends AppCompatActivity implements Bottom
     }
 
 
-   @Override
-   public void onBackPressed() {
-       if (doubleBackToExitPressedOnce) {
-           //super.onBackPressed();
-           moveTaskToBack(true);
-           return;
-       }
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            //super.onBackPressed();
+            moveTaskToBack(true);
+            return;
+        }
 
-       this.doubleBackToExitPressedOnce = true;
+        this.doubleBackToExitPressedOnce = true;
 
-       Toast toast = Toast.makeText(getApplicationContext(), "Çıkmak için tekrar basınız", Toast.LENGTH_SHORT);
-       toast.setGravity(Gravity.BOTTOM, 0, 300);
-       toast.show();
+        Toast toast = Toast.makeText(getApplicationContext(), "Çıkmak için tekrar basınız", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.BOTTOM, 0, 300);
+        toast.show();
 
-       new Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
 
-           @Override
-           public void run() {
-               doubleBackToExitPressedOnce=false;
-           }
-       }, 2000);
-   }
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
+    }
 
 }

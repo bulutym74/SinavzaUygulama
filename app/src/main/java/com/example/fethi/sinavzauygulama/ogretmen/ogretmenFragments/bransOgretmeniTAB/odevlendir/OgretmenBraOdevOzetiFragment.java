@@ -1,6 +1,7 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.bransOgretmeniTAB.odevlendir;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -49,6 +51,9 @@ import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.OgretmenListI
 import com.example.fethi.sinavzauygulama.R;
 import com.example.fethi.sinavzauygulama.diger.RecyclerTouchListener;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.SinifItem;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.bransOgretmeniTAB.OgretmenBransOgretmeniFragment;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.OgretmenDanismanOgretmenFragment;
+
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -89,7 +94,6 @@ public class OgretmenBraOdevOzetiFragment extends Fragment {
     FloatingActionButton fab_odevOzeti;
     TextView trh_baslama, trh_bitis;
     ViewGroup transitionsContainer;
-    boolean visible;
 
     @Nullable
     @Override
@@ -354,6 +358,17 @@ public class OgretmenBraOdevOzetiFragment extends Fragment {
                                         Toast toast = Toast.makeText(getApplicationContext(), "Ödevler başarıyla gönderildi", Toast.LENGTH_SHORT);
                                         toast.setGravity(Gravity.BOTTOM, 0, 300);
                                         toast.show();
+
+                                        Handler handler = new Handler();
+                                        handler.postDelayed(new Runnable() {
+                                            public void run() {
+                                                OgretmenBransOgretmeniFragment nextFrag = new OgretmenBransOgretmeniFragment();
+                                                getActivity().getSupportFragmentManager().beginTransaction()
+                                                        .replace(R.id.fragment_container, nextFrag, "findThisFragment")
+                                                        .addToBackStack(null)
+                                                        .commit();
+                                            }
+                                        }, 500);
 
                                     }
 
