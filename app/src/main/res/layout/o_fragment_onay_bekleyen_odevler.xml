@@ -99,6 +99,7 @@
                     android:paddingEnd="8dp"
                     android:clipToPadding="false"
                     android:paddingBottom="80dp"
+                    android:scrollbars="none"
                     android:paddingTop="10dp"
                     android:paddingStart="8dp" />
 

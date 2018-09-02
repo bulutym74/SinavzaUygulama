@@ -6,13 +6,6 @@
     android:orientation="vertical"
     android:background="@color/white"
     android:id="@+id/transitions_container">
-
-    <LinearLayout
-        android:id="@+id/son_eleman_group"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:orientation="horizontal"/>
-
     <LinearLayout
         android:background="@drawable/header_back_orange"
         android:foreground="?android:attr/selectableItemBackgroundBorderless"

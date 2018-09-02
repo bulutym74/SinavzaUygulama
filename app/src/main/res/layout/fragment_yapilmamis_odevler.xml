@@ -67,6 +67,7 @@
                 android:childDivider="@null"
                 android:divider="@null"
                 android:clipToPadding="false"
+                android:scrollbars="none"
                 android:paddingTop="10dp"
                 android:dividerHeight="10dp"
                 android:groupIndicator="@null"

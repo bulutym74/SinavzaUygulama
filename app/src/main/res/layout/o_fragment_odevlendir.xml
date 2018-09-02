@@ -84,6 +84,7 @@
                     android:clipToPadding="false"
                     android:paddingBottom="80dp"
                     android:paddingTop="10dp"
+                    android:scrollbars="none"
                     android:groupIndicator="@null"
                     android:paddingEnd="8dp"
                     android:paddingStart="8dp" />

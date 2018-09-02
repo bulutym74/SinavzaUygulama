@@ -101,6 +101,7 @@
             android:clipToPadding="false"
             android:paddingBottom="80dp"
             android:paddingTop="10dp"
+            android:scrollbars="none"
             android:dividerHeight="10dp"
             android:groupIndicator="@null"
             android:paddingEnd="8dp"

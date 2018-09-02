@@ -81,6 +81,7 @@
                 android:clipToPadding="false"
                 android:paddingBottom="80dp"
                 android:paddingTop="10dp"
+                android:scrollbars="none"
                 android:paddingEnd="8dp"
                 android:paddingStart="8dp" />
         </FrameLayout>

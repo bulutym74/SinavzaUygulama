@@ -67,6 +67,7 @@
                 android:dividerHeight="10dp"
                 android:groupIndicator="@null"
                 android:clipToPadding="false"
+                android:scrollbars="none"
                 android:paddingTop="10dp"
                 android:paddingEnd="8dp"
                 android:paddingStart="8dp" />
