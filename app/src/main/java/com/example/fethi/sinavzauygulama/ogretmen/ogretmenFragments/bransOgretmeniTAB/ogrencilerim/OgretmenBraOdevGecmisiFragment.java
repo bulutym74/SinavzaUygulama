@@ -148,7 +148,7 @@ public class OgretmenBraOdevGecmisiFragment  extends Fragment implements SwipeRe
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.POST,
-                Islevsel.danismanVerilenOdevlerURL,
+                Islevsel.verilenOdevlerURL,
                 parameters,
                 new Response.Listener<JSONObject>() {
                     @Override

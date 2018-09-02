@@ -27,6 +27,7 @@ import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.DersItem;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.ExpLVAdapterOdevler;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.KitapItem;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.KonuItem;
+import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.ListItemOzet;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.TestItem;
 import com.example.fethi.sinavzauygulama.R;
 
@@ -35,6 +36,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.realm.Realm;
@@ -46,6 +48,7 @@ public class OdevlerFragment extends Fragment implements SwipeRefreshLayout.OnRe
     ArrayList<DersItem> dersler = new ArrayList<>();
 
     public ExpLVAdapterOdevler expand_adapter;
+    public ExpandableListView expandlist_view_odevler;
 
     SwipeRefreshLayout refreshLayout;
     JSONObject res;
@@ -53,24 +56,21 @@ public class OdevlerFragment extends Fragment implements SwipeRefreshLayout.OnRe
     Realm realm = Realm.getDefaultInstance();
 
     LinearLayout odevYokView;
-    public int seciliId;
+    public int dersId = -1;
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_odevler, container, false);
 
-        ExpandableListView expandlist_view_odevler = view.findViewById(R.id.expand_lv_odevler);
+        expandlist_view_odevler = view.findViewById(R.id.expand_lv_odevler);
 
         odevYokView = view.findViewById(R.id.odevYokView);
 
-        expand_adapter = new ExpLVAdapterOdevler(getActivity(), dersler);
+        expand_adapter = new ExpLVAdapterOdevler(getActivity(), dersler,dersId,this);
         expandlist_view_odevler.setAdapter(expand_adapter);
         expandlist_view_odevler.setClickable(true);
-
-        expandlist_view_odevler.setSelectedGroup(seciliId);
-        expand_adapter.notifyDataSetChanged();
-
 
         expandlist_view_odevler.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
@@ -103,6 +103,12 @@ public class OdevlerFragment extends Fragment implements SwipeRefreshLayout.OnRe
                     parseJSON();
                 }
             });
+
+
+        //expandlist_view_odevler.performItemClick(view,)
+        //if (seciliId == expand_adapter.getGroupId(seciliId))
+            /*expandlist_view_odevler.expandGroup(seciliId);
+        expand_adapter.notifyDataSetChanged();*/
 
         return view;
     }
@@ -149,7 +155,7 @@ public class OdevlerFragment extends Fragment implements SwipeRefreshLayout.OnRe
                                             for (int l = 0; l < odevKonu.getJSONArray("testler").length(); l++) {
 
                                                 JSONObject odevTest = (JSONObject) odevKonu.getJSONArray("testler").get(l);
-                                                TestItem testItem = new TestItem(odevTest.getString("name"), odevTest.getInt("soru"), odevTest.getString("tarih"), odevTest.getInt("id"));
+                                                TestItem testItem = new TestItem(odevTest.getString("name"), odevTest.getInt("soru"), odevTest.getString("tarih"), odevTest.getInt("id"),odevTest.getInt("status"));
 
                                                 konuItem.getTestler().add(testItem);
                                             }

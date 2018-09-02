@@ -57,6 +57,7 @@ public class OzetFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private RecyclerView recycleView_ozet;
     private RecyclerView.Adapter adapter;
     private List<ListItemOzet> listItemOzets = new ArrayList<>();
+    int dersId;
 
     TextView cozulenSoru, yapilmamisTest, yapilmamisSoru, enYakinOdev, enYakinOdevTarih, yuzde;
 
@@ -75,7 +76,7 @@ public class OzetFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ozet, container, false);
 
         final BottomNavigationView navigation = getActivity().findViewById(R.id.navigation_ogrenci);
@@ -93,7 +94,7 @@ public class OzetFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         recycleView_ozet.setHasFixedSize(true);
         recycleView_ozet.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        adapter = new ListItemOzetAdapter(listItemOzets, getActivity(),this);
+        adapter = new ListItemOzetAdapter(listItemOzets, getActivity(), this);
         recycleView_ozet.setAdapter(adapter);
 
         card1 = view.findViewById(R.id.card1);
@@ -189,27 +190,28 @@ public class OzetFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 getResources().getColor(R.color.primaryOrange),
                 getResources().getColor(R.color.lightgreen));
 
-        if (listItemOzets.size()==0)
-        refreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                refreshLayout.setRefreshing(true);
-                parseJSON();
-            }
-        });
+        if (listItemOzets.size() == 0)
+            refreshLayout.post(new Runnable() {
+                @Override
+                public void run() {
+                    refreshLayout.setRefreshing(true);
+                    parseJSON();
+                }
+            });
 
         bottomNav = view.findViewById(R.id.nav_odevler);
 
         recycleView_ozet.addOnItemTouchListener(new RecyclerTouchListener(getContext(), recycleView_ozet, new RecyclerTouchListener.ClickListener() {
             @Override
-            public void onClick(View view, int position) {
-
+            public void onClick(View view, final int position) {
+                dersId = listItemOzets.get(position).getId();
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     public void run() {
                         navigation.setSelectedItemId(R.id.nav_odevler);
                         OdevlerFragment nextFrag = new OdevlerFragment();
-                        nextFrag.seciliId = seciliId;
+                        nextFrag.dersId = dersId;
+                        dersId = -1;
                         getActivity().getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.fragment_container, nextFrag, "frag")
                                 .addToBackStack(null)

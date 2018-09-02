@@ -109,10 +109,15 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
         if (groupPosition == 0) {
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewHolder.son_group.getLayoutParams();
             params.topMargin = b;
+        }else{
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewHolder.son_group.getLayoutParams();
+            params.topMargin = 0;
         }
+
 
         viewHolder.add_big = view.findViewById(R.id.add_img_big);
         viewHolder.check_big = view.findViewById(R.id.check_img_big);
+        viewHolder.img_full = view.findViewById(R.id.img_full);
         viewHolder.textGroup = view.findViewById(R.id.txt_parent);
         viewHolder.sol = view.findViewById(R.id.sol);
         viewHolder.sag = view.findViewById(R.id.sag);
@@ -198,10 +203,12 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
         if (konuItem.isSelected()) {
             viewHolder.add_big.setVisibility(View.GONE);
             viewHolder.check_big.setVisibility(View.VISIBLE);
+            viewHolder.img_full.setVisibility(View.GONE);
 
         } else {
             viewHolder.add_big.setVisibility(View.VISIBLE);
             viewHolder.check_big.setVisibility(View.GONE);
+            viewHolder.img_full.setVisibility(View.GONE);
         }
 
         Boolean status2 = true;
@@ -214,6 +221,7 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
         if (status2) {
             viewHolder.add_big.setVisibility(View.GONE);
             viewHolder.check_big.setVisibility(View.GONE);
+            viewHolder.img_full.setVisibility(View.VISIBLE);
         }
 
         return view;
@@ -340,7 +348,7 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
 
     static class GroupViewHolder {
         TextView textGroup;
-        ImageView add_big, check_big;
+        ImageView add_big, check_big,img_full;
         TextView sol, sag;
         LinearLayout son_group;
         ViewGroup transitionsContainer;

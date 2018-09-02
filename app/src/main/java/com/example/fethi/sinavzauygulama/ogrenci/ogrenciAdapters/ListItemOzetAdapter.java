@@ -46,6 +46,7 @@ public class ListItemOzetAdapter extends RecyclerView.Adapter<ListItemOzetAdapte
         ListItemOzet listItemOzet = listItemOzets.get(position);
         ((OzetFragment)fragment).seciliId = listItemOzet.getId();
 
+
         holder.tv_ders.setText(listItemOzet.getDers());
         holder.tv_test.setText(""+listItemOzet.getTest());
         holder.tv_soru.setText(""+listItemOzet.getSoru());

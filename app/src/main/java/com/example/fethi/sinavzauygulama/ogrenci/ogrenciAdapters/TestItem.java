@@ -10,13 +10,14 @@ public class TestItem {
     private int dogru;
     private int yanlis;
     private int id;
-    int status;
+    private int status;
 
-    public TestItem(String testAdi, int soruSayisi, String sonTarih,int id) {
+    public TestItem(String testAdi, int soruSayisi, String sonTarih,int id,int status) {
         this.testAdi = testAdi;
         this.soruSayisi = soruSayisi;
         this.sonTarih = sonTarih;
         this.id = id;
+        this.status = status;
     }
     public TestItem(String testAdi, int status) {
         this.testAdi = testAdi;

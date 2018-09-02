@@ -162,7 +162,7 @@ public class YapilmamisOdevlerFragment extends Fragment implements SwipeRefreshL
                                             for (int l = 0; l < odevKonu.getJSONArray("testler").length(); l++) {
 
                                                 JSONObject odevTest = (JSONObject) odevKonu.getJSONArray("testler").get(l);
-                                                TestItem testItem = new TestItem(odevTest.getString("name"), odevTest.getInt("soru"), odevTest.getString("tarih"),odevTest.getInt("id"));
+                                                TestItem testItem = new TestItem(odevTest.getString("name"), odevTest.getInt("soru"), odevTest.getString("tarih"),odevTest.getInt("id"),odevTest.getInt("status"));
 
                                                 konuItem.getTestler().add(testItem);
                                             }

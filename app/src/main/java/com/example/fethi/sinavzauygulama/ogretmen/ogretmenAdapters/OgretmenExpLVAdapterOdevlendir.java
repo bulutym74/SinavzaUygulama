@@ -95,6 +95,9 @@ public class OgretmenExpLVAdapterOdevlendir extends BaseExpandableListAdapter {
         if (groupPosition == 0) {
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewHolder.son_group.getLayoutParams();
             params.topMargin = b;
+        }else {
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewHolder.son_group.getLayoutParams();
+            params.topMargin = 0;
         }
 
         viewHolder.add_big = view.findViewById(R.id.add_img_big);

@@ -93,6 +93,9 @@ public class OgretmenExpLVAdapterKitapSec extends BaseExpandableListAdapter {
         if (groupPosition == 0) {
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewHolder.son_group.getLayoutParams();
             params.topMargin = b;
+        }else{
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewHolder.son_group.getLayoutParams();
+            params.topMargin = 0;
         }
 
         viewHolder.txt = view.findViewById(R.id.txt_parent);

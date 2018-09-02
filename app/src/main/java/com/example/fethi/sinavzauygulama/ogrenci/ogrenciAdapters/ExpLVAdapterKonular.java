@@ -158,6 +158,12 @@ public class ExpLVAdapterKonular extends BaseExpandableListAdapter {
         viewHolder.et_dogru = view.findViewById(R.id.et_dogru);
         viewHolder.et_yanlis = view.findViewById(R.id.et_yanlis);
         viewHolder.btn_gonder = view.findViewById(R.id.btn_gonder);
+        viewHolder.img = view.findViewById(R.id.img_cancel_outlined);
+
+        if (testItem.getStatus() == 0)
+            viewHolder.img.setVisibility(View.VISIBLE);
+        else
+            viewHolder.img.setVisibility(View.GONE);
 
         try {
             viewHolder.et_dogru.setText("");
@@ -229,7 +235,7 @@ public class ExpLVAdapterKonular extends BaseExpandableListAdapter {
                     return;
                 }
 
-                if (viewHolder.et_yanlis.getText().length() > 0 || viewHolder.et_dogru.getText().length() > 0){
+                if (viewHolder.et_yanlis.getText().length() > 0 || viewHolder.et_dogru.getText().length() > 0) {
                     int dogru = 0;
                     int yanlis = 0;
                     try {
@@ -242,9 +248,9 @@ public class ExpLVAdapterKonular extends BaseExpandableListAdapter {
                     } catch (NumberFormatException e) {
                         e.printStackTrace();
                     }
-                    if ((dogru + yanlis) > testItem.getSoruSayisi()){
+                    if ((dogru + yanlis) > testItem.getSoruSayisi()) {
 
-                        Toast toast = Toast.makeText(context, "Doğru-Yanlış Toplamı "+testItem.getSoruSayisi()+" olmalıdır", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(context, "Doğru-Yanlış Toplamı " + testItem.getSoruSayisi() + " olmalıdır", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.BOTTOM, 0, 300);
                         toast.show();
                         return;
@@ -283,7 +289,7 @@ public class ExpLVAdapterKonular extends BaseExpandableListAdapter {
                                     @Override
                                     public void onAnimationEnd(Animation animation) {
 
-                                        Toast toast = Toast.makeText(context, konuItem.getTestler().get(childPosition).getTestAdi()+" gönderildi", Toast.LENGTH_SHORT);
+                                        Toast toast = Toast.makeText(context, konuItem.getTestler().get(childPosition).getTestAdi() + " gönderildi", Toast.LENGTH_SHORT);
                                         toast.setGravity(Gravity.BOTTOM, 0, 300);
                                         toast.show();
 
@@ -294,7 +300,7 @@ public class ExpLVAdapterKonular extends BaseExpandableListAdapter {
                                             Handler handler = new Handler();
                                             handler.postDelayed(new Runnable() {
                                                 public void run() {
-                                                    Toast toast1 = Toast.makeText(context, konuItem.getKonuAdi()+" tamamlandı", Toast.LENGTH_SHORT);
+                                                    Toast toast1 = Toast.makeText(context, konuItem.getKonuAdi() + " tamamlandı", Toast.LENGTH_SHORT);
                                                     toast1.setGravity(Gravity.BOTTOM, 0, 300);
                                                     toast1.show();
                                                 }
@@ -385,6 +391,7 @@ public class ExpLVAdapterKonular extends BaseExpandableListAdapter {
         EditText et_dogru, et_yanlis;
         Button btn_gonder;
         LinearLayout row;
+        ImageView img;
     }
 
     public int dpToPx(int dp) {

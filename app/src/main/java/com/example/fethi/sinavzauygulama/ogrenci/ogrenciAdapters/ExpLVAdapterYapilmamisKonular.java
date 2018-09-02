@@ -162,6 +162,12 @@ public class ExpLVAdapterYapilmamisKonular extends BaseExpandableListAdapter {
         viewHolder.et_dogru = view.findViewById(R.id.et_dogru);
         viewHolder.et_yanlis = view.findViewById(R.id.et_yanlis);
         viewHolder.btn_gonder = view.findViewById(R.id.btn_gonder);
+        viewHolder.img = view.findViewById(R.id.img_cancel_outlined);
+
+        if (testItem.getStatus() == 0)
+            viewHolder.img.setVisibility(View.VISIBLE);
+        else
+            viewHolder.img.setVisibility(View.GONE);
 
         try {
             viewHolder.et_dogru.setText("");
@@ -395,6 +401,7 @@ public class ExpLVAdapterYapilmamisKonular extends BaseExpandableListAdapter {
         EditText et_dogru, et_yanlis;
         Button btn_gonder;
         LinearLayout row;
+        ImageView img;
     }
 
     public int dpToPx(int dp) {
