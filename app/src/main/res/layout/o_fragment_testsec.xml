@@ -57,6 +57,8 @@
         android:childDivider="@null"
         android:divider="@null"
         android:dividerHeight="10dp"
+        android:clipToPadding="false"
+        android:paddingTop="10dp"
         android:groupIndicator="@null"
         android:paddingEnd="8dp"
         android:paddingStart="8dp"/>

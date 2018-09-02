@@ -25,7 +25,6 @@ public class OgretmenExpLVAdapterGecikenOdevler extends BaseExpandableListAdapte
     private TextView txt_child;
     public LayoutInflater inflater;
     ImageView img_arrow;
-    LinearLayout son_group;
 
     TextView sag, top_sag;
 
@@ -83,13 +82,6 @@ public class OgretmenExpLVAdapterGecikenOdevler extends BaseExpandableListAdapte
         if (view == null) {
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.o_listview_header_geciken_odevler, null);
-        }
-        son_group = view.findViewById(R.id.son_eleman_group);
-
-        int b = dpToPx(10);
-        if (groupPosition == 0) {
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) son_group.getLayoutParams();
-            params.topMargin = b;
         }
 
         txt = view.findViewById(R.id.txt_parent);

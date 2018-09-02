@@ -22,7 +22,6 @@ public class ExpLVAdapterYapilmamisOdevler extends BaseExpandableListAdapter {
     private TextView txt_child;
     public LayoutInflater inflater;
     ImageView img_arrow;
-    LinearLayout son_group;
 
 
     public ExpLVAdapterYapilmamisOdevler(Context context,ArrayList<DersItem> dersler)
@@ -76,14 +75,6 @@ public class ExpLVAdapterYapilmamisOdevler extends BaseExpandableListAdapter {
         {
             inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.listview_header_yapilmamis_odevler,null);
-        }
-
-        son_group = view.findViewById(R.id.son_eleman_group);
-
-        int b = dpToPx(10);
-        if(groupPosition == 0){
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) son_group.getLayoutParams();
-            params.topMargin = b;
         }
 
         txt = view.findViewById(R.id.txt_parent);

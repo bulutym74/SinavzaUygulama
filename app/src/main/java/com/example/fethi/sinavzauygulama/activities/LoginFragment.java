@@ -174,7 +174,6 @@ public class LoginFragment extends Fragment {
 
 
                                     }
-                                    Log.e("USER",realm.where(UserInfoItem.class).findAll().get(0).toString());
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }

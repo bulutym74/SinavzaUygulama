@@ -102,13 +102,6 @@ public class OgretmenExpLVAdapterDanOgrencilerim extends BaseExpandableListAdapt
         }
         viewHolder = new GroupViewHolder();
 
-        viewHolder.son_group = view.findViewById(R.id.son_eleman_group);
-        int b = dpToPx(10);
-        if (groupPosition == 0) {
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewHolder.son_group.getLayoutParams();
-            params.topMargin = b;
-        }
-
         viewHolder.textGroup = view.findViewById(R.id.txt_parent);
         viewHolder.txt_ögrenci_sayi = view.findViewById(R.id.txt_ögrenci_sayi);
 
@@ -157,7 +150,6 @@ public class OgretmenExpLVAdapterDanOgrencilerim extends BaseExpandableListAdapt
 
     static class GroupViewHolder {
         TextView textGroup,txt_ögrenci_sayi;
-        LinearLayout son_group;
 
     }
 

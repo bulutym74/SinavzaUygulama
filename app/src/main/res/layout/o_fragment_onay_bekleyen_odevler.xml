@@ -97,6 +97,9 @@
                     android:dividerHeight="10dp"
                     android:groupIndicator="@null"
                     android:paddingEnd="8dp"
+                    android:clipToPadding="false"
+                    android:paddingBottom="80dp"
+                    android:paddingTop="10dp"
                     android:paddingStart="8dp" />
 
             </android.support.v4.widget.SwipeRefreshLayout>

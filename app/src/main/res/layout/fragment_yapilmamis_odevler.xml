@@ -66,6 +66,8 @@
                 android:animateLayoutChanges="true"
                 android:childDivider="@null"
                 android:divider="@null"
+                android:clipToPadding="false"
+                android:paddingTop="10dp"
                 android:dividerHeight="10dp"
                 android:groupIndicator="@null"
                 android:paddingEnd="8dp"

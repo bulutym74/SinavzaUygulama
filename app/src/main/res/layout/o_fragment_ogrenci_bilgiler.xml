@@ -24,6 +24,7 @@
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         android:layout_marginEnd="8dp"
@@ -34,8 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:layout_marginStart="20dp">
+            android:layout_gravity="center">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="140dp"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="YAPTIĞI"
@@ -51,7 +51,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:layout_width="140dp"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="ÖDEVLER"
@@ -65,6 +65,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text=":"
+                android:layout_marginEnd="20dp"
                 android:paddingBottom="4dp"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
@@ -75,13 +76,13 @@
 
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center|end"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="220dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
@@ -105,14 +106,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|start"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginStart="18dp"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="220dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:orientation="horizontal">
@@ -137,14 +138,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|start"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginStart="18dp"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="220dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:orientation="horizontal">
@@ -169,7 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|start"
-                    android:layout_marginStart="25dp"
+                    android:layout_marginStart="18dp"
                     android:textColor="@color/black"
                     android:textSize="20sp" />
 

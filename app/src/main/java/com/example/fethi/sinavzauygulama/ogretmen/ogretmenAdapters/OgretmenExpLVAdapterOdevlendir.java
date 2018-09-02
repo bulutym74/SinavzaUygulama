@@ -90,16 +90,6 @@ public class OgretmenExpLVAdapterOdevlendir extends BaseExpandableListAdapter {
         }
         viewHolder = new GroupViewHolder();
 
-        viewHolder.son_group = view.findViewById(R.id.son_eleman_group);
-        int b = dpToPx(10);
-        if (groupPosition == 0) {
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewHolder.son_group.getLayoutParams();
-            params.topMargin = b;
-        }else {
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewHolder.son_group.getLayoutParams();
-            params.topMargin = 0;
-        }
-
         viewHolder.add_big = view.findViewById(R.id.add_img_big);
         viewHolder.check_big = view.findViewById(R.id.check_img_big);
         viewHolder.textGroup = view.findViewById(R.id.txt_parent);
@@ -290,7 +280,6 @@ public class OgretmenExpLVAdapterOdevlendir extends BaseExpandableListAdapter {
         TextView textGroup;
         ImageView add_big, check_big;
         TextView sol, sag;
-        LinearLayout son_group;
         ViewGroup transitionsContainer;
     }
 

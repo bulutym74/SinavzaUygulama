@@ -81,13 +81,6 @@ public class OgretmenExpLVAdapterKitapDetay extends BaseExpandableListAdapter {
         }
         viewHolder = new GroupViewHolder();
 
-        viewHolder.son_group = view.findViewById(R.id.son_eleman_group);
-        int b = dpToPx(10);
-        if(groupPosition == 0){
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewHolder.son_group.getLayoutParams();
-            params.topMargin = b;
-        }
-
         viewHolder.textGroup = view.findViewById(R.id.txt_parent);
         img_arrow = view.findViewById(R.id.img_arrow);
 
@@ -190,7 +183,6 @@ public class OgretmenExpLVAdapterKitapDetay extends BaseExpandableListAdapter {
 
     static class GroupViewHolder {
         TextView textGroup;
-        LinearLayout son_group;
     }
 
     static class ChildViewHolder {

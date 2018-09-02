@@ -53,8 +53,6 @@ public class ExpLVAdapterYapilmamisKonular extends BaseExpandableListAdapter {
     private String token;
     private Realm realm = Realm.getDefaultInstance();
 
-    LinearLayout row_header;
-
     public ExpLVAdapterYapilmamisKonular(Context context, KitapItem seciliKitap) {
         this.context = context;
         this.seciliKitap = seciliKitap;
@@ -115,16 +113,6 @@ public class ExpLVAdapterYapilmamisKonular extends BaseExpandableListAdapter {
             view = inflater.inflate(R.layout.listview_header_yapilmamis_konular, null);
         }
         viewHolder = new GroupViewHolder();
-
-        viewHolder.son_group = view.findViewById(R.id.son_eleman_group);
-        row_header = view.findViewById(R.id.row_header);
-
-
-        int b = dpToPx(10);
-        if (groupPosition == 0) {
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewHolder.son_group.getLayoutParams();
-            params.topMargin = b;
-        }
 
         viewHolder.txt_parent_yapilmamis_konular = view.findViewById(R.id.txt_parent_konular);
         viewHolder.img_arrow = view.findViewById(R.id.img_arrow);

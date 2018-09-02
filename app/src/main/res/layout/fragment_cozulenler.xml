@@ -68,6 +68,8 @@
                 android:divider="@null"
                 android:dividerHeight="10dp"
                 android:groupIndicator="@null"
+                android:clipToPadding="false"
+                android:paddingTop="10dp"
                 android:paddingEnd="8dp"
                 android:paddingStart="8dp" />
         </android.support.v4.widget.SwipeRefreshLayout>

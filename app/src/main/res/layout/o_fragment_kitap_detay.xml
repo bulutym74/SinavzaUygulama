@@ -78,6 +78,9 @@
                 android:divider="@null"
                 android:dividerHeight="10dp"
                 android:groupIndicator="@null"
+                android:clipToPadding="false"
+                android:paddingBottom="80dp"
+                android:paddingTop="10dp"
                 android:paddingEnd="8dp"
                 android:paddingStart="8dp" />
         </FrameLayout>

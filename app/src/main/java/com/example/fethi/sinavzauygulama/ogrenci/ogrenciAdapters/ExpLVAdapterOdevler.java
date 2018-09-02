@@ -87,17 +87,6 @@ public class ExpLVAdapterOdevler extends BaseExpandableListAdapter {
         }
         viewHolder = new GroupViewHolder();
 
-        viewHolder.son_group = view.findViewById(R.id.son_eleman_group);
-
-        int b = dpToPx(10);
-        if (groupPosition == 0) {
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewHolder.son_group.getLayoutParams();
-            params.topMargin = b;
-        } else {
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewHolder.son_group.getLayoutParams();
-            params.topMargin = 0;
-        }
-
         viewHolder.txt_parent = view.findViewById(R.id.txt_parent);
         viewHolder.img_arrow = view.findViewById(R.id.img_arrow);
 
@@ -154,7 +143,6 @@ public class ExpLVAdapterOdevler extends BaseExpandableListAdapter {
     static class GroupViewHolder {
         TextView txt_parent;
         ImageView img_arrow;
-        LinearLayout son_group;
 
     }
 

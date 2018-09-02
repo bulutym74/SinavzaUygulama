@@ -114,13 +114,6 @@ public class OgretmenExpLVAdapterSiniflar extends BaseExpandableListAdapter {
         }
         viewHolder = new GroupViewHolder();
 
-        viewHolder.son_group = view.findViewById(R.id.son_eleman_group);
-        int b = dpToPx(10);
-        if (groupPosition == 0) {
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) viewHolder.son_group.getLayoutParams();
-            params.topMargin = b;
-        }
-
         viewHolder.textGroup = view.findViewById(R.id.txt_parent);
         viewHolder.txt_ögrenci_sayi = view.findViewById(R.id.txt_ögrenci_sayi);
         viewHolder.delete = view.findViewById(R.id.img_delete);
@@ -176,7 +169,6 @@ public class OgretmenExpLVAdapterSiniflar extends BaseExpandableListAdapter {
 
     static class GroupViewHolder {
         TextView textGroup,txt_ögrenci_sayi;
-        LinearLayout son_group;
         ImageView delete;
 
     }

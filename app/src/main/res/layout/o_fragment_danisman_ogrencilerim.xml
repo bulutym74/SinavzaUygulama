@@ -58,6 +58,8 @@
                 android:layout_height="match_parent"
                 android:animateLayoutChanges="true"
                 android:childDivider="@null"
+                android:clipToPadding="false"
+                android:paddingTop="10dp"
                 android:divider="@null"
                 android:dividerHeight="10dp"
                 android:groupIndicator="@null"
