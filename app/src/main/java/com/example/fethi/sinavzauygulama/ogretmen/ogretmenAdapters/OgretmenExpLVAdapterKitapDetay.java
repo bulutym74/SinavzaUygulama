@@ -111,6 +111,9 @@ public class OgretmenExpLVAdapterKitapDetay extends BaseExpandableListAdapter {
         viewHolder.transitionsContainer = view.findViewById(R.id.transitions_container);
         viewHolder.add = view.findViewById(R.id.add_img);
         viewHolder.check = view.findViewById(R.id.check_img);
+        viewHolder.img_half = view.findViewById(R.id.img_half);
+        viewHolder.img_full = view.findViewById(R.id.img_full);
+        viewHolder.img_empty = view.findViewById(R.id.img_empty);
         viewHolder.kitapAdi = view.findViewById(R.id.tv_kitapAdi);
         viewHolder.yayinAdi = view.findViewById(R.id.tv_yayinAdi);
         viewHolder.ISBN = view.findViewById(R.id.tv_ISBN);
@@ -165,6 +168,26 @@ public class OgretmenExpLVAdapterKitapDetay extends BaseExpandableListAdapter {
             }
         });
 
+        switch (kitapItem.getStatus()) {
+            case 0:
+                viewHolder.img_empty.setVisibility(View.VISIBLE);
+                viewHolder.img_half.setVisibility(View.GONE);
+                viewHolder.img_full.setVisibility(View.GONE);
+                break;
+            case 1:
+                viewHolder.img_half.setVisibility(View.VISIBLE);
+                viewHolder.img_empty.setVisibility(View.GONE);
+                viewHolder.img_full.setVisibility(View.GONE);
+                break;
+            case 2:
+                viewHolder.img_full.setVisibility(View.VISIBLE);
+                viewHolder.img_half.setVisibility(View.GONE);
+                viewHolder.img_empty.setVisibility(View.GONE);
+                break;
+            default:
+                break;
+        }
+
         if (kitapItem.isSelected()) {
             viewHolder.add.setVisibility(View.GONE);
             viewHolder.check.setVisibility(View.VISIBLE);
@@ -187,8 +210,10 @@ public class OgretmenExpLVAdapterKitapDetay extends BaseExpandableListAdapter {
 
     static class ChildViewHolder {
         ImageView add, check;
+        ImageView img_half, img_full, img_empty;
         TextView kitapAdi,yayinAdi,ISBN,baski,icerdigiDersler;
         ViewGroup transitionsContainer;
+
     }
 
     public int dpToPx(int dp) {

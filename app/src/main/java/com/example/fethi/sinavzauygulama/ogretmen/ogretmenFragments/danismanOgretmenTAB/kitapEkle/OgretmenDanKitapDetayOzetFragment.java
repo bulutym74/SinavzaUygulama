@@ -309,7 +309,7 @@ public class OgretmenDanKitapDetayOzetFragment extends Fragment {
                                                         .addToBackStack(null)
                                                         .commit();
                                             }
-                                        }, 500);
+                                        }, 700);
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();

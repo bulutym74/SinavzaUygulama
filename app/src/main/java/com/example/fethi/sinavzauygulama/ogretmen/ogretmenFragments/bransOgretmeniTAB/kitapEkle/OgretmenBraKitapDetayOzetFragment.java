@@ -306,7 +306,7 @@ public class OgretmenBraKitapDetayOzetFragment extends Fragment {
                                                         .addToBackStack(null)
                                                         .commit();
                                             }
-                                        }, 500);
+                                        }, 700);
 
                                     }
                                 } catch (JSONException e) {

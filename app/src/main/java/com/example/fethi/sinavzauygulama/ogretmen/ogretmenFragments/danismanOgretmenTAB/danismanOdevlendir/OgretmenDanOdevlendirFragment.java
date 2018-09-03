@@ -221,8 +221,12 @@ public class OgretmenDanOdevlendirFragment extends Fragment implements SwipeRefr
         if (siniflar.isEmpty()) {
             yokView.setVisibility(View.VISIBLE);
             txt_yok.setText("Tanımlı öğrenci bulunmamaktadır");
-        } else
+            fab_odevlendir.setVisibility(View.GONE);
+        } else{
             yokView.setVisibility(View.GONE);
+            fab_odevlendir.setVisibility(View.VISIBLE);
+        }
+
     }
 
     public void onBackPressed() {

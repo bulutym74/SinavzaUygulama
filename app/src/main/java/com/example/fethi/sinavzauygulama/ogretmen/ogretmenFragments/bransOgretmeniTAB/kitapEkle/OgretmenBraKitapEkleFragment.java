@@ -114,7 +114,6 @@ public class OgretmenBraKitapEkleFragment extends Fragment implements SwipeRefre
                     toast.show();
                     return;
                 }
-
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
                         .replace(R.id.fragment_container, nextFrag, "findthisfrag")
@@ -226,8 +225,12 @@ public class OgretmenBraKitapEkleFragment extends Fragment implements SwipeRefre
     public void isEmpty() {
         if (siniflar.isEmpty()) {
             kitapYokView.setVisibility(View.VISIBLE);
-        } else
+            fab_odevlendir.setVisibility(View.GONE);
+        } else{
             kitapYokView.setVisibility(View.GONE);
+            fab_odevlendir.setVisibility(View.VISIBLE);
+        }
+
     }
 
     public void onBackPressed() {

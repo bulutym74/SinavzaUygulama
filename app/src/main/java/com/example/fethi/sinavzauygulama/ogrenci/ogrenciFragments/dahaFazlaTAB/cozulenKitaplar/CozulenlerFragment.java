@@ -187,6 +187,7 @@ public class CozulenlerFragment extends Fragment implements SwipeRefreshLayout.O
     public void isEmpty() {
         if (dersler.isEmpty()) {
             odevYokView.setVisibility(View.VISIBLE);
+
         } else
             odevYokView.setVisibility(View.GONE);
     }

@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/cerceve_purple"
-        android:layout_marginTop="8dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -50,11 +49,9 @@
 
                 <ImageView
                     android:id="@+id/add_img"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
                     android:layout_gravity="end"
-                    android:layout_marginEnd="2dp"
-                    android:layout_marginTop="1dp"
                     android:background="@drawable/add"
                     android:backgroundTint="@color/primaryOrange"
                     android:clickable="true"

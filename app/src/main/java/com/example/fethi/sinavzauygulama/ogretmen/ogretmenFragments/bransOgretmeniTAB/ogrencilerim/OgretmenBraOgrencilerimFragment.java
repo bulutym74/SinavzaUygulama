@@ -181,6 +181,7 @@ public class OgretmenBraOgrencilerimFragment extends Fragment {
     public void isEmpty() {
         if (siniflar.isEmpty()) {
             yokView.setVisibility(View.VISIBLE);
+
         } else
             yokView.setVisibility(View.GONE);
     }

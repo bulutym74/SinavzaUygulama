@@ -368,7 +368,7 @@ public class OgretmenBraOdevOzetiFragment extends Fragment {
                                                         .addToBackStack(null)
                                                         .commit();
                                             }
-                                        }, 500);
+                                        }, 700);
 
                                     }
 

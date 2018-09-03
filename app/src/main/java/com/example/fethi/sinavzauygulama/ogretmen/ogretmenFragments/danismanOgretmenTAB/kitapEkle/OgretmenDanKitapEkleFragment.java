@@ -226,8 +226,12 @@ public class OgretmenDanKitapEkleFragment extends Fragment implements SwipeRefre
     public void isEmpty() {
         if (siniflar.isEmpty()) {
             kitapYokView.setVisibility(View.VISIBLE);
-        } else
+            fab_odevlendir.setVisibility(View.GONE);
+        } else{
             kitapYokView.setVisibility(View.GONE);
+            fab_odevlendir.setVisibility(View.VISIBLE);
+        }
+
     }
 
     public void onBackPressed() {

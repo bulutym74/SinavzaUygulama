@@ -8,14 +8,24 @@ public class KitapEkleKitapItem {
     private String icerdigiDersler="";
     private int id =0;
     private boolean selected = false;
+    private int status;
 
-    public KitapEkleKitapItem(String kitapAdi, String yayinAdi, String ISBN, String baski, String icerdigiDersler,int id) {
+    public KitapEkleKitapItem(String kitapAdi, String yayinAdi, String ISBN, String baski, String icerdigiDersler,int id,int status) {
         this.kitapAdi = kitapAdi;
         this.yayinAdi = yayinAdi;
         this.ISBN = ISBN;
         this.baski = baski;
         this.icerdigiDersler = icerdigiDersler;
         this.id = id;
+        this.status = status;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getKitapAdi() {

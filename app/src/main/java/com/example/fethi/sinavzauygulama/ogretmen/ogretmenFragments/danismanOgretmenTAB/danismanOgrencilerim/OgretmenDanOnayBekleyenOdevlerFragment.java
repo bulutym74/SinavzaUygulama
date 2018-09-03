@@ -200,7 +200,7 @@ public class OgretmenDanOnayBekleyenOdevlerFragment extends Fragment implements 
                                             } else {
                                                 res = response;
 
-                                                Toast toast = Toast.makeText(getApplicationContext(), seciliOdevler.length()+ " ögrenci reddedildi!", Toast.LENGTH_SHORT);
+                                                Toast toast = Toast.makeText(getApplicationContext(), seciliOdevler.length()+ " ödev reddedildi!", Toast.LENGTH_SHORT);
                                                 toast.setGravity(Gravity.BOTTOM, 0, 300);
                                                 toast.show();
 
@@ -287,7 +287,7 @@ public class OgretmenDanOnayBekleyenOdevlerFragment extends Fragment implements 
                                             } else {
                                                 res = response;
 
-                                                Toast toast = Toast.makeText(getApplicationContext(), seciliOdevler.length()+" öğrenci onaylandı!", Toast.LENGTH_SHORT);
+                                                Toast toast = Toast.makeText(getApplicationContext(), seciliOdevler.length()+" ödev onaylandı!", Toast.LENGTH_SHORT);
                                                 toast.setGravity(Gravity.BOTTOM, 0, 300);
                                                 toast.show();
 

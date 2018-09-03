@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/cerceve_purple"
-        android:layout_marginTop="8dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -23,7 +22,7 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
@@ -49,11 +48,9 @@
 
                 <ImageView
                     android:id="@+id/add_img"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
                     android:layout_gravity="end"
-                    android:layout_marginEnd="2dp"
-                    android:layout_marginTop="1dp"
                     android:background="@drawable/add"
                     android:backgroundTint="@color/primaryOrange"
                     android:clickable="true"
@@ -63,13 +60,52 @@
 
             </FrameLayout>
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start">
+
+                <ImageView
+                    android:id="@+id/img_full"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center|start"
+                    android:src="@drawable/full"
+                    android:scaleType="fitCenter"
+                    android:visibility="invisible"
+                    android:tint="@color/lightgreen"/>
+
+                <ImageView
+                    android:id="@+id/img_empty"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center|start"
+                    android:src="@drawable/empty"
+                    android:scaleType="fitCenter"
+                    android:visibility="invisible"
+                    android:tint="@color/primaryOrange"/>
+
+                <ImageView
+                    android:id="@+id/img_half"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center|start"
+                    android:src="@drawable/half"
+                    android:scaleType="fitCenter"
+                    android:visibility="invisible"
+                    android:tint="@color/primaryPurple"/>
+
                 <TextView
                     android:id="@+id/tv_yayinAdi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
+                    android:layout_gravity="center|start"
+                    android:paddingStart="30dp"
                     android:textColor="@color/darkgray"
                     android:text="Birey Yayınları"/>
+            </FrameLayout>
+
 
 
             <FrameLayout

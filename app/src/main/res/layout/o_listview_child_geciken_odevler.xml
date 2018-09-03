@@ -9,6 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|start"
         android:text="Medium Text"
+        android:paddingEnd="70dp"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"

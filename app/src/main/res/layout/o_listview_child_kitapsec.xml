@@ -8,6 +8,7 @@
         android:id="@+id/txt_items"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingEnd="95dp"
         android:text="Medium Text"
         android:textColor="@color/black"
         android:textSize="18sp"

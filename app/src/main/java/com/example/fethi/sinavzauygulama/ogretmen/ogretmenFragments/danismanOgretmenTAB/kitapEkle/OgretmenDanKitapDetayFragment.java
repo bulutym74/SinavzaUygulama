@@ -29,9 +29,11 @@ import com.example.fethi.sinavzauygulama.activities.UserInfoItem;
 import com.example.fethi.sinavzauygulama.diger.Islevsel;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.KitapEkleDersItem;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.KitapEkleKitapItem;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.OgrenciItem;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.OgretmenExpLVAdapterKitapDetay;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.SinifItem;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,6 +59,7 @@ public class OgretmenDanKitapDetayFragment extends Fragment {
     LinearLayout ortakKitapYokView;
 
     ExpandableListView expandlist_view_kitapsec;
+    JSONArray seciliOgrenciler = new JSONArray();
 
     @Nullable
     @Override
@@ -101,7 +104,8 @@ public class OgretmenDanKitapDetayFragment extends Fragment {
                                             kitap.getISBN(),
                                             kitap.getBaski(),
                                             kitap.getIcerdigiDersler(),
-                                            kitap.getId()
+                                            kitap.getId(),
+                                            kitap.getStatus()
                                     )
                             );
                         }
@@ -135,14 +139,29 @@ public class OgretmenDanKitapDetayFragment extends Fragment {
 
     public void parseJSON() {
 
+        final JSONObject parameters = new JSONObject();
+
+        for (SinifItem sinif : seciliSiniflar){
+            for (OgrenciItem ogrenci : sinif.getOgrenciler()){
+                if (ogrenci.getSelected())
+                    seciliOgrenciler.put(ogrenci.getId());
+            }
+        }
+
+        try {
+            parameters.accumulate("ogrenciler", seciliOgrenciler);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
-                Request.Method.GET,
+                Request.Method.POST,
                 Islevsel.danismanOgretmenKitaplarURL,
-                new JSONObject(),
+                parameters,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(final JSONObject response) {
@@ -167,7 +186,8 @@ public class OgretmenDanKitapDetayFragment extends Fragment {
                                                 kitapItem.getString("isbn"),
                                                 kitapItem.getString("baski"),
                                                 kitapItem.getString("icerdigiDersler"),
-                                                kitapItem.getInt("id"));
+                                                kitapItem.getInt("id"),
+                                                kitapItem.getInt("status"));
 
                                         tempDers.getKitaplar().add(tempKitap);
                                     }
@@ -175,9 +195,7 @@ public class OgretmenDanKitapDetayFragment extends Fragment {
                                 }
                             }
                             expand_adapter.notifyDataSetChanged();
-                            isEmpty();
                         } catch (JSONException e) {
-                            isEmpty();
                             e.printStackTrace();
                         }
 
@@ -186,7 +204,6 @@ public class OgretmenDanKitapDetayFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        isEmpty();
 
                         Toast toast = Toast.makeText(getApplicationContext(), "Bağlantı hatası!", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.BOTTOM, 0, 300);
@@ -206,15 +223,6 @@ public class OgretmenDanKitapDetayFragment extends Fragment {
             }
         };
         requestQueue.add(objectRequest);
-    }
-
-    public void isEmpty() {
-        if (dersler.size() == 0) {
-            ortakKitapYokView.setVisibility(View.VISIBLE);
-        } else {
-            ortakKitapYokView.setVisibility(View.GONE);
-            Log.e("dersler", dersler.toString());
-        }
     }
 
     public void onBackPressed() {
