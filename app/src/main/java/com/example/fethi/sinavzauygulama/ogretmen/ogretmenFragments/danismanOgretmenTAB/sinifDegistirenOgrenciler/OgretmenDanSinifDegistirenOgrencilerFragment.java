@@ -83,7 +83,7 @@ public class OgretmenDanSinifDegistirenOgrencilerFragment extends Fragment imple
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        adapter = new ListItemSinifDegistirenOgrencilerAdapter(sinifDegistirenler, getActivity());
+        adapter = new ListItemSinifDegistirenOgrencilerAdapter(sinifDegistirenler, getActivity(),this);
         recyclerView.setAdapter(adapter);
 
         refreshLayout = view.findViewById(R.id.swipe);

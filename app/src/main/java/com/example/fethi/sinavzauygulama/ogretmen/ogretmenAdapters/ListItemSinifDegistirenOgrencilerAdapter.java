@@ -3,6 +3,7 @@ package com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -24,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.fethi.sinavzauygulama.R;
 import com.example.fethi.sinavzauygulama.activities.UserInfoItem;
 import com.example.fethi.sinavzauygulama.diger.Islevsel;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.sinifDegistirenOgrenciler.OgretmenDanSinifDegistirenOgrencilerFragment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,14 +42,16 @@ public class ListItemSinifDegistirenOgrencilerAdapter extends RecyclerView.Adapt
 
     private List<ListItemSinifDegistirenOgrenciler> listItemSinifDegistirenler;
     private Context context;
+    Fragment fragment;
 
     JSONObject res;
     String token;
     Realm realm = Realm.getDefaultInstance();
 
-    public ListItemSinifDegistirenOgrencilerAdapter(List<ListItemSinifDegistirenOgrenciler> listItemSinifDegistirenler, Context context) {
+    public ListItemSinifDegistirenOgrencilerAdapter(List<ListItemSinifDegistirenOgrenciler> listItemSinifDegistirenler, Context context, Fragment fragment) {
         this.listItemSinifDegistirenler = listItemSinifDegistirenler;
         this.context = context;
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -147,10 +151,10 @@ public class ListItemSinifDegistirenOgrencilerAdapter extends RecyclerView.Adapt
 
                                                 listItemSinifDegistirenler.remove(seciliOgrenci);
                                             }
-
+                                            ((OgretmenDanSinifDegistirenOgrencilerFragment)fragment).isEmpty();
                                             notifyDataSetChanged();
                                         } catch (JSONException e) {
-
+                                            ((OgretmenDanSinifDegistirenOgrencilerFragment)fragment).isEmpty();
                                             e.printStackTrace();
                                         }
                                     }
@@ -158,7 +162,7 @@ public class ListItemSinifDegistirenOgrencilerAdapter extends RecyclerView.Adapt
                                 new Response.ErrorListener() {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
-
+                                        ((OgretmenDanSinifDegistirenOgrencilerFragment)fragment).isEmpty();
                                         Log.e("ERROR : ", error.toString());
 
                                         Toast toast = Toast.makeText(getApplicationContext(), "Bağlantı hatası!", Toast.LENGTH_SHORT);
@@ -235,10 +239,10 @@ public class ListItemSinifDegistirenOgrencilerAdapter extends RecyclerView.Adapt
 
                                                 listItemSinifDegistirenler.remove(seciliOgrenci);
                                             }
-
+                                            ((OgretmenDanSinifDegistirenOgrencilerFragment)fragment).isEmpty();
                                             notifyDataSetChanged();
                                         } catch (JSONException e) {
-
+                                            ((OgretmenDanSinifDegistirenOgrencilerFragment)fragment).isEmpty();
                                             e.printStackTrace();
                                         }
                                     }
@@ -246,7 +250,7 @@ public class ListItemSinifDegistirenOgrencilerAdapter extends RecyclerView.Adapt
                                 new Response.ErrorListener() {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
-
+                                        ((OgretmenDanSinifDegistirenOgrencilerFragment)fragment).isEmpty();
                                         Log.e("ERROR : ", error.toString());
 
                                         Toast toast = Toast.makeText(getApplicationContext(), "Bağlantı hatası!", Toast.LENGTH_SHORT);

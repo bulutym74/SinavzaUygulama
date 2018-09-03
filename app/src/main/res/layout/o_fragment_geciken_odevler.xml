@@ -48,7 +48,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="Geciken ödev bulunmamaktadır"
-                android:textColor="@color/black"
+                android:textColor="@color/darkgray"
                 android:textSize="32sp" />
         </LinearLayout>
 

@@ -48,11 +48,11 @@
                     android:text="12 A"
                     android:layout_gravity="center|start"
                     android:textColor="@color/darkgray"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
                 <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="35dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:src="@drawable/right_arrow"
                     android:tint="@color/black"/>
@@ -65,7 +65,7 @@
                     android:text="12 A"
                     android:paddingEnd="11dp"
                     android:textColor="@color/darkgray"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
             </FrameLayout>
 
@@ -73,7 +73,7 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="3dp">
 
 
                 <TextView

@@ -48,7 +48,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="Sınıf değiştiren öğrenciniz bulunmamaktadır"
-                android:textColor="@color/black"
+                android:textColor="@color/darkgray"
                 android:textSize="32sp" />
         </LinearLayout>
 
