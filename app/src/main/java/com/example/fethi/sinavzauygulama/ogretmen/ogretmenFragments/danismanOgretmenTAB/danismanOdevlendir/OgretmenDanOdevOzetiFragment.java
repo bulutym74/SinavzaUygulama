@@ -22,6 +22,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -88,7 +89,7 @@ public class OgretmenDanOdevOzetiFragment extends Fragment {
     View back;
     TextView tv_sinif, tv_sol, tv_sag;
     TextView tv_konu, tv_toplam_test;
-    Button cancel_siniflar, cancel_odevler;
+    ImageView cancel_siniflar, cancel_odevler;
     FloatingActionButton fab_odevOzeti;
     TextView trh_baslama, trh_bitis;
     ViewGroup transitionsContainer;

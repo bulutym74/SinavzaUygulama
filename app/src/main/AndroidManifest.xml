@@ -44,7 +44,7 @@
         <activity android:name=".activities.UyeOlActivity" />
         <activity android:name=".activities.SifremiUnuttumActivity" />
         <activity android:name=".activities.OnayBekleniyor" />
-        <activity android:name=".activities.LoginActivity"></activity>
+        <activity android:name=".activities.LoginActivity"/>
     </application>
 
 </manifest>

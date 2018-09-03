@@ -42,6 +42,27 @@ public class OgretmenListItemPopUpDetayOdevlerAdapter extends RecyclerView.Adapt
         holder.baski.setText(genelKitapItem.getBaski());
         holder.icerdigiDersler.setText(genelKitapItem.getIcerdigiDersler());
 
+
+        switch (genelKitapItem.getStatus()) {
+            case 0:
+                holder.img_empty.setVisibility(View.VISIBLE);
+                holder.img_half.setVisibility(View.GONE);
+                holder.img_full.setVisibility(View.GONE);
+                break;
+            case 1:
+                holder.img_half.setVisibility(View.VISIBLE);
+                holder.img_empty.setVisibility(View.GONE);
+                holder.img_full.setVisibility(View.GONE);
+                break;
+            case 2:
+                holder.img_full.setVisibility(View.VISIBLE);
+                holder.img_half.setVisibility(View.GONE);
+                holder.img_empty.setVisibility(View.GONE);
+                break;
+            default:
+                break;
+        }
+
     }
 
     @Override
@@ -53,6 +74,7 @@ public class OgretmenListItemPopUpDetayOdevlerAdapter extends RecyclerView.Adapt
 
         TextView kitapAdi, yayinAdi, ISBN, baski, icerdigiDersler;
         ImageView add_img;
+        ImageView img_half, img_full, img_empty;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -63,6 +85,9 @@ public class OgretmenListItemPopUpDetayOdevlerAdapter extends RecyclerView.Adapt
             baski = itemView.findViewById(R.id.tv_baski);
             icerdigiDersler = itemView.findViewById(R.id.tv_icerdigiDersler);
             add_img = itemView.findViewById(R.id.add_img);
+            img_half = itemView.findViewById(R.id.img_half);
+            img_full = itemView.findViewById(R.id.img_full);
+            img_empty = itemView.findViewById(R.id.img_empty);
 
         }
     }

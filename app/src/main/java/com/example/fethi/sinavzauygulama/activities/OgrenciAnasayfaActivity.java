@@ -13,7 +13,6 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.fethi.sinavzauygulama.R;
@@ -21,11 +20,6 @@ import com.example.fethi.sinavzauygulama.diger.BottomNavigationViewHelper;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.dahaFazlaTAB.DahaFazlaFragment;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.odevlerTAB.OdevlerFragment;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.ozetTAB.OzetFragment;
-import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.puanHesaplamaTAB.PuanHesaplamaFragment;
-import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.tercihYapTAB.TercihYapFragment;
-import com.viven.fragmentstatemanager.FragmentStateManager;
-
-import static io.realm.internal.SyncObjectServerFacade.getApplicationContext;
 
 public class OgrenciAnasayfaActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     boolean doubleBackToExitPressedOnce = false;
