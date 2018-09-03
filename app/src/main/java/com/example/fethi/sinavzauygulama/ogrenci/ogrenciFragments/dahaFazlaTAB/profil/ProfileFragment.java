@@ -1,6 +1,7 @@
 package com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.dahaFazlaTAB.profil;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -46,6 +48,7 @@ public class ProfileFragment extends Fragment {
     ImageView log_out;
     FrameLayout sinif_degistir,ogretmen_degistir,bolum_degistir,sifre_degistir;
     TextView isim,sinif,ogretmen_ismi,kurum,bolum,email;
+    Button link;
 
     JSONObject res;
     String token;
@@ -160,6 +163,16 @@ public class ProfileFragment extends Fragment {
                         .replace(R.id.fragment_container, nextFrag,"findThisFragment")
                         .addToBackStack(null)
                         .commit();
+            }
+        });
+
+        link = view.findViewById(R.id.btn_link);
+        link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://www.sinavza.com/privacy-policy");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
 

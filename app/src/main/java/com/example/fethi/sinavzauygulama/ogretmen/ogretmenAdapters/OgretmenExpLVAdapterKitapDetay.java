@@ -168,6 +168,15 @@ public class OgretmenExpLVAdapterKitapDetay extends BaseExpandableListAdapter {
             }
         });
 
+        if (kitapItem.isSelected()) {
+            viewHolder.add.setVisibility(View.GONE);
+            viewHolder.check.setVisibility(View.VISIBLE);
+
+        } else {
+            viewHolder.add.setVisibility(View.VISIBLE);
+            viewHolder.check.setVisibility(View.GONE);
+        }
+
         switch (kitapItem.getStatus()) {
             case 0:
                 viewHolder.img_empty.setVisibility(View.VISIBLE);
@@ -183,18 +192,10 @@ public class OgretmenExpLVAdapterKitapDetay extends BaseExpandableListAdapter {
                 viewHolder.img_full.setVisibility(View.VISIBLE);
                 viewHolder.img_half.setVisibility(View.GONE);
                 viewHolder.img_empty.setVisibility(View.GONE);
+                viewHolder.add.setVisibility(View.INVISIBLE);
                 break;
             default:
                 break;
-        }
-
-        if (kitapItem.isSelected()) {
-            viewHolder.add.setVisibility(View.GONE);
-            viewHolder.check.setVisibility(View.VISIBLE);
-
-        } else {
-            viewHolder.add.setVisibility(View.VISIBLE);
-            viewHolder.check.setVisibility(View.GONE);
         }
 
         return view;

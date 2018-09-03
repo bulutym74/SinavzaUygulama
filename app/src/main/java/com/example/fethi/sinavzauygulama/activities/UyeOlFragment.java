@@ -1,7 +1,11 @@
 package com.example.fethi.sinavzauygulama.activities;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -209,105 +213,161 @@ public class UyeOlFragment extends Fragment {
                     return;
                 }
 
-                boolean bagli = false;
-                if (index == 0)
-                    bagli = true;
-                else if (index == 1 && cb.isChecked())
-                    bagli = true;
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle("Gizlilik Poliçesi");
+                        builder.setMessage("Gizlilik poliçesini okudum, kabul ediyorum.");
 
-                final ProgressDialog dialog = ProgressDialog.show(getActivity(), "Yükleniyor", "Lütfen bekleyin...", true);
-                dialog.show();
-
-                final JSONObject parameters = new JSONObject();
-
-                try {
-                    parameters.accumulate("Email", email.getText().toString().trim());
-                    parameters.accumulate("Password", password.getText().toString());
-                    parameters.accumulate("Bagli", bagli);
-                    parameters.accumulate("Code", code.getText().toString());
-                    parameters.accumulate("Tur", index + 1);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-
-                JsonObjectRequest objectRequest = new JsonObjectRequest(
-                        Request.Method.POST,
-                        Islevsel.signupURL,
-                        parameters,
-                        new Response.Listener<JSONObject>() {
+                        builder.setPositiveButton("Onayla", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onResponse(final JSONObject response) {
-                                dialog.dismiss();
-                                try {
-                                    if (response.getBoolean("isFailed")) {
-                                        Log.e("FAILED : ", response.getString("message"));
-
-                                        Toast toast = Toast.makeText(getApplicationContext(), response.getString("message"), Toast.LENGTH_SHORT);
-                                        toast.setGravity(Gravity.BOTTOM, 0, 300);
-                                        toast.show();
-
-                                    } else {
-                                        res = response;
-
-                                        if (realm.where(UserInfoItem.class).findAll().isEmpty()) {
-
-                                            final UserInfoItem user = new UserInfoItem(response.getString("token"), parameters.getString("Email"), parameters.getString("Password"),parameters.getInt("Tur")-1);
-                                            realm.executeTransaction(new Realm.Transaction() {
-                                                @Override
-                                                public void execute(Realm realm) {
-                                                    realm.copyToRealm(user);
-                                                    gecis();
-                                                }
-                                            });
-                                        } else {
-
-                                            realm.executeTransaction(new Realm.Transaction() {
-                                                @Override
-                                                public void execute(Realm realm) {
-                                                    try {
-                                                        realm.where(UserInfoItem.class).findAll().get(0).setEmail(parameters.getString("Email"));
-                                                        realm.where(UserInfoItem.class).findAll().get(0).setPassword(parameters.getString("Password"));
-                                                        realm.where(UserInfoItem.class).findAll().get(0).setToken(response.getString("token"));
-                                                        realm.where(UserInfoItem.class).findAll().get(0).setTur(parameters.getInt("Tur")-1);
-
-                                                        gecis();
-
-                                                    } catch (JSONException e) {
-                                                        e.printStackTrace();
-                                                    }
-                                                }
-                                            });
-                                        }
-
-
+                            public void onClick(DialogInterface dialog, int which) {
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    public void run() {
+                                        parseJSON();
                                     }
+                                }, 200);
 
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
                             }
-                        },
-                        new Response.ErrorListener() {
+                        });
+                        builder.setNeutralButton("Oku", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Log.e("ERROR", error.toString());
+                            public void onClick(DialogInterface dialog, int which) {
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    public void run() {
+                                        Uri uri = Uri.parse("https://www.sinavza.com/privacy-policy");
+                                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                                        startActivity(intent);
+                                    }
+                                }, 200);
 
-                                dialog.dismiss();
-                                Toast toast = Toast.makeText(getApplicationContext(), "Bağlantı hatası!", Toast.LENGTH_SHORT);
-                                toast.setGravity(Gravity.BOTTOM, 0, 300);
-                                toast.show();
                             }
-                        }
-                );
-                requestQueue.add(objectRequest);
+                        });
+                        builder.setNegativeButton("İptal", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(final DialogInterface dialog, int which) {
+                                Handler handler = new Handler();
+                                handler.postDelayed(new Runnable() {
+                                    public void run() {
+                                        dialog.cancel();
+                                    }
+                                }, 200);
+
+                            }
+                        });
+
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
+                    }
+                }, 150);
+
+
+
             }
         });
 
         return view;
     }
 
+    public void parseJSON(){
+
+        boolean bagli = false;
+        if (index == 0)
+            bagli = true;
+        else if (index == 1 && cb.isChecked())
+            bagli = true;
+
+        final ProgressDialog dialog = ProgressDialog.show(getActivity(), "Yükleniyor", "Lütfen bekleyin...", true);
+        dialog.show();
+
+        final JSONObject parameters = new JSONObject();
+
+        try {
+            parameters.accumulate("Email", email.getText().toString().trim());
+            parameters.accumulate("Password", password.getText().toString());
+            parameters.accumulate("Bagli", bagli);
+            parameters.accumulate("Code", code.getText().toString());
+            parameters.accumulate("Tur", index + 1);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        JsonObjectRequest objectRequest = new JsonObjectRequest(
+                Request.Method.POST,
+                Islevsel.signupURL,
+                parameters,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(final JSONObject response) {
+                        dialog.dismiss();
+                        try {
+                            if (response.getBoolean("isFailed")) {
+                                Log.e("FAILED : ", response.getString("message"));
+
+                                Toast toast = Toast.makeText(getApplicationContext(), response.getString("message"), Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.BOTTOM, 0, 300);
+                                toast.show();
+
+                            } else {
+                                res = response;
+
+                                if (realm.where(UserInfoItem.class).findAll().isEmpty()) {
+
+                                    final UserInfoItem user = new UserInfoItem(response.getString("token"), parameters.getString("Email"), parameters.getString("Password"),parameters.getInt("Tur")-1);
+                                    realm.executeTransaction(new Realm.Transaction() {
+                                        @Override
+                                        public void execute(Realm realm) {
+                                            realm.copyToRealm(user);
+                                            gecis();
+                                        }
+                                    });
+                                } else {
+
+                                    realm.executeTransaction(new Realm.Transaction() {
+                                        @Override
+                                        public void execute(Realm realm) {
+                                            try {
+                                                realm.where(UserInfoItem.class).findAll().get(0).setEmail(parameters.getString("Email"));
+                                                realm.where(UserInfoItem.class).findAll().get(0).setPassword(parameters.getString("Password"));
+                                                realm.where(UserInfoItem.class).findAll().get(0).setToken(response.getString("token"));
+                                                realm.where(UserInfoItem.class).findAll().get(0).setTur(parameters.getInt("Tur")-1);
+
+                                                gecis();
+
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
+                                }
+
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("ERROR", error.toString());
+
+                        dialog.dismiss();
+                        Toast toast = Toast.makeText(getApplicationContext(), "Bağlantı hatası!", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 300);
+                        toast.show();
+                    }
+                }
+        );
+        requestQueue.add(objectRequest);
+    }
 
     public void gecis() {
         try {

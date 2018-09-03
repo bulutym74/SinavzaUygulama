@@ -1,17 +1,20 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.profilTAB;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -51,6 +54,7 @@ public class OgretmenProfileFragment extends Fragment {
     FrameLayout sec_siniflar;
 
     TextView isim, kurum, email, kod;
+    Button link;
 
     RecyclerView rv_siniflar;
     ListItemHorizontalAdapter horizontalAdapter;
@@ -123,6 +127,16 @@ public class OgretmenProfileFragment extends Fragment {
                         .replace(R.id.fragment_container, nextFrag, "findThisFragment")
                         .addToBackStack(null)
                         .commit();
+            }
+        });
+
+        link = view.findViewById(R.id.btn_link);
+        link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://www.sinavza.com/privacy-policy");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
             }
         });
 
