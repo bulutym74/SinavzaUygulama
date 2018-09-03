@@ -49,14 +49,12 @@ public class OgretmenListItemOdevlerDetayAdapter extends RecyclerView.Adapter<Og
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView konu,test;
-        private LinearLayout son;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             konu = itemView.findViewById(R.id.tv_konu);
             test = itemView.findViewById(R.id.tv_test);
-            son = itemView.findViewById(R.id.son_eleman);
         }
     }
 }

@@ -38,10 +38,6 @@ public class ListItemOzetAdapter extends RecyclerView.Adapter<ListItemOzetAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        if(position==(getItemCount()-1)){
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) holder.son.getLayoutParams();
-            params.bottomMargin = 100;
-        }
 
         ListItemOzet listItemOzet = listItemOzets.get(position);
         ((OzetFragment)fragment).seciliId = listItemOzet.getId();
@@ -63,7 +59,6 @@ public class ListItemOzetAdapter extends RecyclerView.Adapter<ListItemOzetAdapte
         public TextView tv_ders;
         public TextView tv_test;
         public TextView tv_soru;
-        public LinearLayout son;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -71,7 +66,6 @@ public class ListItemOzetAdapter extends RecyclerView.Adapter<ListItemOzetAdapte
             tv_ders = itemView.findViewById(R.id.tv_ders);
             tv_test = itemView.findViewById(R.id.tv_test);
             tv_soru = itemView.findViewById(R.id.tv_soru);
-            son = itemView.findViewById(R.id.son_eleman);
         }
     }
 }
