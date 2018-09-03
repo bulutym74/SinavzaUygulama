@@ -35,11 +35,6 @@ public class OgretmenListItemOdevlerAdapter extends RecyclerView.Adapter<Ogretme
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        if(position==(getItemCount()-1)){
-            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) holder.son.getLayoutParams();
-            params.bottomMargin = 250;
-        }
-
         GenelKonuItem genelKonuItem = genelKonular.get(position);
 
         holder.konu.setText(genelKonuItem.getKonuAdi());
