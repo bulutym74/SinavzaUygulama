@@ -37,7 +37,7 @@
 
                 <ImageView
                     android:id="@+id/check_img"
-                    android:visibility="invisible"
+                    android:visibility="visible"
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:layout_gravity="end"

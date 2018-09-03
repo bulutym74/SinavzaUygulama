@@ -27,20 +27,20 @@
 
         <ImageView
             android:id="@+id/check_img"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_gravity="center|end"
-            android:layout_marginEnd="9dp"
+            android:layout_marginEnd="3dp"
             android:background="@drawable/done_outlined"
             android:scaleType="fitCenter"
             android:visibility="visible" />
 
         <ImageView
             android:id="@+id/add_img"
-            android:layout_width="23dp"
-            android:layout_height="23dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_gravity="center|end"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="3dp"
             android:background="@drawable/add"
             android:scaleType="fitCenter"
             android:visibility="visible" />

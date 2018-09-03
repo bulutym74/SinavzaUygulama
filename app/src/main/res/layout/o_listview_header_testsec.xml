@@ -83,7 +83,7 @@
             <ImageView
                 android:id="@+id/check_img_big"
                 android:layout_width="42dp"
-                android:layout_height="match_parent"
+                android:layout_height="42dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
@@ -94,24 +94,24 @@
 
             <ImageView
                 android:id="@+id/add_img_big"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
                 android:scaleType="fitCenter"
                 android:background="@drawable/add"
                 android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/img_full"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
                 android:scaleType="fitCenter"
                 android:background="@drawable/full"
                 android:visibility="gone"
