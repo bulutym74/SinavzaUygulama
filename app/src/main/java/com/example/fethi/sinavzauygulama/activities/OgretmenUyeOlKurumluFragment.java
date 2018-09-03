@@ -71,7 +71,6 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
     CardView search_ekrani;
     LinearLayout sec_sinifi;
     FloatingActionButton btn_devam;
-    private int index = 0;
     Realm realm = Realm.getDefaultInstance();
     Button iv_done, iv_copkutusu;
 
@@ -428,7 +427,6 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
                 };
 
                 requestQueue.add(objectRequest);
-
             }
         });
 

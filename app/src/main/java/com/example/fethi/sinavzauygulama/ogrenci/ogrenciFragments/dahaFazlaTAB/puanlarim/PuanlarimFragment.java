@@ -31,7 +31,6 @@ public class PuanlarimFragment extends Fragment {
     ListItemPuanlarimAdapter adapter;
     RealmChangeListener realmChangeListener;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -69,29 +68,23 @@ public class PuanlarimFragment extends Fragment {
             }
         });
 
-
-        //setup adapter
         adapter = new ListItemPuanlarimAdapter(getActivity() , puanlarim);
         lv_puanlarim.setAdapter(adapter);
 
-        //HANDLE DATA CHANGES EVENTS AND REFRESH
         realmChangeListener = new RealmChangeListener() {
             @Override
             public void onChange(Object o) {
-                //REFRESH
                 adapter = new ListItemPuanlarimAdapter(getActivity(),realm.where(ListItemPuanlarim.class).findAll().sort("tarih",Sort.DESCENDING));
                 lv_puanlarim.setAdapter(adapter);
             }
         };
 
-        //ADD CHANGE LISTENER TO REALM
         realm.addChangeListener(realmChangeListener);
 
 
         return view;
     }
 
-    //release resources
     @Override
     public void onDestroy() {
         super.onDestroy();

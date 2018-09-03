@@ -20,9 +20,9 @@ public class OgretmenListItemFiltreAdapter extends RecyclerView.Adapter<Ogretmen
     Context c;
     ArrayList<OgretmenListItemFiltre> filtreList;
 
-    public OgretmenListItemFiltreAdapter(Context ctx, ArrayList<OgretmenListItemFiltre> filtres){
-        this.c = ctx;
-        this.filtreList = filtres;
+    public OgretmenListItemFiltreAdapter(Context c, ArrayList<OgretmenListItemFiltre> filtreList){
+        this.c = c;
+        this.filtreList = filtreList;
     }
 
     @NonNull

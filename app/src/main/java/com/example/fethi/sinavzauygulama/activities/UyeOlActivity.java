@@ -8,7 +8,6 @@ import com.example.fethi.sinavzauygulama.R;
 
 public class UyeOlActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

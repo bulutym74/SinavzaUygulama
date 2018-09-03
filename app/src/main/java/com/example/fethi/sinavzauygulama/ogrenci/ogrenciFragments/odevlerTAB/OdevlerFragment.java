@@ -104,12 +104,6 @@ public class OdevlerFragment extends Fragment implements SwipeRefreshLayout.OnRe
                 }
             });
 
-
-        //expandlist_view_odevler.performItemClick(view,)
-        //if (seciliId == expand_adapter.getGroupId(seciliId))
-            /*expandlist_view_odevler.expandGroup(seciliId);
-        expand_adapter.notifyDataSetChanged();*/
-
         return view;
     }
 

@@ -121,8 +121,6 @@ public class OgretmenExpLVAdapterOdevGecmisi extends BaseExpandableListAdapter {
 
     static class ChildViewHolder {
         TextView txt_child;
-
-
     }
 
     public int dpToPx(int dp) {

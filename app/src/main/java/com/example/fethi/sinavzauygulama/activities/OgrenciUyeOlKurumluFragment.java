@@ -65,7 +65,6 @@ public class OgrenciUyeOlKurumluFragment extends Fragment {
     CardView card;
     AppCompatEditText isim, soyisim, tcNo,tel,ogrNo;
     TextView secildimi;
-    boolean visible;
     ViewGroup transitionsContainer;
     ImageView log_out;
 
@@ -292,9 +291,6 @@ public class OgrenciUyeOlKurumluFragment extends Fragment {
                 };
 
                 requestQueue.add(objectRequest);
-
-
-
             }
         });
 

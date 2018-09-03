@@ -21,7 +21,6 @@ public class OgretmenListItemSiniflarAdapter extends RecyclerView.Adapter<Ogretm
     private List<SinifItem> seciliSiniflar;
     private Context context;
 
-
     public OgretmenListItemSiniflarAdapter(List<SinifItem> seciliSiniflar, Context context) {
         this.seciliSiniflar = seciliSiniflar;
         this.context = context;

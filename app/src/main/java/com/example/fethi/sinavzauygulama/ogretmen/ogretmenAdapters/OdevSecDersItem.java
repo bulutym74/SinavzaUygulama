@@ -3,7 +3,7 @@ package com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters;
 import java.util.ArrayList;
 
 public class OdevSecDersItem {
-    private String dersAdi="";
+    private String dersAdi;
     private ArrayList<OdevSecKitapItem> kitaplar;
     private int id = 0;
 

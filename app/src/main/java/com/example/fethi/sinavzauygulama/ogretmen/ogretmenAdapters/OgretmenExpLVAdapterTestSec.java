@@ -42,7 +42,6 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
     private Fragment fragment;
     int durum;
 
-
     public OgretmenExpLVAdapterTestSec(Context context, OdevSecKitapItem seciliKitap, Fragment fragment, int durum) {
         this.context = context;
         this.seciliKitap = seciliKitap;

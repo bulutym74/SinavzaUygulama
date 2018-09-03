@@ -50,7 +50,6 @@ public class BolumDegistirFragment extends Fragment {
     String token;
     Realm realm = Realm.getDefaultInstance();
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -17,7 +17,6 @@ import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgre
 
 public class OgretmenBransOgretmeniFragment extends Fragment {
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

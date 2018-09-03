@@ -217,8 +217,6 @@ public class OgretmenDegistirFragment extends Fragment {
                     requestQueue.add(objectRequest);
                 } else
                     code.setError("Lütfen geçerli bir kod giriniz");
-
-
             }
         });
 

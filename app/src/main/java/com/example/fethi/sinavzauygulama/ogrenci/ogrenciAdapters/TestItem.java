@@ -1,7 +1,5 @@
 package com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters;
 
-import java.util.Date;
-
 public class TestItem {
 
     private String testAdi;

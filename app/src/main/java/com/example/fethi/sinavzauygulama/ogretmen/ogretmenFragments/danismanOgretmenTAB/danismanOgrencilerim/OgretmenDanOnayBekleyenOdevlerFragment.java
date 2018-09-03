@@ -431,7 +431,6 @@ public class OgretmenDanOnayBekleyenOdevlerFragment extends Fragment implements 
             fab_check.setVisibility(View.VISIBLE);
             fab_cancel.setVisibility(View.VISIBLE);
         }
-
     }
 
     @Override

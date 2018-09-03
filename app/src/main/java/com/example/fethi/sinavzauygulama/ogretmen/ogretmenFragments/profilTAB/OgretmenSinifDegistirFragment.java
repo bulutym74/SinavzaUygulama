@@ -128,7 +128,6 @@ public class OgretmenSinifDegistirFragment extends Fragment {
             }
         });
 
-
         expand_lv_siniflar = view.findViewById(R.id.expand_lv_siniflar);
 
         expand_adapter = new OgretmenExpLVAdapterSiniflar(getActivity(), siniflar);
@@ -422,7 +421,6 @@ public class OgretmenSinifDegistirFragment extends Fragment {
 
         return view;
     }
-
 
     public void onBackPressed() {
         FragmentManager fm = getActivity().getSupportFragmentManager();

@@ -194,7 +194,6 @@ public class OgretmenUyeOlKurumsuzFragment extends Fragment {
 
                 requestQueue.add(objectRequest);
 
-
             }
         });
 

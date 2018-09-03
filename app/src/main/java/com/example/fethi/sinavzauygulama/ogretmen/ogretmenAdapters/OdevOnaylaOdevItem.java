@@ -2,10 +2,10 @@ package com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters;
 
 public class OdevOnaylaOdevItem {
 
-    private String testAdi="";
-    private String kitapAdi="";
-    private String konuAdi="";
-    private int id =0;
+    private String testAdi;
+    private String kitapAdi;
+    private String konuAdi;
+    private int id;
     private boolean selected = false;
 
     public OdevOnaylaOdevItem(String testAdi, String kitapAdi, String konuAdi, int id) {

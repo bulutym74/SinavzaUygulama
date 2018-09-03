@@ -17,7 +17,7 @@ public class OgrenciSinifSec implements Parcelable{
 
 
     private String sinif;
-    private int id = 0;
+    private int id;
 
     public OgrenciSinifSec(String sinif, int id) {
         this.sinif = sinif;

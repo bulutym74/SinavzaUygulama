@@ -108,7 +108,6 @@ public class OgretmenBraCozulenKitaplarFragment extends Fragment implements Swip
                 }
             });
 
-
         return view;
     }
 

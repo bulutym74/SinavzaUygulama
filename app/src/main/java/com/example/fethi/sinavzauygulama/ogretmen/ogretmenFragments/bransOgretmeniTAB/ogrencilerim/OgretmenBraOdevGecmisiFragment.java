@@ -99,7 +99,7 @@ public class OgretmenBraOdevGecmisiFragment  extends Fragment implements SwipeRe
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 
-                OgretmenDanOdevGecmisiKonularFragment nextFrag = new OgretmenDanOdevGecmisiKonularFragment();
+                OgretmenBraOdevGecmisiKonularFragment nextFrag = new OgretmenBraOdevGecmisiKonularFragment();
                 nextFrag.seciliKitap = dersler.get(groupPosition).getKitaplar().get(childPosition);
 
                 getActivity().getSupportFragmentManager().beginTransaction()

@@ -28,7 +28,6 @@ public class OgretmenExpLVAdapterGecikenOdevler extends BaseExpandableListAdapte
 
     TextView sag, top_sag;
 
-
     public OgretmenExpLVAdapterGecikenOdevler(Context context, ArrayList<GecikenDersItem> dersler) {
         this.context = context;
         this.dersler = dersler;

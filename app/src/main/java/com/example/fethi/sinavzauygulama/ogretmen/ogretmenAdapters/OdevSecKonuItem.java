@@ -3,7 +3,7 @@ package com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters;
 import java.util.ArrayList;
 
 public class OdevSecKonuItem {
-    private String konuAdi="";
+    private String konuAdi;
     private ArrayList<OdevSecTestItem> testler;
     private int id = 0;
     private boolean selected = false;

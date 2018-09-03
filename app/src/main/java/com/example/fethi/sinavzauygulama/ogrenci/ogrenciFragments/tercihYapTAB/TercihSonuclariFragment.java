@@ -1,6 +1,5 @@
 package com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.tercihYapTAB;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -13,15 +12,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.ListItemTercihSonuclariAdapter;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.ListItemTercihSonucları;
 import com.example.fethi.sinavzauygulama.R;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import io.realm.Realm;
 import io.realm.RealmResults;
 

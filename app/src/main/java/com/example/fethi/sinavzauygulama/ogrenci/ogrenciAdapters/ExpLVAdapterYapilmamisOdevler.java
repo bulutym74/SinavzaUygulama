@@ -23,7 +23,6 @@ public class ExpLVAdapterYapilmamisOdevler extends BaseExpandableListAdapter {
     public LayoutInflater inflater;
     ImageView img_arrow;
 
-
     public ExpLVAdapterYapilmamisOdevler(Context context,ArrayList<DersItem> dersler)
     {
         this.context = context;

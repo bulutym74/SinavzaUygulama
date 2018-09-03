@@ -285,7 +285,6 @@ public class OgrenciUyeOlKurumsuzFragment extends Fragment {
 
                 requestQueue.add(objectRequest);
 
-
             }
         });
 

@@ -39,9 +39,8 @@ public class VeliAnasayfaActivity extends AppCompatActivity implements BottomNav
             final View iconView = menuView.getChildAt(i).findViewById(android.support.design.R.id.icon);
             final ViewGroup.LayoutParams layoutParams = iconView.getLayoutParams();
             final DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-            // set your height here
+
             layoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, displayMetrics);
-            // set your width here
             layoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 32, displayMetrics);
             iconView.setLayoutParams(layoutParams);
         }
@@ -88,7 +87,6 @@ public class VeliAnasayfaActivity extends AppCompatActivity implements BottomNav
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            //super.onBackPressed();
             moveTaskToBack(true);
             return;
         }

@@ -64,7 +64,6 @@ public class OgretmenListItemPopUpDetayOdevlerAdapter extends RecyclerView.Adapt
         }
 
     }
-
     @Override
     public int getItemCount() {
         return genelKitaplar.size();

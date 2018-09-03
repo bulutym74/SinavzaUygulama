@@ -1,6 +1,5 @@
 package com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.dahaFazlaTAB.puanlarim;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -11,15 +10,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.TextView;
-
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.ListItemPuanlarim;
 import com.example.fethi.sinavzauygulama.R;
-
 import java.text.DecimalFormat;
-
-import io.realm.Realm;
 
 public class PuanDetayFragment extends Fragment {
 
@@ -31,7 +25,6 @@ public class PuanDetayFragment extends Fragment {
     TextView tv_tytyer_puan,tv_mfyer_puan,tv_tmyer_puan,tv_tsyer_puan,tv_dilyer_puan;
     TextView tv_tytham_sıra,tv_mfham_sıra,tv_tmham_sıra,tv_tsham_sıra,tv_dilham_sıra;
     TextView tv_tytyer_sıra,tv_mfyer_sıra,tv_tmyer_sıra,tv_tsyer_sıra,tv_dilyer_sıra;
-
 
     @Nullable
     @Override

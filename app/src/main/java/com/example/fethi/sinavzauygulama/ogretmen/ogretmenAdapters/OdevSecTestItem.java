@@ -1,11 +1,11 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters;
 
 public class OdevSecTestItem {
-    private String testAdi = "";
-    private int soruSayisi = 0;
-    private int id = 0;
+    private String testAdi;
+    private int soruSayisi;
+    private int id;
     private boolean selected = false;
-    private int status = 0;
+    private int status;
 
     public OdevSecTestItem(String testAdi, int soruSayisi, int id,int status) {
         this.testAdi = testAdi;

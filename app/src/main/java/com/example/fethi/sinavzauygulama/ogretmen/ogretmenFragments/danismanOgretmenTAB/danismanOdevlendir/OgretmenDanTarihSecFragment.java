@@ -75,7 +75,7 @@ public class OgretmenDanTarihSecFragment extends Fragment {
         final String reg_date = df.format(c.getTime());
         tv_baslama.setText(reg_date);
 
-        c.add(Calendar.DATE, 6);  // number of days to add
+        c.add(Calendar.DATE, 6);
         String end_date = df.format(c.getTime());
         tv_bitis.setText(end_date);
         c.add(Calendar.DATE, -6);

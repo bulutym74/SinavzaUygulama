@@ -14,9 +14,8 @@ import java.util.List;
 
 public class ListItemHorizontalAdapter extends RecyclerView.Adapter<ListItemHorizontalAdapter.MyViewHolder> {
 
-    List<String> horizontalList;
+    private List<String> horizontalList;
     Context context;
-
 
     public ListItemHorizontalAdapter(List<String> horizontalList, Context context) {
         this.horizontalList = horizontalList;
@@ -26,7 +25,7 @@ public class ListItemHorizontalAdapter extends RecyclerView.Adapter<ListItemHori
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtview;
-        public MyViewHolder(View itemView) {
+        private MyViewHolder(View itemView) {
             super(itemView);
             txtview = itemView.findViewById(R.id.txtview);
         }

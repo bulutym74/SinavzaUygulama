@@ -65,9 +65,6 @@ public class OnayBekleniyor extends AppCompatActivity {
         ret1 = findViewById(R.id.txt_ret1);
         ret2 = findViewById(R.id.txt_ret2);
 
-        //ret1.setText("Kurum tarafından kaydınız reddedildi");
-        //ret2.setText("Yeni bir kurum koduyla kayıt olmayı deneyin");
-
         log_out = findViewById(R.id.log_out);
         log_out.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +81,7 @@ public class OnayBekleniyor extends AppCompatActivity {
             tur = bundle.getInt("tur");
             if (tur == 1){
                 onay.setText("Hesabınızın kurumunuz tarafından onaylanması bekleniyor");
-                ret1.setText("Kaydınız kurum tarafından reddedildi");
+                ret1.setText("Kaydınız kurum tarafından reddedildi!");
                 ret2.setText("Yeni bir kurum koduyla kayıt olmayı deneyin");
             }
             if (ret){
@@ -106,8 +103,6 @@ public class OnayBekleniyor extends AppCompatActivity {
         btn_devam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
 
                 final JSONObject parameters = new JSONObject();
 
@@ -250,7 +245,6 @@ public class OnayBekleniyor extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            //super.onBackPressed();
             moveTaskToBack(true);
             return;
         }

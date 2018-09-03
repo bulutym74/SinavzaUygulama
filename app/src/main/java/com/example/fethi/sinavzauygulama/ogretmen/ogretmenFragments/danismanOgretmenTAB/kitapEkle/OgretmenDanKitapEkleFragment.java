@@ -58,7 +58,6 @@ public class OgretmenDanKitapEkleFragment extends Fragment implements SwipeRefre
 
     LinearLayout kitapYokView;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -233,7 +232,6 @@ public class OgretmenDanKitapEkleFragment extends Fragment implements SwipeRefre
         }
 
     }
-
     public void onBackPressed() {
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.popBackStack();

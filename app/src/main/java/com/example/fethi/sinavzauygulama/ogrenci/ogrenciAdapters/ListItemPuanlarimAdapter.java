@@ -83,7 +83,6 @@ public class ListItemPuanlarimAdapter extends BaseAdapter {
             }
         });
 
-
         return convertView;
     }
 

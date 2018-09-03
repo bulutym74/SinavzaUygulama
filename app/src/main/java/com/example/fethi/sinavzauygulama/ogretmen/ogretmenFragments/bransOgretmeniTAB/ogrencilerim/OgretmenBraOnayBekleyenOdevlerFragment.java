@@ -435,7 +435,6 @@ public class OgretmenBraOnayBekleyenOdevlerFragment extends Fragment implements 
         }
 
     }
-
     @Override
     public void onRefresh() {
         parseJSON();

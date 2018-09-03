@@ -231,7 +231,6 @@ public class OzetFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         return view;
 
     }
-
     public void parseJSON() {
 
         refreshLayout.setRefreshing(true);

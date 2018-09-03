@@ -12,10 +12,6 @@ public class EqualSpacingItemDecoration extends RecyclerView.ItemDecoration {
     public static final int VERTICAL = 1;
     public static final int GRID = 2;
 
-    public EqualSpacingItemDecoration(int spacing) {
-        this(spacing, -1);
-    }
-
     public EqualSpacingItemDecoration(int spacing, int displayMode) {
         this.spacing = spacing;
         this.displayMode = displayMode;

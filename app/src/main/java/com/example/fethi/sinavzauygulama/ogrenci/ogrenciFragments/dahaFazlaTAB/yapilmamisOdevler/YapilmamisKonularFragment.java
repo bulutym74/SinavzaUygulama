@@ -53,8 +53,6 @@ public class YapilmamisKonularFragment extends Fragment {
         expandlist_view_konular.setAdapter(expand_adapter_konular);
         expandlist_view_konular.setClickable(true);
 
-
-
         return view;
 
     }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
@@ -43,7 +44,7 @@ public class OgrenciSinifSecAdapter extends RecyclerView.Adapter<OgrenciSinifSec
     private List<OgrenciSinifSec> siniflar;
     private Context context;
     private int mSelectedItem = -1;
-    android.support.v4.app.Fragment fragment;
+    Fragment fragment;
     private int durum;
 
     JSONObject res;
@@ -51,7 +52,7 @@ public class OgrenciSinifSecAdapter extends RecyclerView.Adapter<OgrenciSinifSec
     Realm realm = Realm.getDefaultInstance();
 
 
-    public OgrenciSinifSecAdapter(List<OgrenciSinifSec> siniflar, Context context,android.support.v4.app.Fragment fragment, int durum) {
+    public OgrenciSinifSecAdapter(List<OgrenciSinifSec> siniflar, Context context,Fragment fragment, int durum) {
         this.siniflar = siniflar;
         this.context = context;
         this.fragment = fragment;
@@ -199,10 +200,6 @@ public class OgrenciSinifSecAdapter extends RecyclerView.Adapter<OgrenciSinifSec
                                 ((OgrenciUyeOlKurumsuzFragment)fragment).secildimi.setTextColor(Color.GREEN);
                                 ((OgrenciUyeOlKurumsuzFragment)fragment).seciliSinifID = siniflar.get(mSelectedItem).getId();
                             }
-                            /*else {
-                                ((SinifDegistirFragment)fragment).secildimi.setText(siniflar.get(mSelectedItem).getSinif());
-                                ((SinifDegistirFragment)fragment).seciliSinifID = siniflar.get(mSelectedItem).getId();
-                            }*/
 
                             notifyDataSetChanged();
                         }
@@ -224,11 +221,6 @@ public class OgrenciSinifSecAdapter extends RecyclerView.Adapter<OgrenciSinifSec
                                 ((OgrenciUyeOlKurumsuzFragment)fragment).back.setVisibility(View.GONE);
                                 ((OgrenciUyeOlKurumsuzFragment)fragment).btn_devam.setVisibility(View.VISIBLE);
                             }
-                            /*else {
-                                ((SinifDegistirFragment)fragment).card.startAnimation(animHide);
-                                ((SinifDegistirFragment)fragment).card.setVisibility(View.GONE);
-                                ((SinifDegistirFragment)fragment).back.setVisibility(View.GONE);
-                            }*/
                         }
                     }, 300);
 

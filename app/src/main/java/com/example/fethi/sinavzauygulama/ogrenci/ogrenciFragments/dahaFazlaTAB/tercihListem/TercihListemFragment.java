@@ -1,6 +1,5 @@
 package com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.dahaFazlaTAB.tercihListem;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -13,8 +12,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.ListItemTercihListemAdapter;
 import com.example.fethi.sinavzauygulama.R;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.ListItemTercihSonucları;

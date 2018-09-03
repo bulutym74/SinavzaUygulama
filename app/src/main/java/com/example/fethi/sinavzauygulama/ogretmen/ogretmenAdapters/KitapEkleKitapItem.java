@@ -1,12 +1,12 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters;
 
 public class KitapEkleKitapItem {
-    private String kitapAdi="";
-    private String yayinAdi="";
-    private String ISBN="";
-    private String baski="";
-    private String icerdigiDersler="";
-    private int id =0;
+    private String kitapAdi;
+    private String yayinAdi;
+    private String ISBN;
+    private String baski;
+    private String icerdigiDersler;
+    private int id;
     private boolean selected = false;
     private int status;
 

@@ -193,7 +193,6 @@ public class YksSonucFragment extends Fragment {
                                 toast.show();
                                 d.dismiss();
                             }
-
                         }
 
                 });
@@ -202,9 +201,6 @@ public class YksSonucFragment extends Fragment {
 
             }
         });
-
-
-
         return view;
     }
     public void onBackPressed()

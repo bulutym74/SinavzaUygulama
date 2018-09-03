@@ -144,7 +144,6 @@ public class OgretmenDanOdevlendirFragment extends Fragment implements SwipeRefr
 
         return view;
     }
-
     public void parseJSON() {
 
         refreshLayout.setRefreshing(true);
@@ -228,7 +227,6 @@ public class OgretmenDanOdevlendirFragment extends Fragment implements SwipeRefr
         }
 
     }
-
     public void onBackPressed() {
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.popBackStack();

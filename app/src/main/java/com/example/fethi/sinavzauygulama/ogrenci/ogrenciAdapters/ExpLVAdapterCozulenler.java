@@ -22,9 +22,7 @@ public class ExpLVAdapterCozulenler extends BaseExpandableListAdapter {
     private TextView txt_child;
     public LayoutInflater inflater;
     ImageView img_arrow;
-
     TextView sol, sag, top_sol, top_sag;
-
 
     public ExpLVAdapterCozulenler(Context context, ArrayList<DersItem> dersler) {
         this.context = context;

@@ -35,7 +35,6 @@ public class PuanHesaplamaFragment extends Fragment {
     CheckBox cb;
     FloatingActionButton fab;
 
-
     TextWatcher tw1= new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -852,7 +851,6 @@ public class PuanHesaplamaFragment extends Fragment {
 
             }
         });
-
 
         return view;
     }

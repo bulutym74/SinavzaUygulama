@@ -67,7 +67,6 @@ public class SifremiUnuttumActivity extends AppCompatActivity {
             }
         });
 
-
         fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

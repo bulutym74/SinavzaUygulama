@@ -20,7 +20,6 @@ public class ListItemSinifDegistirAdapter extends RecyclerView.Adapter<ListItemS
     List<String> sinifList;
     Context c;
 
-
     public ListItemSinifDegistirAdapter(List<String> sinifList,Context c){
         this.c = c;
         this.sinifList = sinifList;

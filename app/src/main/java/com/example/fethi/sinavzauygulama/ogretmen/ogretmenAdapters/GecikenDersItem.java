@@ -1,7 +1,5 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters;
 
-import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.KitapItem;
-
 import java.util.ArrayList;
 
 public class GecikenDersItem {

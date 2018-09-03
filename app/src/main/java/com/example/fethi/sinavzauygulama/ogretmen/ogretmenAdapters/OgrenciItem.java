@@ -2,9 +2,9 @@ package com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters;
 
 public class OgrenciItem {
 
-    private String ogrAdi = "";
+    private String ogrAdi;
     private Boolean selected = false;
-    private int id = 0;
+    private int id;
 
     public OgrenciItem(String ogrAdi,int id) {
         this.ogrAdi = ogrAdi;

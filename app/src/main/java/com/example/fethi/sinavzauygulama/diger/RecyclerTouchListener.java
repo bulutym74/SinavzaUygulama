@@ -20,7 +20,6 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
                 return true;
 
             }
-
             @Override
             public void onLongPress(MotionEvent e) {
 

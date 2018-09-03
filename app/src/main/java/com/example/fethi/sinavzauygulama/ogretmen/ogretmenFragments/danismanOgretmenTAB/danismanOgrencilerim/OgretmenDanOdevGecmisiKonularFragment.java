@@ -51,7 +51,6 @@ public class OgretmenDanOdevGecmisiKonularFragment extends Fragment {
         expand_adapter_konular = new OgretmenExpLVAdapterOdevGecmisiKonular(getActivity(), seciliKitap);
         expandlist_view_konular.setAdapter(expand_adapter_konular);
 
-
         return view;
 
     }

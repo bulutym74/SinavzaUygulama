@@ -81,7 +81,6 @@ public class ListItemTercihListemAdapter extends RecyclerView.Adapter<ListItemTe
 
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView tv_uni, tv_sehir, tv_bolum, tv_unitur, tv_alan, tv_puan, tv_sıralama;

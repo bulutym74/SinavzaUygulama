@@ -1,9 +1,5 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters;
 
-import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.TestItem;
-
-import java.util.ArrayList;
-
 public class GecikenKonuItem {
 
     private String konuAdi;

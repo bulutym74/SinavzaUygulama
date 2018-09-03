@@ -408,8 +408,6 @@ public class OgretmenBraOdevOzetiFragment extends Fragment {
         });
         return view;
     }
-
-
     public void onBackPressed() {
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.popBackStack();

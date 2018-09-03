@@ -299,28 +299,6 @@ public class ExpLVAdapterYapilmamisKonular extends BaseExpandableListAdapter {
                                             }, 1000);
 
                                             seciliKitap.getKonular().remove(groupPosition);
-
-                                            /*Animation animation1 = AnimationUtils.loadAnimation(context,R.anim.exit_to_right);
-                                            animation1.setAnimationListener(new Animation.AnimationListener() {
-                                                @Override
-                                                public void onAnimationStart(Animation animation) {
-
-                                                }
-
-                                                @Override
-                                                public void onAnimationEnd(Animation animation) {
-                                                    Toast.makeText(context,konuItem.getKonuAdi()+" gönderildi",Toast.LENGTH_SHORT).show();
-
-                                                    seciliKitap.getKonular().remove(groupPosition);
-                                                }
-
-                                                @Override
-                                                public void onAnimationRepeat(Animation animation) {
-
-                                                }
-                                            });
-
-                                            row_header.startAnimation(animation1);*/
                                         }
 
                                         notifyDataSetChanged();
@@ -380,7 +358,6 @@ public class ExpLVAdapterYapilmamisKonular extends BaseExpandableListAdapter {
     static class GroupViewHolder {
         TextView txt_parent_yapilmamis_konular;
         ImageView img_arrow;
-        LinearLayout son_group;
     }
 
     static class ChildViewHolder {
