@@ -57,7 +57,6 @@ public class OgretmenBraOdevlendirFragment extends Fragment implements SwipeRefr
     Realm realm = Realm.getDefaultInstance();
 
     LinearLayout yokView;
-    TextView txt_yok;
 
     @Nullable
     @Override
@@ -80,7 +79,6 @@ public class OgretmenBraOdevlendirFragment extends Fragment implements SwipeRefr
         });
 
         yokView = view.findViewById(R.id.kitapYokView);
-        txt_yok = view.findViewById(R.id.txt_yok);
 
         expand_lv_odevlendir = view.findViewById(R.id.expand_lv_odevlendir);
         fab_odevlendir = view.findViewById(R.id.fab_odevlendir);
@@ -220,7 +218,6 @@ public class OgretmenBraOdevlendirFragment extends Fragment implements SwipeRefr
     public void isEmpty() {
         if (siniflar.isEmpty()) {
             yokView.setVisibility(View.VISIBLE);
-            txt_yok.setText("Tanımlı öğrenci bulunmamaktadır");
             fab_odevlendir.setVisibility(View.GONE);
         } else{
             yokView.setVisibility(View.GONE);

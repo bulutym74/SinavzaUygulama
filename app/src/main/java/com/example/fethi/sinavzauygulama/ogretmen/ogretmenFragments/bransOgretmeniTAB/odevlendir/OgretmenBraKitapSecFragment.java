@@ -283,9 +283,11 @@ public class OgretmenBraKitapSecFragment extends Fragment {
         if (dersler.isEmpty()) {
             ortakKitapYokView.setVisibility(View.VISIBLE);
             view_seciliSoru.setVisibility(View.GONE);
+            fab_kitapSec.setVisibility(View.GONE);
         } else{
             ortakKitapYokView.setVisibility(View.GONE);
             view_seciliSoru.setVisibility(View.VISIBLE);
+            fab_kitapSec.setVisibility(View.VISIBLE);
         }
 
     }

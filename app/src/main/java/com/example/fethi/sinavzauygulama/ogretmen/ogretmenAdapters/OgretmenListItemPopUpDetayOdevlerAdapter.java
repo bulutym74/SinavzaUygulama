@@ -26,7 +26,7 @@ public class OgretmenListItemPopUpDetayOdevlerAdapter extends RecyclerView.Adapt
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.o_listview_child_kitap_detay, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.o_list_item_popup_detay_odevler, parent, false);
 
         return new ViewHolder(v);
     }
