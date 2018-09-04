@@ -193,11 +193,11 @@ public class OgrenciSinifSecAdapter extends RecyclerView.Adapter<OgrenciSinifSec
 
                             if (durum == 0) {
                                 ((OgrenciUyeOlKurumluFragment)fragment).secildimi.setText(siniflar.get(mSelectedItem).getSinif());
-                                ((OgrenciUyeOlKurumluFragment)fragment).secildimi.setTextColor(Color.GREEN);
+                                ((OgrenciUyeOlKurumluFragment)fragment).secildimi.setTextColor(context.getResources().getColor(R.color.lightgreen));
                                 ((OgrenciUyeOlKurumluFragment)fragment).seciliSinifID = siniflar.get(mSelectedItem).getId();
                             }else if (durum == 1){
                                 ((OgrenciUyeOlKurumsuzFragment)fragment).secildimi.setText(siniflar.get(mSelectedItem).getSinif());
-                                ((OgrenciUyeOlKurumsuzFragment)fragment).secildimi.setTextColor(Color.GREEN);
+                                ((OgrenciUyeOlKurumsuzFragment)fragment).secildimi.setTextColor(context.getResources().getColor(R.color.lightgreen));
                                 ((OgrenciUyeOlKurumsuzFragment)fragment).seciliSinifID = siniflar.get(mSelectedItem).getId();
                             }
 

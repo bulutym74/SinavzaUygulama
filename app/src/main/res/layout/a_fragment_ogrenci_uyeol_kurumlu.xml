@@ -126,7 +126,7 @@
                 android:layout_weight="1"
                 android:gravity="end"
                 android:text="Seçilmedi"
-                android:textColor="@color/lightred"
+                android:textColor="@color/primaryOrange"
                 android:textSize="18sp" />
 
         </LinearLayout>

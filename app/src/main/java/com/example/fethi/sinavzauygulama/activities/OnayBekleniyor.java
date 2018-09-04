@@ -69,6 +69,14 @@ public class OnayBekleniyor extends AppCompatActivity {
         log_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                realm.executeTransaction(new Realm.Transaction() {
+                    @Override
+                    public void execute(Realm realm) {
+                        realm.where(UserInfoItem.class).findAll().deleteAllFromRealm();
+                    }
+                });
+
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
@@ -95,7 +103,81 @@ public class OnayBekleniyor extends AppCompatActivity {
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                isApproved();
+                if (sor){
+
+                    final JSONObject parameters = new JSONObject();
+
+                    try {
+                        parameters.accumulate("Code", code.getText().toString());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+                    Realm realm = Realm.getDefaultInstance();
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+                            token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                        }
+                    });
+
+                    JsonObjectRequest objectRequest = new JsonObjectRequest(
+                            Request.Method.GET,
+                            Islevsel.isApprovedURL,
+                            parameters,
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(final JSONObject response) {
+                                    try {
+                                        if (response.getBoolean("isFailed")) {
+                                            Log.e("FAILED : ", response.getString("message"));
+                                        } else {
+                                            res = response;
+                                            Log.e("ISAPPROVED",""+res.getInt("isApproved"));
+
+                                            switch (res.getInt("isApproved")){
+                                                case 0:
+                                                    kayıtReddedildiView.setVisibility(View.VISIBLE);
+                                                    sor = false;
+                                                    break;
+                                                case 1:
+                                                    Islevsel.updateURL();
+                                                    if (tur == 0)
+                                                        startActivity(new Intent(getApplicationContext(), OgrenciAnasayfaActivity.class));
+                                                    else
+                                                        startActivity(new Intent(getApplicationContext(), OgretmenAnasayfaActivity.class));
+                                                    break;
+                                            }
+
+                                        }
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Log.e("ERROR : ", error.toString());
+                                }
+                            }
+                    ){
+                        @Override
+                        public Map<String, String> getHeaders() throws AuthFailureError {
+                            final Map<String, String> headers = new HashMap<>();
+                            headers.putAll(super.getHeaders());
+
+                            headers.put("Authorization", "Bearer " + token);
+
+                            return headers;
+                        }
+                    };
+                    requestQueue.add(objectRequest);
+
+                }
             }
         };
         timer.schedule(timerTask,30000);
@@ -161,85 +243,6 @@ public class OnayBekleniyor extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void isApproved(){
-        if (sor){
-
-            final JSONObject parameters = new JSONObject();
-
-            try {
-                parameters.accumulate("Code", code.getText().toString());
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-
-            Realm realm = Realm.getDefaultInstance();
-            realm.executeTransaction(new Realm.Transaction() {
-                @Override
-                public void execute(Realm realm) {
-                    token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
-                }
-            });
-
-            JsonObjectRequest objectRequest = new JsonObjectRequest(
-                    Request.Method.GET,
-                    Islevsel.isApprovedURL,
-                    parameters,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(final JSONObject response) {
-
-                            try {
-                                if (response.getBoolean("isFailed")) {
-                                    Log.e("FAILED : ", response.getString("message"));
-                                } else {
-                                    res = response;
-                                    Log.e("ISAPPROVED",""+res.getInt("isApproved"));
-
-                                    switch (res.getInt("isApproved")){
-                                        case 0:
-                                            kayıtReddedildiView.setVisibility(View.VISIBLE);
-                                            sor = false;
-                                            break;
-                                        case 1:
-                                            Islevsel.updateURL();
-                                            if (tur == 0)
-                                                startActivity(new Intent(getApplicationContext(), OgrenciAnasayfaActivity.class));
-                                            else
-                                                startActivity(new Intent(getApplicationContext(), OgretmenAnasayfaActivity.class));
-                                            break;
-                                    }
-
-                                }
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.e("ERROR : ", error.toString());
-                        }
-                    }
-            ){
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    final Map<String, String> headers = new HashMap<>();
-                    headers.putAll(super.getHeaders());
-
-                    headers.put("Authorization", "Bearer " + token);
-
-                    return headers;
-                }
-            };
-            requestQueue.add(objectRequest);
-
-        }
     }
 
     @Override
