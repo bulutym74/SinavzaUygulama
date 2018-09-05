@@ -98,7 +98,6 @@ public class LoginFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-
                 if (index == 2) {
                     Toast toast = Toast.makeText(getApplicationContext(), "Yakında Kullanıma Açılacaktır", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.BOTTOM, 0, 300);

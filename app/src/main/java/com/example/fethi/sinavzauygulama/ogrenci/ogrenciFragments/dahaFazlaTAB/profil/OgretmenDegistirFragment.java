@@ -105,6 +105,7 @@ public class OgretmenDegistirFragment extends Fragment {
                                 if (res.getBoolean("talep")) {
                                     activityTalep.setVisibility(View.VISIBLE);
                                     txt_talep.setText("Halihazırda öğretmen değişim talebiniz bulunmaktadır");
+                                    btn_devam.setVisibility(View.GONE);
                                 }
                             }
 
@@ -136,7 +137,6 @@ public class OgretmenDegistirFragment extends Fragment {
             }
         };
         requestQueue.add(objectRequest);
-
 
         btn_devam.setOnClickListener(new View.OnClickListener() {
             @Override
