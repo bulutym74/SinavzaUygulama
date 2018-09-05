@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -93,23 +94,37 @@ public class OgretmenAnasayfaActivity extends AppCompatActivity implements Botto
 
     @Override
     public void onBackPressed() {
+
         if (doubleBackToExitPressedOnce) {
             moveTaskToBack(true);
             return;
         }
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (currentFragment instanceof OgretmenBransOgretmeniFragment||
+                currentFragment instanceof OgretmenDanismanOgretmenFragment||
+                currentFragment instanceof OgretmenProfileFragment) {
 
-        this.doubleBackToExitPressedOnce = true;
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Çıkmak için tekrar basınız", Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.BOTTOM, 0, 300);
-        toast.show();
+            this.doubleBackToExitPressedOnce = true;
 
-        new Handler().postDelayed(new Runnable() {
+            Toast toast = Toast.makeText(getApplicationContext(), "Çıkmak için tekrar basınız", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.BOTTOM, 0, 300);
+            toast.show();
 
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce=false;
-            }
-        }, 2000);
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+
+
+        }
+        else {
+            FragmentManager fm = getSupportFragmentManager();
+            fm.popBackStack();
+        }
+
     }
 }

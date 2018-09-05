@@ -167,7 +167,6 @@ public class OgrenciUyeOlKurumluFragment extends Fragment {
                 ogrNo.clearFocus();
                 btn_devam.setVisibility(View.GONE);
                 back.setVisibility(View.VISIBLE);
-
             }
         });
 

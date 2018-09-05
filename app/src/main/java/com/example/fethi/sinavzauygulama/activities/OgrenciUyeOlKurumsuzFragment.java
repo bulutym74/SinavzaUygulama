@@ -138,6 +138,7 @@ public class OgrenciUyeOlKurumsuzFragment extends Fragment {
                 isim.clearFocus();
                 soyisim.clearFocus();
                 tel.clearFocus();
+
                 //klavye gizle
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(linearLayout.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
@@ -213,7 +214,6 @@ public class OgrenciUyeOlKurumsuzFragment extends Fragment {
                     @Override
                     public void execute(Realm realm) {
                         token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
-                        //Log.e("TOKEN ", token);
                     }
                 });
 

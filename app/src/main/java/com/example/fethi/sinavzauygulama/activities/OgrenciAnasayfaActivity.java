@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -20,6 +21,11 @@ import com.example.fethi.sinavzauygulama.diger.BottomNavigationViewHelper;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.dahaFazlaTAB.DahaFazlaFragment;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.odevlerTAB.OdevlerFragment;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.ozetTAB.OzetFragment;
+import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.puanHesaplamaTAB.PuanHesaplamaFragment;
+import com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.tercihYapTAB.TercihYapFragment;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.bransOgretmeniTAB.OgretmenBransOgretmeniFragment;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.OgretmenDanismanOgretmenFragment;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.profilTAB.OgretmenProfileFragment;
 
 public class OgrenciAnasayfaActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     boolean doubleBackToExitPressedOnce = false;
@@ -106,24 +112,36 @@ public class OgrenciAnasayfaActivity extends AppCompatActivity implements Bottom
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
-            //super.onBackPressed();
             moveTaskToBack(true);
             return;
         }
+        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if (currentFragment instanceof OzetFragment ||
+                currentFragment instanceof OdevlerFragment ||
+                currentFragment instanceof PuanHesaplamaFragment ||
+                currentFragment instanceof TercihYapFragment ||
+                currentFragment instanceof DahaFazlaFragment){
 
-        this.doubleBackToExitPressedOnce = true;
+            this.doubleBackToExitPressedOnce = true;
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Çıkmak için tekrar basınız", Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.BOTTOM, 0, 300);
-        toast.show();
+            Toast toast = Toast.makeText(getApplicationContext(), "Çıkmak için tekrar basınız", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.BOTTOM, 0, 300);
+            toast.show();
 
-        new Handler().postDelayed(new Runnable() {
+            new Handler().postDelayed(new Runnable() {
 
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce = false;
-            }
-        }, 2000);
+                @Override
+                public void run() {
+                    doubleBackToExitPressedOnce = false;
+                }
+            }, 2000);
+
+
+        }
+        else{
+            FragmentManager fm = getSupportFragmentManager();
+            fm.popBackStack();
+        }
     }
 
 }
