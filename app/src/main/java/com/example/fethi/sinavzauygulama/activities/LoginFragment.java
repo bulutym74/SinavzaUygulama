@@ -382,12 +382,14 @@ public class LoginFragment extends Fragment {
 
                                         if (res.getInt("isApproved") != 1) {
                                             Bundle bundle = new Bundle();
-                                            if (res.getInt("isApproved") == 0) {
-                                                bundle.putBoolean("ret", true);
-                                            } else
-                                                bundle.putBoolean("ret", false);
+
+                                            bundle.putBoolean("ret", res.getInt("isApproved") == 0);
                                             bundle.putInt("tur", index);
-                                            startActivity(new Intent(getApplicationContext(), OnayBekleniyor.class));
+
+                                            Intent myIntent = new Intent(getApplicationContext(), OnayBekleniyor.class);
+                                            myIntent.putExtras(bundle);
+                                            startActivity(myIntent);
+
                                         } else {
                                             Islevsel.updateURL();
 

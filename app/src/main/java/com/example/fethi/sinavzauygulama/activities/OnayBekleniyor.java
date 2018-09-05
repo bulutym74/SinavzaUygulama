@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -69,7 +70,7 @@ public class OnayBekleniyor extends AppCompatActivity {
         log_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                sor = false;
                 realm.executeTransaction(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
@@ -91,27 +92,21 @@ public class OnayBekleniyor extends AppCompatActivity {
                 onay.setText("Hesabınızın kurumunuz tarafından onaylanması bekleniyor");
                 ret1.setText("Kaydınız kurum tarafından reddedildi!");
                 ret2.setText("Yeni bir kurum koduyla kayıt olmayı deneyin");
+                btn_devam.setVisibility(View.VISIBLE);
             }
             if (ret){
                 onayBekleniyorView.setVisibility(View.GONE);
                 kayıtReddedildiView.setVisibility(View.VISIBLE);
+                btn_devam.setVisibility(View.VISIBLE);
                 sor = false;
             }
         }
 
-        Timer timer = new Timer();
+        final Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
                 if (sor){
-
-                    final JSONObject parameters = new JSONObject();
-
-                    try {
-                        parameters.accumulate("Code", code.getText().toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
 
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -126,13 +121,17 @@ public class OnayBekleniyor extends AppCompatActivity {
                     JsonObjectRequest objectRequest = new JsonObjectRequest(
                             Request.Method.GET,
                             Islevsel.isApprovedURL,
-                            parameters,
+                            new JSONObject(),
                             new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(final JSONObject response) {
                                     try {
                                         if (response.getBoolean("isFailed")) {
-                                            Log.e("FAILED : ", response.getString("message"));
+
+                                            Toast toast = Toast.makeText(getApplicationContext(), response.getString("message"), Toast.LENGTH_SHORT);
+                                            toast.setGravity(Gravity.BOTTOM, 0, 300);
+                                            toast.show();
+
                                         } else {
                                             res = response;
                                             Log.e("ISAPPROVED",""+res.getInt("isApproved"));
@@ -140,9 +139,11 @@ public class OnayBekleniyor extends AppCompatActivity {
                                             switch (res.getInt("isApproved")){
                                                 case 0:
                                                     kayıtReddedildiView.setVisibility(View.VISIBLE);
+                                                    btn_devam.setVisibility(View.VISIBLE);
                                                     sor = false;
                                                     break;
                                                 case 1:
+                                                    sor = false;
                                                     Islevsel.updateURL();
                                                     if (tur == 0)
                                                         startActivity(new Intent(getApplicationContext(), OgrenciAnasayfaActivity.class));
@@ -150,6 +151,7 @@ public class OnayBekleniyor extends AppCompatActivity {
                                                         startActivity(new Intent(getApplicationContext(), OgretmenAnasayfaActivity.class));
                                                     break;
                                             }
+                                            timer.cancel();
 
                                         }
 
@@ -162,6 +164,10 @@ public class OnayBekleniyor extends AppCompatActivity {
                                 @Override
                                 public void onErrorResponse(VolleyError error) {
                                     Log.e("ERROR : ", error.toString());
+
+                                    Toast toast = Toast.makeText(getApplicationContext(), "Bağlantı hatası!", Toast.LENGTH_SHORT);
+                                    toast.setGravity(Gravity.BOTTOM, 0, 300);
+                                    toast.show();
                                 }
                             }
                     ){
@@ -208,13 +214,18 @@ public class OnayBekleniyor extends AppCompatActivity {
 
                                 try {
                                     if (response.getBoolean("isFailed")) {
-                                        Log.e("FAILED : ", response.getString("message"));
+
+                                        Toast toast = Toast.makeText(getApplicationContext(), response.getString("message"), Toast.LENGTH_SHORT);
+                                        toast.setGravity(Gravity.BOTTOM, 0, 300);
+                                        toast.show();
+
                                     } else {
                                         res = response;
 
                                         sor = true;
                                         kayıtReddedildiView.setVisibility(View.GONE);
-
+                                        btn_devam.setVisibility(View.GONE);
+                                        onayBekleniyorView.setVisibility(View.VISIBLE);
                                     }
 
                                 } catch (JSONException e) {
@@ -226,6 +237,10 @@ public class OnayBekleniyor extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 Log.e("ERROR : ", error.toString());
+
+                                Toast toast = Toast.makeText(getApplicationContext(), "Bağlantı hatası!", Toast.LENGTH_SHORT);
+                                toast.setGravity(Gravity.BOTTOM, 0, 300);
+                                toast.show();
                             }
                         }
                 ){
