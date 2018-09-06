@@ -71,7 +71,6 @@ public class OzetFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     SwipeRefreshLayout refreshLayout;
     JSONObject res;
     String token;
-    Realm realm = Realm.getDefaultInstance();
     public int seciliId;
 
     @Nullable
@@ -237,8 +236,10 @@ public class OzetFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-        token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
-        Log.e("URL", Islevsel.ogrenciOzetURL);
+        try(Realm realm = Realm.getDefaultInstance()){
+            token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+        }
+
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 Islevsel.ogrenciOzetURL,

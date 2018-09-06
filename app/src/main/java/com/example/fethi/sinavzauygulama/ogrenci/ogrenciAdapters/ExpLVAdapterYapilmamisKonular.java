@@ -51,7 +51,6 @@ public class ExpLVAdapterYapilmamisKonular extends BaseExpandableListAdapter {
     public LayoutInflater inflater;
 
     private String token;
-    private Realm realm = Realm.getDefaultInstance();
 
     public ExpLVAdapterYapilmamisKonular(Context context, KitapItem seciliKitap) {
         this.context = context;
@@ -261,7 +260,9 @@ public class ExpLVAdapterYapilmamisKonular extends BaseExpandableListAdapter {
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                try(Realm realm = Realm.getDefaultInstance()){
+                    token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                }
 
                 JsonObjectRequest objectRequest = new JsonObjectRequest(
                         Request.Method.POST,

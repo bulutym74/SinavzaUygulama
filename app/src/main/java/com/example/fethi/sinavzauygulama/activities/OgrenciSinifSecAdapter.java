@@ -49,8 +49,6 @@ public class OgrenciSinifSecAdapter extends RecyclerView.Adapter<OgrenciSinifSec
 
     JSONObject res;
     String token;
-    Realm realm = Realm.getDefaultInstance();
-
 
     public OgrenciSinifSecAdapter(List<OgrenciSinifSec> siniflar, Context context,Fragment fragment, int durum) {
         this.siniflar = siniflar;
@@ -83,7 +81,9 @@ public class OgrenciSinifSecAdapter extends RecyclerView.Adapter<OgrenciSinifSec
 
                         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                        token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                        try(Realm realm = Realm.getDefaultInstance()){
+                            token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                        }
 
                         JsonObjectRequest objectRequest = new JsonObjectRequest(
                                 Request.Method.POST,

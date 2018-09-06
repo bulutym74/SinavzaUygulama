@@ -70,8 +70,6 @@ public class SinifDegistirFragment extends Fragment {
 
     JSONObject res;
     String token;
-    Realm realm = Realm.getDefaultInstance();
-
 
     @Nullable
     @Override
@@ -145,8 +143,10 @@ public class SinifDegistirFragment extends Fragment {
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
-                Log.e("URL", Islevsel.sinifDegistirURL);
+                try(Realm realm = Realm.getDefaultInstance()){
+                    token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                }
+
                 JsonObjectRequest objectRequest = new JsonObjectRequest(
                         Request.Method.GET,
                         Islevsel.sinifDegistirURL,

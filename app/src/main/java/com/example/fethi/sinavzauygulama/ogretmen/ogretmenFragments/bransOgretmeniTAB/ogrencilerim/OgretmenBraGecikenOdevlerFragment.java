@@ -56,7 +56,6 @@ public class OgretmenBraGecikenOdevlerFragment extends Fragment implements Swipe
     SwipeRefreshLayout refreshLayout;
     JSONObject res;
     String token;
-    Realm realm = Realm.getDefaultInstance();
     public OgrenciItem seciliOgrenci;
 
     @Nullable
@@ -120,7 +119,9 @@ public class OgretmenBraGecikenOdevlerFragment extends Fragment implements Swipe
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-        token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+        try(Realm realm = Realm.getDefaultInstance()){
+            token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+        }
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.POST,

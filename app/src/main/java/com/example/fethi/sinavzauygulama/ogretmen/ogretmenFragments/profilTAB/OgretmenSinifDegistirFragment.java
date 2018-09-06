@@ -90,7 +90,6 @@ public class OgretmenSinifDegistirFragment extends Fragment {
 
     JSONObject res;
     String token;
-    Realm realm = Realm.getDefaultInstance();
 
     Button btn_ekle;
     TextView txt_talep;
@@ -145,7 +144,9 @@ public class OgretmenSinifDegistirFragment extends Fragment {
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                try(Realm realm = Realm.getDefaultInstance()){
+                    token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                }
 
                 JsonObjectRequest objectRequest = new JsonObjectRequest(
                         Request.Method.GET,
@@ -272,7 +273,9 @@ public class OgretmenSinifDegistirFragment extends Fragment {
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                try(Realm realm = Realm.getDefaultInstance()){
+                    token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                }
 
                 JsonObjectRequest objectRequest = new JsonObjectRequest(
                         Request.Method.POST,

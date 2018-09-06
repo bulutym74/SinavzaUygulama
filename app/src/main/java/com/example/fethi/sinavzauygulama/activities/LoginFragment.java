@@ -67,7 +67,7 @@ public class LoginFragment extends Fragment {
         email = view.findViewById(R.id.email);
         password = view.findViewById(R.id.password);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getApplicationContext(), R.array.gruplar, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.gruplar, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -232,8 +232,9 @@ public class LoginFragment extends Fragment {
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                Realm realm = Realm.getDefaultInstance();
-                token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                try(Realm realm = Realm.getDefaultInstance()){
+                    token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                }
 
                 JsonObjectRequest objectRequest = new JsonObjectRequest(
                         Request.Method.GET,
@@ -358,8 +359,9 @@ public class LoginFragment extends Fragment {
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                Realm realm = Realm.getDefaultInstance();
-                token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                try(Realm realm = Realm.getDefaultInstance()){
+                    token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                }
 
                 JsonObjectRequest objectRequest = new JsonObjectRequest(
                         Request.Method.GET,

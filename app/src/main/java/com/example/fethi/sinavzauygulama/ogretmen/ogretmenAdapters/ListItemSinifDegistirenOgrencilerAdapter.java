@@ -46,7 +46,6 @@ public class ListItemSinifDegistirenOgrencilerAdapter extends RecyclerView.Adapt
 
     JSONObject res;
     String token;
-    Realm realm = Realm.getDefaultInstance();
 
     public ListItemSinifDegistirenOgrencilerAdapter(List<ListItemSinifDegistirenOgrenciler> listItemSinifDegistirenler, Context context, Fragment fragment) {
         this.listItemSinifDegistirenler = listItemSinifDegistirenler;
@@ -126,7 +125,9 @@ public class ListItemSinifDegistirenOgrencilerAdapter extends RecyclerView.Adapt
 
                         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                        token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                        try(Realm realm = Realm.getDefaultInstance()){
+                            token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                        }
 
                         JsonObjectRequest objectRequest = new JsonObjectRequest(
                                 Request.Method.POST,
@@ -214,7 +215,9 @@ public class ListItemSinifDegistirenOgrencilerAdapter extends RecyclerView.Adapt
 
                         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                        token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                        try(Realm realm = Realm.getDefaultInstance()){
+                            token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                        }
 
                         JsonObjectRequest objectRequest = new JsonObjectRequest(
                                 Request.Method.POST,

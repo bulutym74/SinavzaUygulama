@@ -76,7 +76,6 @@ public class OgretmenDanKitapDetayOzetFragment extends Fragment {
 
     JSONObject res;
     String token;
-    Realm realm = Realm.getDefaultInstance();
 
     CardView popupSiniflar,popupOdevler;
     FrameLayout odevOzetiBackground;
@@ -88,7 +87,6 @@ public class OgretmenDanKitapDetayOzetFragment extends Fragment {
     FloatingActionButton fab_odevOzeti;
     TextView trh_baslama,trh_bitis;
     ViewGroup transitionsContainer;
-
 
     @Nullable
     @Override
@@ -277,7 +275,9 @@ public class OgretmenDanKitapDetayOzetFragment extends Fragment {
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                try(Realm realm = Realm.getDefaultInstance()){
+                    token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                }
 
                 JsonObjectRequest objectRequest = new JsonObjectRequest(
                         Request.Method.POST,

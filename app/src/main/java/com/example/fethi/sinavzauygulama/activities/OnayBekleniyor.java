@@ -110,13 +110,9 @@ public class OnayBekleniyor extends AppCompatActivity {
 
                     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                    Realm realm = Realm.getDefaultInstance();
-                    realm.executeTransaction(new Realm.Transaction() {
-                        @Override
-                        public void execute(Realm realm) {
-                            token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
-                        }
-                    });
+                    try(Realm realm = Realm.getDefaultInstance()){
+                        token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                    }
 
                     JsonObjectRequest objectRequest = new JsonObjectRequest(
                             Request.Method.GET,
@@ -202,7 +198,9 @@ public class OnayBekleniyor extends AppCompatActivity {
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                try(Realm realm = Realm.getDefaultInstance()){
+                    token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                }
 
                 JsonObjectRequest objectRequest = new JsonObjectRequest(
                         Request.Method.POST,

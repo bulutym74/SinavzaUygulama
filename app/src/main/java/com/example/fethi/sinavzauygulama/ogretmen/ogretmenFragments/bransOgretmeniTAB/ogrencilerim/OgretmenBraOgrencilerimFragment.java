@@ -42,7 +42,8 @@ import io.realm.Realm;
 
 import static io.realm.internal.SyncObjectServerFacade.getApplicationContext;
 
-public class OgretmenBraOgrencilerimFragment extends Fragment {
+public class
+OgretmenBraOgrencilerimFragment extends Fragment {
 
     public OgretmenExpLVAdapterDanOgrencilerim expand_adapter;
     public ExpandableListView expand_lv_siniflar;
@@ -50,7 +51,6 @@ public class OgretmenBraOgrencilerimFragment extends Fragment {
 
     JSONObject res;
     String token;
-    Realm realm = Realm.getDefaultInstance();
 
     LinearLayout yokView;
 
@@ -106,7 +106,9 @@ public class OgretmenBraOgrencilerimFragment extends Fragment {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-        token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+        try(Realm realm = Realm.getDefaultInstance()){
+            token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+        }
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,

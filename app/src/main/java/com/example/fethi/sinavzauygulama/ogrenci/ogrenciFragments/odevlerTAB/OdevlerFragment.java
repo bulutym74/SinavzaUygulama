@@ -53,7 +53,6 @@ public class OdevlerFragment extends Fragment implements SwipeRefreshLayout.OnRe
     SwipeRefreshLayout refreshLayout;
     JSONObject res;
     String token;
-    Realm realm = Realm.getDefaultInstance();
 
     LinearLayout odevYokView;
     public int dersId = -1;
@@ -113,7 +112,9 @@ public class OdevlerFragment extends Fragment implements SwipeRefreshLayout.OnRe
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-        token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+        try(Realm realm = Realm.getDefaultInstance()){
+            token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+        }
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,

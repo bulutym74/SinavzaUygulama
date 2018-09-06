@@ -55,7 +55,6 @@ public class OgretmenExpLVAdapterSiniflar extends BaseExpandableListAdapter {
 
     JSONObject res;
     String token;
-    Realm realm = Realm.getDefaultInstance();
 
     public OgretmenExpLVAdapterSiniflar(Context context, ArrayList<SinifItem> siniflar) {
         this.context = context;
@@ -202,7 +201,9 @@ public class OgretmenExpLVAdapterSiniflar extends BaseExpandableListAdapter {
 
                         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                        token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                        try(Realm realm = Realm.getDefaultInstance()){
+                            token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                        }
 
                         JsonObjectRequest objectRequest = new JsonObjectRequest(
                                 Request.Method.POST,

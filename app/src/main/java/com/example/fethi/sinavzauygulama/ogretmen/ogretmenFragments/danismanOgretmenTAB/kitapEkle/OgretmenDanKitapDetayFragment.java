@@ -55,7 +55,6 @@ public class OgretmenDanKitapDetayFragment extends Fragment {
 
     JSONObject res;
     String token;
-    Realm realm = Realm.getDefaultInstance();
     LinearLayout ortakKitapYokView;
 
     ExpandableListView expandlist_view_kitapsec;
@@ -156,7 +155,9 @@ public class OgretmenDanKitapDetayFragment extends Fragment {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-        token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+        try(Realm realm = Realm.getDefaultInstance()){
+            token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+        }
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.POST,
