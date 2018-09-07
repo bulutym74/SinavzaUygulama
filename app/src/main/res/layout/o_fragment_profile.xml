@@ -76,7 +76,6 @@
                     android:id="@+id/sec_siniflar"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginBottom="4dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="12dp"
@@ -101,6 +100,51 @@
 
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/rv_siniflar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:padding="0dp"
+                            android:visibility="visible" />
+
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="60dp"
+                        android:layout_gravity="center|end"
+                        app:srcCompat="@drawable/ic_arrow_right" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/sec_branslar"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingEnd="50dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:text="Branş"
+                            android:textColor="@color/darkgray"
+                            android:textSize="20sp" />
+
+                        <android.support.v7.widget.RecyclerView
+                            android:id="@+id/rv_branslar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="start"

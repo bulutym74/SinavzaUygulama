@@ -55,6 +55,7 @@ public class SinifDegistirFragment extends Fragment {
     RecyclerView rv_sinifListesi;
     RecyclerView.Adapter adapter;
     ArrayList<String> ogrenciler = new ArrayList<>();
+
     RecyclerView rv_sinifsec;
     public List<OgrenciSinifSec> siniflar = new ArrayList<>();
 

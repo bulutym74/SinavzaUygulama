@@ -587,5 +587,6 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
     public void onBackPressed() {
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.popBackStack();
+
     }
 }

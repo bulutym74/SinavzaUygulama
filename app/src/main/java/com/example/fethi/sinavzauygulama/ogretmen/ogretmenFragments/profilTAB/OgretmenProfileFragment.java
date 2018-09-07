@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -32,6 +31,7 @@ import com.example.fethi.sinavzauygulama.activities.LoginActivity;
 import com.example.fethi.sinavzauygulama.activities.UserInfoItem;
 import com.example.fethi.sinavzauygulama.diger.Islevsel;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.ListItemHorizontalAdapter;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.BransItem;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.OgrenciItem;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.SinifItem;
 
@@ -52,20 +52,25 @@ public class OgretmenProfileFragment extends Fragment {
     ImageView log_out;
     FrameLayout sifre_degistir;
     FrameLayout sec_siniflar;
+    FrameLayout sec_branslar;
 
     TextView isim, kurum, email, kod;
     Button link;
 
     RecyclerView rv_siniflar;
-    ListItemHorizontalAdapter horizontalAdapter;
+    RecyclerView rv_branslar;
+    ListItemHorizontalAdapter horizontalAdapter_siniflar;
+    ListItemHorizontalAdapter horizontalAdapter_branslar;
 
     ArrayList<SinifItem> siniflar = new ArrayList<>();
+    ArrayList<BransItem> branslar = new ArrayList<>();
 
     JSONObject res;
     String token;
     Realm realm = Realm.getDefaultInstance();
 
-    List<String> data = new ArrayList<>();
+    List<String> data_siniflar = new ArrayList<>();
+    List<String> data_branslar = new ArrayList<>();
 
     @Nullable
     @Override
@@ -80,12 +85,17 @@ public class OgretmenProfileFragment extends Fragment {
         parseJSON();
 
         rv_siniflar = view.findViewById(R.id.rv_siniflar);
+        rv_branslar = view.findViewById(R.id.rv_branslar);
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager horizontalLayoutManager1 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 
-        horizontalAdapter = new ListItemHorizontalAdapter(data, getContext());
+        horizontalAdapter_siniflar = new ListItemHorizontalAdapter(data_siniflar, getContext());
+        horizontalAdapter_branslar = new ListItemHorizontalAdapter(data_branslar, getContext());
 
         rv_siniflar.setLayoutManager(horizontalLayoutManager);
-        rv_siniflar.setAdapter(horizontalAdapter);
+        rv_siniflar.setAdapter(horizontalAdapter_siniflar);
+        rv_branslar.setLayoutManager(horizontalLayoutManager1);
+        rv_branslar.setAdapter(horizontalAdapter_branslar);
 
 
         log_out = view.findViewById(R.id.log_out);
@@ -129,6 +139,19 @@ public class OgretmenProfileFragment extends Fragment {
                         .commit();
             }
         });
+        sec_branslar = view.findViewById(R.id.sec_branslar);
+        sec_branslar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OgretmenBransDegistirFragment nextFrag = new OgretmenBransDegistirFragment();
+                nextFrag.branslar = branslar;
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
+                        .replace(R.id.fragment_container, nextFrag, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         link = view.findViewById(R.id.btn_link);
         link.setOnClickListener(new View.OnClickListener() {
@@ -147,7 +170,7 @@ public class OgretmenProfileFragment extends Fragment {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-        try(Realm realm = Realm.getDefaultInstance()){
+        try (Realm realm = Realm.getDefaultInstance()) {
             token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
         }
 
@@ -168,7 +191,9 @@ public class OgretmenProfileFragment extends Fragment {
                             } else {
                                 res = response;
                                 siniflar.clear();
-                                data.clear();
+                                data_siniflar.clear();
+                                branslar.clear();
+                                data_branslar.clear();
 
                                 isim.setText(res.getString("name"));
                                 kurum.setText(res.getString("kurum"));
@@ -185,11 +210,20 @@ public class OgretmenProfileFragment extends Fragment {
                                         );
 
                                     siniflar.add(sinifItem);
-                                    data.add(sinifItem.getSinifAdi());
+                                    data_siniflar.add(sinifItem.getSinifAdi());
+                                }
+                                for (int i = 0; i < res.getJSONArray("branslar").length(); i++) {
+                                    BransItem bransItem = new BransItem(res.getJSONArray("branslar").getJSONObject(i).getString("name"),
+                                            res.getJSONArray("branslar").getJSONObject(i).getInt("id"));
+
+                                    branslar.add(bransItem);
+                                    data_branslar.add(bransItem.getBransAdi());
                                 }
 
+
                             }
-                            horizontalAdapter.notifyDataSetChanged();
+                            horizontalAdapter_siniflar.notifyDataSetChanged();
+                            horizontalAdapter_branslar.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class SinifItem {
 
-    private String sinifAdi = "";
+    private String sinifAdi;
     private ArrayList<OgrenciItem> ogrenciler;
     private int ogrenciSayisi;
     private int id;
