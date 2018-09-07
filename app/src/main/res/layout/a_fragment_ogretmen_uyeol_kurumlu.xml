@@ -236,7 +236,6 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="30dp"
-
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackgroundBorderless"
@@ -299,6 +298,75 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone" />
 
+            <LinearLayout
+                android:id="@+id/sec_bransi"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    app:srcCompat="@drawable/touch" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:paddingStart="10dp"
+                    android:text="Branşınızı Seçin"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/sayi_brans"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|end"
+                    android:text="5"
+                    android:textColor="@color/lightgray"
+                    android:textSize="16sp"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:id="@+id/copkutusu_brans"
+                    style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center|end"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
+                    android:padding="3dp"
+                    android:text="Sil"
+                    android:textColor="@color/primaryPurple"
+                    android:textSize="15sp"
+                    android:visibility="invisible" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@color/primaryPurple" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_branslar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="wrap_content"
@@ -312,7 +380,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:hint="Telefon No"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:maxLength="11"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -329,7 +398,8 @@
                     android:gravity="center"
                     android:hint="T.C. Kimlik No"
                     android:imeOptions="actionDone"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:maxLength="11"/>
 
             </android.support.design.widget.TextInputLayout>
 

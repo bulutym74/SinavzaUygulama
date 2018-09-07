@@ -416,9 +416,15 @@ public class UyeOlFragment extends Fragment {
                         JSONObject sinif = (JSONObject) (res.getJSONArray("siniflar").get(i));
                         siniflar.add(new OgretmenListItemFiltre(sinif.getString("name"), sinif.getInt("id")));
                     }
+                    ArrayList<OgretmenListItemFiltre> branslar = new ArrayList<>();
+                    for (int i = 0; i < res.getJSONArray("branslar").length(); i++) {
+                        JSONObject brans = (JSONObject) (res.getJSONArray("branslar").get(i));
+                        branslar.add(new OgretmenListItemFiltre(brans.getString("name"), brans.getInt("id")));
+                    }
 
                     OgretmenUyeOlKurumluFragment nextFrag = new OgretmenUyeOlKurumluFragment();
                     nextFrag.siniflar = siniflar;
+                    nextFrag.branslar = branslar;
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
                             .replace(R.id.fragment_container, nextFrag, "findThisFragment")
@@ -427,7 +433,6 @@ public class UyeOlFragment extends Fragment {
                 } else {
 
                     OgretmenUyeOlKurumsuzFragment nextFrag = new OgretmenUyeOlKurumsuzFragment();
-
                     getActivity().getSupportFragmentManager().beginTransaction()
                             .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
                             .replace(R.id.fragment_container, nextFrag, "findThisFragment")

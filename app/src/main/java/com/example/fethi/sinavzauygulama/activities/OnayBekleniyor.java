@@ -92,7 +92,7 @@ public class OnayBekleniyor extends AppCompatActivity {
                 onay.setText("Hesabınızın kurumunuz tarafından onaylanması bekleniyor");
                 ret1.setText("Kaydınız kurum tarafından reddedildi!");
                 ret2.setText("Yeni bir kurum koduyla kayıt olmayı deneyin");
-                btn_devam.setVisibility(View.VISIBLE);
+                btn_devam.setVisibility(View.GONE);
             }
             if (ret){
                 onayBekleniyorView.setVisibility(View.GONE);

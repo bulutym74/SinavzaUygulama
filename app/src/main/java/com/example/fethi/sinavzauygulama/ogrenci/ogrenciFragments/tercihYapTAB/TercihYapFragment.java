@@ -194,7 +194,7 @@ public class TercihYapFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Animation animShow = AnimationUtils.loadAnimation( getContext(), R.anim.view_show);
+                Animation animShow = AnimationUtils.loadAnimation(getContext(), R.anim.view_show);
                 search_ekrani.startAnimation(animShow);
                 search_ekrani.setVisibility(View.VISIBLE);
 
@@ -215,7 +215,7 @@ public class TercihYapFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Animation animShow = AnimationUtils.loadAnimation( getContext(), R.anim.view_show);
+                Animation animShow = AnimationUtils.loadAnimation(getContext(), R.anim.view_show);
                 search_ekrani.startAnimation(animShow);
                 search_ekrani.setVisibility(View.VISIBLE);
 
@@ -237,7 +237,7 @@ public class TercihYapFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Animation animShow = AnimationUtils.loadAnimation( getContext(), R.anim.view_show);
+                Animation animShow = AnimationUtils.loadAnimation(getContext(), R.anim.view_show);
                 search_ekrani.startAnimation(animShow);
                 search_ekrani.setVisibility(View.VISIBLE);
 
@@ -259,7 +259,7 @@ public class TercihYapFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Animation animShow = AnimationUtils.loadAnimation( getContext(), R.anim.view_show);
+                Animation animShow = AnimationUtils.loadAnimation(getContext(), R.anim.view_show);
                 search_ekrani.startAnimation(animShow);
                 search_ekrani.setVisibility(View.VISIBLE);
 
@@ -281,7 +281,7 @@ public class TercihYapFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Animation animShow = AnimationUtils.loadAnimation( getContext(), R.anim.view_show);
+                Animation animShow = AnimationUtils.loadAnimation(getContext(), R.anim.view_show);
                 search_ekrani.startAnimation(animShow);
                 search_ekrani.setVisibility(View.VISIBLE);
 
@@ -303,7 +303,7 @@ public class TercihYapFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                Animation animHide = AnimationUtils.loadAnimation( getContext(), R.anim.view_hide);
+                Animation animHide = AnimationUtils.loadAnimation(getContext(), R.anim.view_hide);
                 search_ekrani.startAnimation(animHide);
                 search_ekrani.setVisibility(View.GONE);
 
@@ -710,6 +710,8 @@ public class TercihYapFragment extends Fragment {
                 break;
             case 4:
                 list = puanTurList;
+                break;
+            default:
                 break;
         }
 

@@ -149,10 +149,10 @@
                     android:id="@+id/et_tel"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:hint="Telefon No"
-                    android:maxLength="11"
                     android:inputType="number"
-                    android:gravity="center"/>
+                    android:maxLength="11" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -181,10 +181,10 @@
                     android:id="@+id/et_tcNo"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:hint="T.C. Kimlik No"
-                    android:maxLength="11"
                     android:inputType="number"
-                    android:gravity="center"/>
+                    android:maxLength="11" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -198,11 +198,11 @@
                     android:id="@+id/et_ogrNu"
                     android:layout_width="160dp"
                     android:layout_height="wrap_content"
-                    android:hint="Öğrenci No"
-                    android:maxLength="10"
-                    android:inputType="number"
                     android:gravity="center"
-                    android:imeOptions="actionDone"/>
+                    android:hint="Öğrenci No"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:maxLength="10" />
 
             </android.support.design.widget.TextInputLayout>
 

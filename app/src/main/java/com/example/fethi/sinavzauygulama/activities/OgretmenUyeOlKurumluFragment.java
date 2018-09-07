@@ -45,6 +45,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.fethi.sinavzauygulama.R;
 import com.example.fethi.sinavzauygulama.diger.Islevsel;
 import com.example.fethi.sinavzauygulama.diger.RecyclerTouchListener;
+import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.ListItemFiltre;
 import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.ListItemHorizontalAdapter;
 import com.transitionseverywhere.Fade;
 import com.transitionseverywhere.TransitionManager;
@@ -70,13 +71,14 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
     View back;
     CardView search_ekrani;
     LinearLayout sec_sinifi;
+    LinearLayout sec_bransi;
     FloatingActionButton btn_devam;
     Realm realm = Realm.getDefaultInstance();
     Button iv_done, iv_copkutusu;
 
-    AppCompatEditText isim,soyisim,tel,tcNo;
+    AppCompatEditText isim, soyisim, tel, tcNo;
 
-    RecyclerView rv_tum_siniflar;
+    RecyclerView rv_secin;
     OgretmenListItemFiltreAdapter adapter;
 
     EditText et_search;
@@ -91,12 +93,22 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
     ArrayList<OgretmenListItemFiltre> siniflar;
     ArrayList<OgretmenListItemFiltre> secili_sinifList = new ArrayList<>();
 
+    ArrayList<OgretmenListItemFiltre> branslar;
+    ArrayList<OgretmenListItemFiltre> secili_bransList = new ArrayList<>();
+
     RecyclerView rv_siniflar;
+    RecyclerView rv_branslar;
     ListItemHorizontalAdapter horizontalAdapter;
+    List<String> data;
 
     TextView sayi_sinif;
     Button copkutusu_sinif;
+
+    TextView sayi_brans;
+    Button copkutusu_brans;
+
     String token;
+    int durum = 0;
 
     @Nullable
     @Override
@@ -109,7 +121,7 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
         btn_devam = view.findViewById(R.id.btn_devam);
         iv_done = view.findViewById(R.id.iv_done);
         iv_copkutusu = view.findViewById(R.id.iv_copkutusu);
-        rv_tum_siniflar = view.findViewById(R.id.rv_tum_siniflar);
+        rv_secin = view.findViewById(R.id.rv_tum_siniflar);
         et_search = view.findViewById(R.id.et_search);
         tv_secim = view.findViewById(R.id.tv_secim);
         arkaplan = view.findViewById(R.id.arkaplan);
@@ -120,8 +132,11 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
         tel = view.findViewById(R.id.et_tel);
         tcNo = view.findViewById(R.id.et_tcNo);
         rv_siniflar = view.findViewById(R.id.rv_siniflar);
+        rv_branslar = view.findViewById(R.id.rv_branslar);
         sayi_sinif = view.findViewById(R.id.sayi_sinif);
+        sayi_brans = view.findViewById(R.id.sayi_brans);
         copkutusu_sinif = view.findViewById(R.id.copkutusu_sinif);
+        copkutusu_brans = view.findViewById(R.id.copkutusu_brans);
 
         log_out = view.findViewById(R.id.log_out);
         log_out.setOnClickListener(new View.OnClickListener() {
@@ -148,38 +163,63 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
                 tel.clearFocus();
                 tcNo.clearFocus();
                 //klavye gizle
-                InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(normal_ekran.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             }
         });
 
-        rv_tum_siniflar.setLayoutManager(new LinearLayoutManager(getContext()));
+        rv_secin.setLayoutManager(new LinearLayoutManager(getContext()));
 
         sec_sinifi = view.findViewById(R.id.sec_sinifi);
         sec_sinifi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Animation animShow = AnimationUtils.loadAnimation( getApplicationContext(), R.anim.view_show);
+                Animation animShow = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.view_show);
                 search_ekrani.startAnimation(animShow);
                 search_ekrani.setVisibility(View.VISIBLE);
 
                 back.setVisibility(View.VISIBLE);
                 btn_devam.setVisibility(View.GONE);
+                et_search.setHint("Sınıf Adı");
 
+                durum = 0;
                 adapter = new OgretmenListItemFiltreAdapter(getApplicationContext(), siniflar);
                 if (secili_sinifList.size() != 0)
                     tv_secim.setText(secili_sinifList.size() + " Seçili");
                 else
                     tv_secim.setText("Seçim Yok");
-                rv_tum_siniflar.setAdapter(adapter);
+                rv_secin.setAdapter(adapter);
             }
         });
+        sec_bransi = view.findViewById(R.id.sec_bransi);
+        sec_bransi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Animation animShow = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.view_show);
+                search_ekrani.startAnimation(animShow);
+                search_ekrani.setVisibility(View.VISIBLE);
+
+                back.setVisibility(View.VISIBLE);
+                btn_devam.setVisibility(View.GONE);
+                et_search.setHint("Branş Adı");
+
+                durum = 1;
+                adapter = new OgretmenListItemFiltreAdapter(getApplicationContext(), branslar);
+                if (secili_bransList.size() != 0)
+                    tv_secim.setText(secili_bransList.size() + " Seçili");
+                else
+                    tv_secim.setText("Seçim Yok");
+                rv_secin.setAdapter(adapter);
+            }
+        });
+
         iv_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Animation animHide = AnimationUtils.loadAnimation( getApplicationContext(), R.anim.view_hide);
+                Animation animHide = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.view_hide);
                 search_ekrani.startAnimation(animHide);
                 search_ekrani.setVisibility(View.GONE);
 
@@ -188,49 +228,86 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
 
                 LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
 
-                List<String> data = new ArrayList<>();
-                for (OgretmenListItemFiltre sinif : secili_sinifList) {
-                    data.add(sinif.getName());
-                }
+                data = fill_with_data();
                 horizontalAdapter = new ListItemHorizontalAdapter(data, getApplicationContext());
 
-                rv_siniflar.setLayoutManager(horizontalLayoutManager);
-                rv_siniflar.setAdapter(horizontalAdapter);
-                rv_siniflar.setVisibility(View.VISIBLE);
+                if (durum == 0) {
+                    rv_siniflar.setLayoutManager(horizontalLayoutManager);
+                    rv_siniflar.setAdapter(horizontalAdapter);
+                    rv_siniflar.setVisibility(View.VISIBLE);
 
-                if (data.size() != 0) {
-                    sayi_sinif.setText("" + data.size());
-                    sayi_sinif.setVisibility(View.VISIBLE);
-                    copkutusu_sinif.setVisibility(View.VISIBLE);
-                } else {
-                    sayi_sinif.setVisibility(View.INVISIBLE);
-                    copkutusu_sinif.setVisibility(View.INVISIBLE);
+                    if (data.size() != 0) {
+                        sayi_sinif.setText("" + data.size());
+                        sayi_sinif.setVisibility(View.VISIBLE);
+                        copkutusu_sinif.setVisibility(View.VISIBLE);
+                    } else {
+                        sayi_sinif.setVisibility(View.INVISIBLE);
+                        copkutusu_sinif.setVisibility(View.INVISIBLE);
+                    }
+                } else if (durum == 1) {
+                    rv_branslar.setLayoutManager(horizontalLayoutManager);
+                    rv_branslar.setAdapter(horizontalAdapter);
+                    rv_branslar.setVisibility(View.VISIBLE);
+
+                    if (data.size() != 0) {
+                        sayi_brans.setText("" + data.size());
+                        sayi_brans.setVisibility(View.VISIBLE);
+                        copkutusu_brans.setVisibility(View.VISIBLE);
+                    } else {
+                        sayi_brans.setVisibility(View.INVISIBLE);
+                        copkutusu_brans.setVisibility(View.INVISIBLE);
+                    }
                 }
-
 
             }
         });
         iv_copkutusu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (OgretmenListItemFiltre bolum : siniflar) {
-                    bolum.setSelected(false);
+
+                if (durum == 0) {
+                    for (OgretmenListItemFiltre sinif : siniflar) {
+                        sinif.setSelected(false);
+                    }
+
+                    secili_sinifList.clear();
+
+                    rv_secin.setAdapter(adapter);
+                    tv_secim.setText("Seçim Yok");
+                }
+                if (durum == 1) {
+                    for (OgretmenListItemFiltre brans : branslar) {
+                        brans.setSelected(false);
+                    }
+
+                    secili_bransList.clear();
+
+                    rv_secin.setAdapter(adapter);
+                    tv_secim.setText("Seçim Yok");
                 }
 
-                secili_sinifList.clear();
-
-                rv_tum_siniflar.setAdapter(adapter);
-                tv_secim.setText("Seçim Yok");
             }
         });
-        rv_tum_siniflar.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), rv_tum_siniflar, new RecyclerTouchListener.ClickListener() {
+        rv_secin.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), rv_secin, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int i) {
                 ImageView add_img = view.findViewById(R.id.add_img);
                 ImageView check_img = view.findViewById(R.id.check_img);
 
-                siniflar.get(i).changeSelected();
-                if (siniflar.get(i).isSelected()) {
+                ArrayList<OgretmenListItemFiltre> temp;
+                ArrayList<OgretmenListItemFiltre> seciliTemp;
+
+                if (durum == 0) {
+                    temp = siniflar;
+                    seciliTemp = secili_sinifList;
+
+                } else {
+                    temp = branslar;
+                    seciliTemp = secili_bransList;
+                }
+
+                temp.get(i).changeSelected();
+                if (temp.get(i).isSelected()) {
 
                     ViewGroup transitionsContainer = view.findViewById(R.id.transitions_container);
                     TransitionSet set = new TransitionSet()
@@ -244,8 +321,8 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
                     add_img.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
                     check_img.setVisibility(visible ? View.INVISIBLE : View.VISIBLE);
 
-                    secili_sinifList.add(siniflar.get(i));
-                    tv_secim.setText(secili_sinifList.size() + " Seçili");
+                    seciliTemp.add(temp.get(i));
+                    tv_secim.setText(seciliTemp.size() + " Seçili");
                 } else {
 
                     ViewGroup transitionsContainer = view.findViewById(R.id.transitions_container);
@@ -260,9 +337,9 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
                     check_img.setVisibility(visible ? View.VISIBLE : View.INVISIBLE);
                     add_img.setVisibility(visible ? View.INVISIBLE : View.VISIBLE);
 
-                    secili_sinifList.remove(secili_sinifList.indexOf(siniflar.get(i)));
-                    if (secili_sinifList.size() != 0)
-                        tv_secim.setText(secili_sinifList.size() + " Seçili");
+                    seciliTemp.remove(seciliTemp.indexOf(temp.get(i)));
+                    if (seciliTemp.size() != 0)
+                        tv_secim.setText(seciliTemp.size() + " Seçili");
                     else
                         tv_secim.setText("Seçim Yok");
                 }
@@ -305,7 +382,7 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
 
                             if (sinif.isSelected()) {
                                 sinif.changeSelected();
-                                rv_tum_siniflar.setAdapter(adapter);
+                                rv_secin.setAdapter(adapter);
                             }
                             secili_sinifList.remove(sinif);
                         }
@@ -318,25 +395,52 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
 
             }
         });
+        copkutusu_brans.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        copkutusu_brans.setVisibility(View.INVISIBLE);
+                        sayi_brans.setVisibility(View.INVISIBLE);
+
+                        for (OgretmenListItemFiltre brans : branslar) {
+
+                            if (brans.isSelected()) {
+                                brans.changeSelected();
+                                rv_secin.setAdapter(adapter);
+                            }
+                            secili_bransList.remove(brans);
+                        }
+                        tv_secim.setText("Seçim Yok");
+                        rv_branslar.setAdapter(horizontalAdapter);
+                        rv_branslar.setVisibility(View.GONE);
+                    }
+                }, 200);
+
+
+            }
+        });
 
         btn_devam = view.findViewById(R.id.btn_devam);
         btn_devam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (isim.getText().toString().isEmpty()){
+                if (isim.getText().toString().isEmpty()) {
                     isim.setError("İsim giriniz");
                     return;
                 }
-                if (soyisim.getText().toString().isEmpty()){
+                if (soyisim.getText().toString().isEmpty()) {
                     soyisim.setError("Soyisim giriniz");
                     return;
                 }
-                if (tcNo.getText().toString().isEmpty()){
+                if (tcNo.getText().toString().isEmpty()) {
                     tcNo.setError("T.C. kimlik no giriniz");
                     return;
                 }
-                if (tel.getText().toString().isEmpty()){
+                if (tel.getText().toString().isEmpty()) {
                     tel.setError("Telefon numarası giriniz");
                     return;
                 }
@@ -345,9 +449,14 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
                 dialog.show();
 
                 final JSONObject parameters = new JSONObject();
+
                 JSONArray siniflarID = new JSONArray();
-                for (OgretmenListItemFiltre sinif :  secili_sinifList)
+                for (OgretmenListItemFiltre sinif : secili_sinifList)
                     siniflarID.put(sinif.getId());
+
+                JSONArray branslarID = new JSONArray();
+                for (OgretmenListItemFiltre brans : secili_bransList)
+                    branslarID.put(brans.getId());
 
                 try {
                     parameters.accumulate("name", isim.getText().toString());
@@ -355,13 +464,14 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
                     parameters.accumulate("mobile", tel.getText().toString());
                     parameters.accumulate("TCNo", tcNo.getText().toString());
                     parameters.accumulate("siniflar", siniflarID);
+                    parameters.accumulate("branslar", branslarID);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                try(Realm realm = Realm.getDefaultInstance()){
+                try (Realm realm = Realm.getDefaultInstance()) {
                     token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
                 }
 
@@ -390,8 +500,8 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
                                             }
                                         });
                                         Intent intent = new Intent(getActivity(), OnayBekleniyor.class);
-                                        intent.putExtra("tur",1);
-                                        intent.putExtra("ret",false);
+                                        intent.putExtra("tur", 1);
+                                        intent.putExtra("ret", false);
                                         startActivity(intent);
                                     }
 
@@ -433,8 +543,20 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
     private void filter(String text) {
 
         ArrayList<OgretmenListItemFiltre> filteredList = new ArrayList<>();
+        ArrayList<OgretmenListItemFiltre> list = new ArrayList<>();
 
-        for (OgretmenListItemFiltre s : siniflar) {
+        switch (durum) {
+            case 0:
+                list = siniflar;
+                break;
+            case 1:
+                list = branslar;
+                break;
+            default:
+                break;
+        }
+
+        for (OgretmenListItemFiltre s : list) {
             if (s.getName().toLowerCase().contains(text.toLowerCase()))
                 filteredList.add(s);
 
@@ -442,8 +564,27 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
         adapter.filterList(filteredList);
     }
 
-    public void onBackPressed()
-    {
+    public List<String> fill_with_data() {
+
+        List<String> data = new ArrayList<>();
+
+        if (durum == 0) {
+
+            for (OgretmenListItemFiltre sinif : secili_sinifList) {
+                data.add(sinif.getName());
+            }
+
+        } else{
+
+            for (OgretmenListItemFiltre brans : secili_bransList) {
+                data.add(brans.getName());
+            }
+
+        }
+        return data;
+    }
+
+    public void onBackPressed() {
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.popBackStack();
     }
