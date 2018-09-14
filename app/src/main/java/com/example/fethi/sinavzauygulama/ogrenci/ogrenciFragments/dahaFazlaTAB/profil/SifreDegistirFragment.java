@@ -89,8 +89,11 @@ public class SifreDegistirFragment extends Fragment {
 
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-        try(Realm realm = Realm.getDefaultInstance()){
+        try {
+            Realm realm = Realm.getDefaultInstance();
             token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(
@@ -247,8 +250,11 @@ public class SifreDegistirFragment extends Fragment {
 
                 RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
-                try(Realm realm = Realm.getDefaultInstance()){
+                try {
+                    Realm realm = Realm.getDefaultInstance();
                     token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
                 JsonObjectRequest objectRequest = new JsonObjectRequest(
