@@ -298,7 +298,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone" />
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:id="@+id/sec_bransi"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -359,7 +359,7 @@
                 android:layout_height="3dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
-                android:background="@color/primaryPurple" />
+                android:background="@color/primaryPurple" />-->
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_branslar"

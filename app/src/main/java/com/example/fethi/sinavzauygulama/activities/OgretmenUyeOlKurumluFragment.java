@@ -134,9 +134,9 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
         rv_siniflar = view.findViewById(R.id.rv_siniflar);
         rv_branslar = view.findViewById(R.id.rv_branslar);
         sayi_sinif = view.findViewById(R.id.sayi_sinif);
-        sayi_brans = view.findViewById(R.id.sayi_brans);
+        //sayi_brans = view.findViewById(R.id.sayi_brans);
         copkutusu_sinif = view.findViewById(R.id.copkutusu_sinif);
-        copkutusu_brans = view.findViewById(R.id.copkutusu_brans);
+        //copkutusu_brans = view.findViewById(R.id.copkutusu_brans);
 
         log_out = view.findViewById(R.id.log_out);
         log_out.setOnClickListener(new View.OnClickListener() {
@@ -192,7 +192,7 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
                 rv_secin.setAdapter(adapter);
             }
         });
-        sec_bransi = view.findViewById(R.id.sec_bransi);
+        /*sec_bransi = view.findViewById(R.id.sec_bransi);
         sec_bransi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -213,7 +213,7 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
                     tv_secim.setText("Seçim Yok");
                 rv_secin.setAdapter(adapter);
             }
-        });
+        });*/
 
         iv_done.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -395,7 +395,7 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
 
             }
         });
-        copkutusu_brans.setOnClickListener(new View.OnClickListener() {
+        /*copkutusu_brans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -421,7 +421,7 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
 
 
             }
-        });
+        });*/
 
         btn_devam = view.findViewById(R.id.btn_devam);
         btn_devam.setOnClickListener(new View.OnClickListener() {
@@ -454,9 +454,9 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
                 for (OgretmenListItemFiltre sinif : secili_sinifList)
                     siniflarID.put(sinif.getId());
 
-                JSONArray branslarID = new JSONArray();
+                /*JSONArray branslarID = new JSONArray();
                 for (OgretmenListItemFiltre brans : secili_bransList)
-                    branslarID.put(brans.getId());
+                    branslarID.put(brans.getId());*/
 
                 try {
                     parameters.accumulate("name", isim.getText().toString());
@@ -464,7 +464,7 @@ public class OgretmenUyeOlKurumluFragment extends Fragment {
                     parameters.accumulate("mobile", tel.getText().toString());
                     parameters.accumulate("TCNo", tcNo.getText().toString());
                     parameters.accumulate("siniflar", siniflarID);
-                    parameters.accumulate("branslar", branslarID);
+                    //parameters.accumulate("branslar", branslarID);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

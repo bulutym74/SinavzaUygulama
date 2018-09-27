@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -58,6 +59,12 @@ OgretmenBraOgrencilerimFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.o_fragment_danisman_ogrencilerim, container, false);
+
+        TextView title = view.findViewById(R.id.title);
+        title.setText("Branş Öğrencilerim");
+
+        TextView txt_yok = view.findViewById(R.id.txt_yok);
+        txt_yok.setText("Branş öğrenciniz bulunmamaktadır");
 
         Toolbar toolbar = view.findViewById(R.id.toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_arrow_left);

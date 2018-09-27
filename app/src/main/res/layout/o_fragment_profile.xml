@@ -116,7 +116,7 @@
                         app:srcCompat="@drawable/ic_arrow_right" />
                 </FrameLayout>
 
-                <FrameLayout
+                <!--<FrameLayout
                     android:id="@+id/sec_branslar"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -159,7 +159,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center|end"
                         app:srcCompat="@drawable/ic_arrow_right" />
-                </FrameLayout>
+                </FrameLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"

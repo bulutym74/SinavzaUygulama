@@ -149,8 +149,8 @@ public class YapilmamisOdevlerFragment extends Fragment implements SwipeRefreshL
                             } else {
                                 res = response;
                                 dersler.clear();
-                                for (int i = 0; i < res.getJSONArray("odevler").length(); i++) {
-                                    JSONObject odevDers = (JSONObject) res.getJSONArray("odevler").get(i);
+                                for (int i = 0; i < res.getJSONArray("dersler").length(); i++) {
+                                    JSONObject odevDers = (JSONObject) res.getJSONArray("dersler").get(i);
                                     DersItem dersItem = new DersItem(odevDers.getString("name"), new ArrayList<KitapItem>(), odevDers.getInt("id"));
 
                                     for (int j = 0; j < odevDers.getJSONArray("kitaplar").length(); j++) {

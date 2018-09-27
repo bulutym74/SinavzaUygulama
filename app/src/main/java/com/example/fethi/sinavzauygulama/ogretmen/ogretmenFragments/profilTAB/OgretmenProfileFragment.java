@@ -85,18 +85,17 @@ public class OgretmenProfileFragment extends Fragment {
         parseJSON();
 
         rv_siniflar = view.findViewById(R.id.rv_siniflar);
-        rv_branslar = view.findViewById(R.id.rv_branslar);
+        //rv_branslar = view.findViewById(R.id.rv_branslar);
         LinearLayoutManager horizontalLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        LinearLayoutManager horizontalLayoutManager1 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        //LinearLayoutManager horizontalLayoutManager1 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 
         horizontalAdapter_siniflar = new ListItemHorizontalAdapter(data_siniflar, getContext());
-        horizontalAdapter_branslar = new ListItemHorizontalAdapter(data_branslar, getContext());
+        //horizontalAdapter_branslar = new ListItemHorizontalAdapter(data_branslar, getContext());
 
         rv_siniflar.setLayoutManager(horizontalLayoutManager);
         rv_siniflar.setAdapter(horizontalAdapter_siniflar);
-        rv_branslar.setLayoutManager(horizontalLayoutManager1);
-        rv_branslar.setAdapter(horizontalAdapter_branslar);
-
+        /*rv_branslar.setLayoutManager(horizontalLayoutManager1);
+        rv_branslar.setAdapter(horizontalAdapter_branslar);*/
 
         log_out = view.findViewById(R.id.log_out);
         log_out.setOnClickListener(new View.OnClickListener() {
@@ -139,7 +138,7 @@ public class OgretmenProfileFragment extends Fragment {
                         .commit();
             }
         });
-        sec_branslar = view.findViewById(R.id.sec_branslar);
+        /*sec_branslar = view.findViewById(R.id.sec_branslar);
         sec_branslar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,7 +150,7 @@ public class OgretmenProfileFragment extends Fragment {
                         .addToBackStack(null)
                         .commit();
             }
-        });
+        });*/
 
         link = view.findViewById(R.id.btn_link);
         link.setOnClickListener(new View.OnClickListener() {
@@ -195,8 +194,8 @@ public class OgretmenProfileFragment extends Fragment {
                                 res = response;
                                 siniflar.clear();
                                 data_siniflar.clear();
-                                branslar.clear();
-                                data_branslar.clear();
+                                /*branslar.clear();
+                                data_branslar.clear();*/
 
                                 isim.setText(res.getString("name"));
                                 kurum.setText(res.getString("kurum"));
@@ -215,18 +214,18 @@ public class OgretmenProfileFragment extends Fragment {
                                     siniflar.add(sinifItem);
                                     data_siniflar.add(sinifItem.getSinifAdi());
                                 }
-                                for (int i = 0; i < res.getJSONArray("branslar").length(); i++) {
+                                /*for (int i = 0; i < res.getJSONArray("branslar").length(); i++) {
                                     BransItem bransItem = new BransItem(res.getJSONArray("branslar").getJSONObject(i).getString("name"),
                                             res.getJSONArray("branslar").getJSONObject(i).getInt("id"));
 
                                     branslar.add(bransItem);
                                     data_branslar.add(bransItem.getBransAdi());
-                                }
+                                }*/
 
 
                             }
                             horizontalAdapter_siniflar.notifyDataSetChanged();
-                            horizontalAdapter_branslar.notifyDataSetChanged();
+                            //horizontalAdapter_branslar.notifyDataSetChanged();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
