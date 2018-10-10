@@ -1,5 +1,6 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.bransOgretmeniTAB.odevlendir;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -129,10 +131,10 @@ public class OgretmenBraOdevlendirFragment extends Fragment implements SwipeRefr
 
         if (siniflar.size() == 0)
                 refreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                refreshLayout.setRefreshing(true);
-                parseJSON();
+                    @Override
+                    public void run() {
+                        refreshLayout.setRefreshing(true);
+                        parseJSON();
             }
         });
 
@@ -217,6 +219,10 @@ public class OgretmenBraOdevlendirFragment extends Fragment implements SwipeRefr
             }
         };
         requestQueue.add(objectRequest);
+        objectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                60000,
+                3,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     public void isEmpty() {

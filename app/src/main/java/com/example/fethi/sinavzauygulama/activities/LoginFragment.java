@@ -174,6 +174,7 @@ public class LoginFragment extends Fragment {
 
                                     }
                                 } catch (JSONException e) {
+                                    dialog.dismiss();
                                     e.printStackTrace();
                                 }
                             }

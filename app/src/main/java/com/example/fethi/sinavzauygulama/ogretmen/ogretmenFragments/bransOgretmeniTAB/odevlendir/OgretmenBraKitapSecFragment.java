@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -48,7 +50,7 @@ import io.realm.Realm;
 
 import static io.realm.internal.SyncObjectServerFacade.getApplicationContext;
 
-public class OgretmenBraKitapSecFragment extends Fragment {
+public class OgretmenBraKitapSecFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     public ArrayList<OdevSecDersItem> dersler = new ArrayList<>();
     public OgretmenExpLVAdapterKitapSec expand_adapter;
@@ -56,6 +58,7 @@ public class OgretmenBraKitapSecFragment extends Fragment {
 
     public ArrayList<SinifItem> seciliSiniflar;
 
+    SwipeRefreshLayout refreshLayout;
     JSONObject res;
     String token;
 
@@ -152,8 +155,8 @@ public class OgretmenBraKitapSecFragment extends Fragment {
         }
         secili_soru.setText("" +count);
 
-        if (dersler.size() == 0) parseJSON();
-        else view_seciliSoru.setVisibility(View.VISIBLE);
+        //if (dersler.size() == 0) parseJSON();
+        //else view_seciliSoru.setVisibility(View.VISIBLE);
 
         expand_adapter = new OgretmenExpLVAdapterKitapSec(getActivity(), dersler);
         expandlist_view_kitapsec.setAdapter(expand_adapter);
@@ -176,11 +179,33 @@ public class OgretmenBraKitapSecFragment extends Fragment {
 
         });
 
+        refreshLayout = view.findViewById(R.id.swipe);
+        refreshLayout.setOnRefreshListener(this);
+        refreshLayout.setColorSchemeColors(getResources().getColor(R.color.primaryPurple),
+                getResources().getColor(R.color.primaryOrange),
+                getResources().getColor(R.color.lightgreen));
+
+
+        if (dersler.size() == 0)
+            refreshLayout.post(new Runnable() {
+                @Override
+                public void run() {
+                    refreshLayout.setRefreshing(true);
+                    parseJSON();
+                }
+            });
+        else{
+            view_seciliSoru.setVisibility(View.VISIBLE);
+            fab_kitapSec.setVisibility(View.VISIBLE);
+        }
+
 
         return view;
     }
 
     public void parseJSON() {
+
+        refreshLayout.setRefreshing(true);
 
         final JSONObject parameters = new JSONObject();
 
@@ -257,6 +282,7 @@ public class OgretmenBraKitapSecFragment extends Fragment {
                             e.printStackTrace();
                         }
 
+                        refreshLayout.setRefreshing(false);
                     }
                 },
                 new Response.ErrorListener() {
@@ -268,6 +294,7 @@ public class OgretmenBraKitapSecFragment extends Fragment {
                         Toast toast = Toast.makeText(getApplicationContext(), "Bağlantı hatası!", Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.BOTTOM, 0, 300);
                         toast.show();
+                        refreshLayout.setRefreshing(false);
                     }
                 }
         ) {
@@ -282,6 +309,10 @@ public class OgretmenBraKitapSecFragment extends Fragment {
             }
         };
         requestQueue.add(objectRequest);
+        objectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                60000,
+                3,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     public void isEmpty() {
@@ -300,5 +331,10 @@ public class OgretmenBraKitapSecFragment extends Fragment {
     public void onBackPressed() {
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.popBackStack();
+    }
+
+    @Override
+    public void onRefresh() {
+        parseJSON();
     }
 }
