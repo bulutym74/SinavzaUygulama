@@ -17,6 +17,7 @@ import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgre
 
 public class OgretmenBransOgretmeniFragment extends Fragment {
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,6 +49,19 @@ public class OgretmenBransOgretmeniFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 OgretmenBraOgrencilerimFragment nextFrag = new OgretmenBraOgrencilerimFragment();
+                nextFrag.durum = 0;
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
+                        .replace(R.id.fragment_container, nextFrag, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+        view.findViewById(R.id.odev_onayla).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OgretmenBraOgrencilerimFragment nextFrag = new OgretmenBraOgrencilerimFragment();
+                nextFrag.durum = 1;
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
                         .replace(R.id.fragment_container, nextFrag, "findThisFragment")

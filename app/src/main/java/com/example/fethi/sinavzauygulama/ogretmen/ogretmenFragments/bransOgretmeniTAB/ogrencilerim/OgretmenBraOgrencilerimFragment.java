@@ -55,6 +55,8 @@ OgretmenBraOgrencilerimFragment extends Fragment {
 
     LinearLayout yokView;
 
+    public int durum;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -91,14 +93,26 @@ OgretmenBraOgrencilerimFragment extends Fragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 
-                OgretmenBraOgrenciBilgilerFragment nextFrag = new OgretmenBraOgrenciBilgilerFragment();
-                nextFrag.seciliOgrenci = siniflar.get(groupPosition).getOgrenciler().get(childPosition);
+                if (durum == 0){
+                    OgretmenBraOgrenciBilgilerFragment nextFrag = new OgretmenBraOgrenciBilgilerFragment();
+                    nextFrag.seciliOgrenci = siniflar.get(groupPosition).getOgrenciler().get(childPosition);
 
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
-                        .replace(R.id.fragment_container, nextFrag, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
+                            .replace(R.id.fragment_container, nextFrag, "findThisFragment")
+                            .addToBackStack(null)
+                            .commit();
+                }
+                else {
+                    OgretmenBraOnayBekleyenOdevlerFragment nextFrag = new OgretmenBraOnayBekleyenOdevlerFragment();
+                    nextFrag.seciliOgrenci = siniflar.get(groupPosition).getOgrenciler().get(childPosition);
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
+                            .replace(R.id.fragment_container, nextFrag, "findThisFragment")
+                            .addToBackStack(null)
+                            .commit();
+                }
+
                 return true;
             }
 

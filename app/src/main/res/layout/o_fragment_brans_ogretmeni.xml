@@ -103,8 +103,8 @@
                 </LinearLayout>
 
                 <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="13dp" />
+                android:layout_width="match_parent"
+                android:layout_height="13dp" />
 
 
                 <LinearLayout
@@ -131,6 +131,39 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Öğrencilerim"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="13dp" />
+
+
+                <LinearLayout
+                    android:id="@+id/odev_onayla"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/cerceve_purple"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:gravity="center|start"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="9dp"
+                        android:tint="@color/primaryPurple"
+                        app:srcCompat="@drawable/spinner_of_dots" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ödev Onayla"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
                 </LinearLayout>

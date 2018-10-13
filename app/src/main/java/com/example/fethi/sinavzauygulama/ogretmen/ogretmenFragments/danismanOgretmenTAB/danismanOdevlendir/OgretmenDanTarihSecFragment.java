@@ -84,19 +84,19 @@ public class OgretmenDanTarihSecFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                int yil = c.get(Calendar.YEAR);
-                int ay = c.get(Calendar.MONTH);
-                int gun = c.get(Calendar.DAY_OF_MONTH);
-
+                String[] str = tv_baslama.getText().toString().split("/");
+                int yil = Integer.parseInt(str[2]);
+                int ay = Integer.parseInt(str[1]);
+                int gun = Integer.parseInt(str[0]);
                 DatePickerDialog dpd = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                        tv_baslama.setText(formatDate(year,month,dayOfMonth));
-                        tv_bitis.setText(formatDate(year,month,dayOfMonth+6));
+                        tv_baslama.setText(formatDate(year, month, dayOfMonth));
+                        tv_bitis.setText(formatDate(year, month, dayOfMonth + 6));
                         tv_baslama.setTextColor(getResources().getColor(R.color.lightgreen));
                     }
-                }, yil, ay, gun);
+                }, yil, ay-1, gun);
 
                 dpd.setButton(DatePickerDialog.BUTTON_POSITIVE, "Seç", dpd);
                 dpd.setButton(DatePickerDialog.BUTTON_NEGATIVE, "İptal", dpd);
@@ -108,18 +108,18 @@ public class OgretmenDanTarihSecFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                int yil = c.get(Calendar.YEAR);
-                int ay = c.get(Calendar.MONTH);
-                int gun = c.get(Calendar.DAY_OF_MONTH);
-
+                String[] str = tv_bitis.getText().toString().split("/");
+                int yil = Integer.parseInt(str[2]);
+                int ay = Integer.parseInt(str[1]);
+                int gun = Integer.parseInt(str[0]);
                 DatePickerDialog dpd = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                        tv_bitis.setText(formatDate(year,month,dayOfMonth));
+                        tv_bitis.setText(formatDate(year, month, dayOfMonth));
                         tv_bitis.setTextColor(getResources().getColor(R.color.lightgreen));
                     }
-                }, yil, ay, gun);
+                },  yil, ay-1, gun);
 
                 dpd.setButton(DatePickerDialog.BUTTON_POSITIVE, "Seç", dpd);
                 dpd.setButton(DatePickerDialog.BUTTON_NEGATIVE, "İptal", dpd);

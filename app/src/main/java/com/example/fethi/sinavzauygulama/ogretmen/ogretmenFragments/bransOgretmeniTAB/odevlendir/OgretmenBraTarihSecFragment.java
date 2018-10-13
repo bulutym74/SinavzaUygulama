@@ -22,7 +22,9 @@ import com.example.fethi.sinavzauygulama.R;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.OdevSecDersItem;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters.SinifItem;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -84,10 +86,10 @@ public class OgretmenBraTarihSecFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                int yil = c.get(Calendar.YEAR);
-                int ay = c.get(Calendar.MONTH);
-                int gun = c.get(Calendar.DAY_OF_MONTH);
-
+                String[] str = tv_baslama.getText().toString().split("/");
+                int yil = Integer.parseInt(str[2]);
+                int ay = Integer.parseInt(str[1]);
+                int gun = Integer.parseInt(str[0]);
                 DatePickerDialog dpd = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -96,7 +98,7 @@ public class OgretmenBraTarihSecFragment extends Fragment {
                         tv_bitis.setText(formatDate(year, month, dayOfMonth + 6));
                         tv_baslama.setTextColor(getResources().getColor(R.color.lightgreen));
                     }
-                }, yil, ay, gun);
+                }, yil, ay-1, gun);
 
                 dpd.setButton(DatePickerDialog.BUTTON_POSITIVE, "Seç", dpd);
                 dpd.setButton(DatePickerDialog.BUTTON_NEGATIVE, "İptal", dpd);
@@ -108,10 +110,10 @@ public class OgretmenBraTarihSecFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                int yil = c.get(Calendar.YEAR);
-                int ay = c.get(Calendar.MONTH);
-                int gun = c.get(Calendar.DAY_OF_MONTH);
-
+                String[] str = tv_bitis.getText().toString().split("/");
+                int yil = Integer.parseInt(str[2]);
+                int ay = Integer.parseInt(str[1]);
+                int gun = Integer.parseInt(str[0]);
                 DatePickerDialog dpd = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -119,7 +121,7 @@ public class OgretmenBraTarihSecFragment extends Fragment {
                         tv_bitis.setText(formatDate(year, month, dayOfMonth));
                         tv_bitis.setTextColor(getResources().getColor(R.color.lightgreen));
                     }
-                }, yil, ay, gun);
+                },  yil, ay-1, gun);
 
                 dpd.setButton(DatePickerDialog.BUTTON_POSITIVE, "Seç", dpd);
                 dpd.setButton(DatePickerDialog.BUTTON_NEGATIVE, "İptal", dpd);
@@ -196,5 +198,14 @@ public class OgretmenBraTarihSecFragment extends Fragment {
     public void onBackPressed() {
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.popBackStack();
+    }
+    private Date stringToDate(String aDate,String aFormat) {
+
+        if(aDate==null) return null;
+        ParsePosition pos = new ParsePosition(0);
+        SimpleDateFormat simpledateformat = new SimpleDateFormat(aFormat);
+        Date stringDate = simpledateformat.parse(aDate, pos);
+        return stringDate;
+
     }
 }
