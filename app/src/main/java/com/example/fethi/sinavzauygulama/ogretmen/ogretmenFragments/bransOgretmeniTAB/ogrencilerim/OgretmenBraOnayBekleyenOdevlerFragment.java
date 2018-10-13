@@ -393,6 +393,9 @@ public class OgretmenBraOnayBekleyenOdevlerFragment extends Fragment implements 
                                         OdevOnaylaOdevItem tempOdev = new OdevOnaylaOdevItem(odevItem.getString("testAdi"),
                                                 odevItem.getString("kitapAdi"),
                                                 odevItem.getString("konuAdi"),
+                                                odevItem.getInt("dogru"),
+                                                odevItem.getInt("yanlis"),
+                                                odevItem.getInt("bos"),
                                                 odevItem.getInt("id"));
 
                                         tempDers.getOdevler().add(tempOdev);

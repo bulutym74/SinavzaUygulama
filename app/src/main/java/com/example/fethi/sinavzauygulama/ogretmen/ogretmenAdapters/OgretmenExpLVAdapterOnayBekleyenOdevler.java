@@ -196,6 +196,9 @@ public class OgretmenExpLVAdapterOnayBekleyenOdevler extends BaseExpandableListA
         viewHolder.tv_testAdi = view.findViewById(R.id.tv_testAdi);
         viewHolder.tv_kitapAdi = view.findViewById(R.id.tv_kitapAdi);
         viewHolder.tv_konuAdi = view.findViewById(R.id.tv_konuAdi);
+        viewHolder.tv_dogru = view.findViewById(R.id.tv_dogru);
+        viewHolder.tv_yanlis = view.findViewById(R.id.tv_yanlis);
+        viewHolder.tv_bos = view.findViewById(R.id.tv_bos);
         viewHolder.add = view.findViewById(R.id.add_img);
         viewHolder.check = view.findViewById(R.id.check_img);
         viewHolder.transitionsContainer = view.findViewById(R.id.transitions_container);
@@ -260,6 +263,9 @@ public class OgretmenExpLVAdapterOnayBekleyenOdevler extends BaseExpandableListA
         viewHolder.tv_testAdi.setText(odevItem.getTestAdi());
         viewHolder.tv_kitapAdi.setText(odevItem.getKitapAdi());
         viewHolder.tv_konuAdi.setText(odevItem.getKonuAdi());
+        viewHolder.tv_dogru.setText(""+odevItem.getDogru());
+        viewHolder.tv_yanlis.setText(""+odevItem.getYanlis());
+        viewHolder.tv_bos.setText(""+odevItem.getBos());
 
         if (odevItem.isSelected()) {
             viewHolder.add.setVisibility(View.GONE);
@@ -290,6 +296,9 @@ public class OgretmenExpLVAdapterOnayBekleyenOdevler extends BaseExpandableListA
         TextView tv_testAdi;
         TextView tv_kitapAdi;
         TextView tv_konuAdi;
+        TextView tv_dogru;
+        TextView tv_yanlis;
+        TextView tv_bos;
         ImageView add, check;
         ViewGroup transitionsContainer;
     }

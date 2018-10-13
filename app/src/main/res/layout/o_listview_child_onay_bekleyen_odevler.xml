@@ -75,11 +75,72 @@
                 android:id="@+id/tv_konuAdi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:textSize="16sp"
-                android:layout_marginTop="12dp"
                 android:layout_gravity="center|start"
                 android:textColor="@color/lightgray"
                 android:text="Trigonometri" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_gravity="center|start"
+                        android:textColor="@color/lightgray"
+                        android:text="D: " />
+
+                    <TextView
+                        android:id="@+id/tv_dogru"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:textSize="16sp"
+                        android:layout_gravity="center|start"
+                        android:textColor="@color/lightgray"
+                        android:text="12" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_gravity="center|start"
+                        android:textColor="@color/lightgray"
+                        android:text="Y: " />
+
+                    <TextView
+                        android:id="@+id/tv_yanlis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:textSize="16sp"
+                        android:layout_gravity="center|start"
+                        android:textColor="@color/lightgray"
+                        android:text="5" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:layout_gravity="center|start"
+                        android:textColor="@color/lightgray"
+                        android:text="B: " />
+
+                    <TextView
+                        android:id="@+id/tv_bos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="65dp"
+                        android:textSize="16sp"
+                        android:layout_gravity="center|start"
+                        android:textColor="@color/lightgray"
+                        android:text="3" />
+
+                </LinearLayout>
 
 
         </LinearLayout>
