@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.fethi.sinavzauygulama.R;
 import com.example.fethi.sinavzauygulama.activities.UserInfoItem;
 import com.example.fethi.sinavzauygulama.diger.Islevsel;
+import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.bransOgretmeniTAB.ogrencilerim.OgretmenBraOgrencilerimFragment;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.danismanOdevlendir.OgretmenDanOdevlendirFragment;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.danismanOgrencilerim.OgretmenDanOgrencilerimFragment;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.kitapEkle.OgretmenDanKitapEkleFragment;
@@ -40,7 +42,7 @@ import static io.realm.internal.SyncObjectServerFacade.getApplicationContext;
 
 public class OgretmenDanismanOgretmenFragment extends Fragment {
 
-    TextView ogr_onayla_circle, sinif_degistiren_circle;
+    TextView ogr_onayla_circle, sinif_degistiren_circle, odev_onayla_circle;
     JSONObject res;
     String token;
 
@@ -51,7 +53,7 @@ public class OgretmenDanismanOgretmenFragment extends Fragment {
 
         ogr_onayla_circle = view.findViewById(R.id.ogr_onayla_circle);
         sinif_degistiren_circle = view.findViewById(R.id.sinif_degistiren_circle);
-
+        odev_onayla_circle = view.findViewById(R.id.odev_onayla_circle);
 
         view.findViewById(R.id.danısman_odevlendir).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,6 +103,19 @@ public class OgretmenDanismanOgretmenFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 OgretmenDanOgrencilerimFragment nextFrag = new OgretmenDanOgrencilerimFragment();
+                nextFrag.durum = 0;
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
+                        .replace(R.id.fragment_container, nextFrag, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+        view.findViewById(R.id.odev_onayla).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OgretmenDanOgrencilerimFragment nextFrag = new OgretmenDanOgrencilerimFragment();
+                nextFrag.durum = 1;
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
                         .replace(R.id.fragment_container, nextFrag, "findThisFragment")
@@ -154,6 +169,11 @@ public class OgretmenDanismanOgretmenFragment extends Fragment {
                                     sinif_degistiren_circle.setText(res.getInt("sinifDegistirenler") + "");
                                 }
 
+                                if (res.getInt("onaylanacakOdev") != 0){
+                                    odev_onayla_circle.setVisibility(View.VISIBLE);
+                                    odev_onayla_circle.setText(res.getInt("onaylanacakOdev") + "");
+                                }
+
                             }
 
                         } catch (JSONException e) {
@@ -184,5 +204,9 @@ public class OgretmenDanismanOgretmenFragment extends Fragment {
             }
         };
         requestQueue.add(objectRequest);
+        objectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                60000,
+                3,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 }

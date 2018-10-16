@@ -32,6 +32,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -140,6 +141,7 @@ public class UyeOlFragment extends Fragment {
                 }
 
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
@@ -204,7 +206,7 @@ public class UyeOlFragment extends Fragment {
                     return;
                 }
 
-                if (code.getText().toString().length() < 6 && index==0) {
+                if (code.getText().toString().length() < 6 && index == 0) {
                     code.setError("Hatalı kod");
                     return;
                 }
@@ -265,14 +267,13 @@ public class UyeOlFragment extends Fragment {
                 }, 150);
 
 
-
             }
         });
 
         return view;
     }
 
-    public void parseJSON(){
+    public void parseJSON() {
 
         boolean bagli = false;
         if (index == 0)
@@ -318,7 +319,7 @@ public class UyeOlFragment extends Fragment {
 
                                 if (realm.where(UserInfoItem.class).findAll().isEmpty()) {
 
-                                    final UserInfoItem user = new UserInfoItem(response.getString("token"), parameters.getString("Email"), parameters.getString("Password"),parameters.getInt("Tur")-1);
+                                    final UserInfoItem user = new UserInfoItem(response.getString("token"), parameters.getString("Email"), parameters.getString("Password"), parameters.getInt("Tur") - 1);
                                     realm.executeTransaction(new Realm.Transaction() {
                                         @Override
                                         public void execute(Realm realm) {
@@ -335,7 +336,7 @@ public class UyeOlFragment extends Fragment {
                                                 realm.where(UserInfoItem.class).findAll().get(0).setEmail(parameters.getString("Email"));
                                                 realm.where(UserInfoItem.class).findAll().get(0).setPassword(parameters.getString("Password"));
                                                 realm.where(UserInfoItem.class).findAll().get(0).setToken(response.getString("token"));
-                                                realm.where(UserInfoItem.class).findAll().get(0).setTur(parameters.getInt("Tur")-1);
+                                                realm.where(UserInfoItem.class).findAll().get(0).setTur(parameters.getInt("Tur") - 1);
 
                                                 gecis();
 
@@ -367,6 +368,10 @@ public class UyeOlFragment extends Fragment {
                 }
         );
         requestQueue.add(objectRequest);
+        objectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                60000,
+                3,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     public void gecis() {

@@ -33,7 +33,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_ögrenci_sayi"
+                android:id="@+id/txt_ogrenci_sayi"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|end"

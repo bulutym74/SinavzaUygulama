@@ -46,6 +46,7 @@ public class Islevsel {
     public static String kesisenKitaplarURL = rootURL + "/api/kesisenKitaplar";
     public static String danismanKesisenKitaplarURL = rootURL + "/api/danismanKesisenKitaplar";
     public static String sifreSifirlaURL = rootURL + "/account/sifreSifirla";
+    public static String bransMenuURL = rootURL + "/api/bransMenu";
     public static String danismanMenuURL = rootURL + "/api/danismanMenu";
     public static String sinifOgrenciOzetURL = rootURL + "/api/sinifOgrenciOzet";
     public static String danismanOgrenciOzetURL = rootURL + "/api/danismanOgrenciOzet";
@@ -59,6 +60,8 @@ public class Islevsel {
     public static String danismanVerilenOdevlerURL = rootURL + "/api/danismanVerilenOdevler";
     public static String verilenOdevlerURL = rootURL + "/api/verilenOdevler";
     public static String bransOgretmenKitaplarURL = rootURL + "/api/bransOgretmenKitaplar";
+    public static String ogretmenSiniflarOdevOnayURL = rootURL + "/api/ogretmenSiniflarOdevOnay";
+    public static String danismanOgretmenSiniflarOdevOnayURL = rootURL + "/api/danismanOgretmenSiniflarOdevOnay";
 
 
 
@@ -93,6 +96,7 @@ public class Islevsel {
         ogretmenSiniflarURL = rootURL + "/api/ogretmenSiniflar/"+id;
         kesisenKitaplarURL = rootURL + "/api/kesisenKitaplar/"+id;
         danismanKesisenKitaplarURL = rootURL + "/api/danismanKesisenKitaplar/"+id;
+        bransMenuURL = rootURL + "/api/bransMenu/"+id;
         danismanMenuURL = rootURL + "/api/danismanMenu/"+id;
         sinifOgrenciOzetURL = rootURL + "/api/sinifOgrenciOzet/"+id;
         danismanOgrenciOzetURL = rootURL + "/api/danismanOgrenciOzet/"+id;
@@ -106,5 +110,7 @@ public class Islevsel {
         danismanVerilenOdevlerURL = rootURL + "/api/danismanVerilenOdevler/"+id;
         verilenOdevlerURL = rootURL + "/api/verilenOdevler/"+id;
         bransOgretmenKitaplarURL = rootURL + "/api/bransOgretmenKitaplar/"+id;
+        ogretmenSiniflarOdevOnayURL = rootURL + "/api/OgretmenSiniflarOdevOnay/"+id;
+        danismanOgretmenSiniflarOdevOnayURL = rootURL + "/api/danismanOgretmenSiniflarOdevOnay/"+id;
     }
 }

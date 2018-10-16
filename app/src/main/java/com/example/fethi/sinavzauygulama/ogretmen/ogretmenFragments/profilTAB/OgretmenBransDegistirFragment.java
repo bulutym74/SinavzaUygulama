@@ -32,6 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -241,6 +242,10 @@ public class OgretmenBransDegistirFragment extends Fragment {
                     }
                 };
                 requestQueue.add(objectRequest);
+                objectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                        60000,
+                        3,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
             }
         });
@@ -350,6 +355,10 @@ public class OgretmenBransDegistirFragment extends Fragment {
                     }
                 };
                 requestQueue.add(objectRequest);
+                objectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                        60000,
+                        3,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
             }
         });

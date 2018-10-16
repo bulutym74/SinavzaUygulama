@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -171,6 +172,10 @@ public class OgretmenDanYeniOgrenciOnaylaFragment extends Fragment implements Sw
             }
         };
         requestQueue.add(objectRequest);
+        objectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                60000,
+                3,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     @Override

@@ -103,15 +103,15 @@ public class OgretmenExpLVAdapterDanOgrencilerim extends BaseExpandableListAdapt
         viewHolder = new GroupViewHolder();
 
         viewHolder.textGroup = view.findViewById(R.id.txt_parent);
-        viewHolder.txt_ögrenci_sayi = view.findViewById(R.id.txt_ögrenci_sayi);
+        viewHolder.txt_ogrenci_sayi = view.findViewById(R.id.txt_ogrenci_sayi);
 
         img_arrow = view.findViewById(R.id.img_arrow);
 
         viewHolder.textGroup.setText(sinifItem.getSinifAdi());
         if (siniflar.get(groupPosition).getOgrenciler().size() != 0)
-            viewHolder.txt_ögrenci_sayi.setText(siniflar.get(groupPosition).getOgrenciler().size() + " Öğr.");
+            viewHolder.txt_ogrenci_sayi.setText(siniflar.get(groupPosition).getOgrenciler().size() + " Öğr.");
         else
-            viewHolder.txt_ögrenci_sayi.setText("Öğr. Yok");
+            viewHolder.txt_ogrenci_sayi.setText("Öğr. Yok");
 
 
         if (isExpanded) {
@@ -137,8 +137,15 @@ public class OgretmenExpLVAdapterDanOgrencilerim extends BaseExpandableListAdapt
         viewHolder = new ChildViewHolder();
 
         viewHolder.textChild = view.findViewById(R.id.txt_items);
+        viewHolder.odev_onayla_circle = view.findViewById(R.id.odev_onayla_circle);
         viewHolder.textChild.setText(ogrenciItem.getOgrAdi());
 
+        if (ogrenciItem.getOnaylanacakOdev() != 0) {
+            viewHolder.odev_onayla_circle.setVisibility(View.VISIBLE);
+            viewHolder.odev_onayla_circle.setText(""+ogrenciItem.getOnaylanacakOdev());
+        }
+        else
+            viewHolder.odev_onayla_circle.setVisibility(View.GONE);
         return view;
     }
 
@@ -149,12 +156,13 @@ public class OgretmenExpLVAdapterDanOgrencilerim extends BaseExpandableListAdapt
     }
 
     static class GroupViewHolder {
-        TextView textGroup,txt_ögrenci_sayi;
+        TextView textGroup,txt_ogrenci_sayi;
 
     }
 
     static class ChildViewHolder {
         TextView textChild;
+        TextView odev_onayla_circle;
     }
 
     public int dpToPx(int dp) {
