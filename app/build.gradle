@@ -8,7 +8,7 @@ realm {
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.my.app.sinavzauygulama"
+        applicationId "com.my.app.aci_okey"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 109
