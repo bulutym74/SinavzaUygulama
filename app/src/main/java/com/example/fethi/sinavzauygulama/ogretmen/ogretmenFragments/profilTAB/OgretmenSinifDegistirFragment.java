@@ -258,7 +258,7 @@ public class OgretmenSinifDegistirFragment extends Fragment {
                             search_ekrani.setVisibility(View.GONE);
                             back.setVisibility(View.GONE);
                         }
-                    }, 300);
+                    }, 1200);
 
                     return;
                 }
@@ -364,7 +364,6 @@ public class OgretmenSinifDegistirFragment extends Fragment {
                 }
 
                 secili_sinifList.clear();
-                tv_secim.setText("Seçim Yok");
 
                 rv_tum_siniflar.setAdapter(adapter);
             }
