@@ -8,11 +8,11 @@ realm {
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.my.app.sinavzauygulama"
+        applicationId "com.my.app.aci_okey"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 109
-        versionName "1.0.9"
+        versionCode 1009
+        versionName "1.0.09"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }

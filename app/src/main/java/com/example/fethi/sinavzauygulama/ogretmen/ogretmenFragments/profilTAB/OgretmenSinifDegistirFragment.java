@@ -187,24 +187,24 @@ public class OgretmenSinifDegistirFragment extends Fragment {
 
                                         } else {*/
 
-                                            for (int i = 0; i < res.getJSONArray("siniflar").length(); i++) {
-                                                siniflarFiltre.add(new OgretmenListItemFiltre(res.getJSONArray("siniflar").getJSONObject(i).getString("name"),
-                                                        res.getJSONArray("siniflar").getJSONObject(i).getInt("id")));
-                                            }
-
-                                            Animation animShow = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.view_show);
-                                            search_ekrani.startAnimation(animShow);
-                                            search_ekrani.setVisibility(View.VISIBLE);
-
-                                            back.setVisibility(View.VISIBLE);
-
-                                            adapter = new OgretmenListItemFiltreAdapter(getApplicationContext(), siniflarFiltre);
-                                            if (secili_sinifList.size() != 0)
-                                                tv_secim.setText(secili_sinifList.size() + " Seçili");
-                                            else
-                                                tv_secim.setText("Seçim Yok");
-                                            rv_tum_siniflar.setAdapter(adapter);
+                                        for (int i = 0; i < res.getJSONArray("siniflar").length(); i++) {
+                                            siniflarFiltre.add(new OgretmenListItemFiltre(res.getJSONArray("siniflar").getJSONObject(i).getString("name"),
+                                                    res.getJSONArray("siniflar").getJSONObject(i).getInt("id")));
                                         }
+
+                                        Animation animShow = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.view_show);
+                                        search_ekrani.startAnimation(animShow);
+                                        search_ekrani.setVisibility(View.VISIBLE);
+
+                                        back.setVisibility(View.VISIBLE);
+
+                                        adapter = new OgretmenListItemFiltreAdapter(getApplicationContext(), siniflarFiltre);
+                                        if (secili_sinifList.size() != 0)
+                                            tv_secim.setText(secili_sinifList.size() + " Seçili");
+                                        else
+                                            tv_secim.setText("Seçim Yok");
+                                        rv_tum_siniflar.setAdapter(adapter);
+                                    }
 
                                     // }
 
