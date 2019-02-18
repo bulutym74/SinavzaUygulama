@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AÇI O-KEY</string>
+    <string name="app_name">sınavza</string>
     <string name="title_activity_anasayfa">AnasayfaActivity</string>
     <string name="title_ozet">Özet</string>
     <string name="title_odevler">Ödevler</string>

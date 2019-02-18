@@ -258,7 +258,7 @@ public class OgretmenSinifDegistirFragment extends Fragment {
                             search_ekrani.setVisibility(View.GONE);
                             back.setVisibility(View.GONE);
                         }
-                    }, 300);
+                    }, 1200);
 
                     return;
                 }
@@ -317,7 +317,7 @@ public class OgretmenSinifDegistirFragment extends Fragment {
                                                 search_talepView.setVisibility(View.GONE);
                                                 back.setVisibility(View.GONE);
                                             }
-                                        }, 1200);
+                                        }, 300);
                                     }
 
                                     expand_adapter.notifyDataSetChanged();
