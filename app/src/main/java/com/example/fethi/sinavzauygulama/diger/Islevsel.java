@@ -8,8 +8,9 @@ public class Islevsel {
 
     static Realm realm = Realm.getDefaultInstance();
 
-    public static String rootURL = "https://edestek.azurewebsites.net";
+    public static String rootURL = "https://edestek.sinavza.com";
     public static String loginURL = rootURL + "/account/loginwithjwt";
+    public static String getVersionURL = rootURL + "/api/getVersion/8";
     public static String signupURL = rootURL + "/api/account";
     public static String ogrenciTamamlaURL = rootURL + "/api/createOgrenci";
     public static String ogretmenTamamlaURL = rootURL + "/api/createOgretmen";
@@ -36,6 +37,7 @@ public class Islevsel {
     public static String odevVerURL = rootURL + "/api/odevVer";
     public static String danismanOgretmenSiniflarURL = rootURL + "/api/danismanOgretmenSiniflar";
     public static String danismanOgretmenKitaplarURL = rootURL + "/api/danismanOgretmenKitaplar";
+    public static String dersKitaplarURL = rootURL + "/api/dersKitaplar";
     public static String danismanOgretmenKitapEkleURL = rootURL + "/api/danismanOgretmenKitapEkle";
     public static String ogretmenProfilURL = rootURL + "/api/ogretmenProfil";
     public static String ogretmenSinifSilURL = rootURL + "/api/ogretmenSinifSil";
@@ -45,6 +47,7 @@ public class Islevsel {
     public static String ogretmenSiniflarURL = rootURL + "/api/ogretmenSiniflar";
     public static String kesisenKitaplarURL = rootURL + "/api/kesisenKitaplar";
     public static String danismanKesisenKitaplarURL = rootURL + "/api/danismanKesisenKitaplar";
+    public static String kesisenKitapKonularURL = rootURL + "/api/kesisenKitapKonular";
     public static String sifreSifirlaURL = rootURL + "/account/sifreSifirla";
     public static String bransMenuURL = rootURL + "/api/bransMenu";
     public static String danismanMenuURL = rootURL + "/api/danismanMenu";
@@ -86,8 +89,9 @@ public class Islevsel {
         ogrenciOnayRedURL = rootURL + "/api/ogrenciOnayRed/"+id;
         odevVerURL = rootURL + "/api/odevVer/"+id;
         danismanOgretmenSiniflarURL = rootURL + "/api/danismanOgretmenSiniflar/"+id;
-        danismanOgretmenKitapEkleURL = rootURL + "/api/danismanOgretmenKitapEkle/"+id;
         danismanOgretmenKitaplarURL = rootURL + "/api/danismanOgretmenKitaplar/"+id;
+        danismanOgretmenKitapEkleURL = rootURL + "/api/danismanOgretmenKitapEkle/"+id;
+        dersKitaplarURL = rootURL + "/api/dersKitaplar/"+id;
         ogretmenProfilURL = rootURL + "/api/ogretmenProfil/"+id;
         ogretmenSinifSilURL = rootURL + "/api/ogretmenSinifSil/"+id;
         ogretmenSinifEkleURL = rootURL + "/api/ogretmenSinifEkle/"+id;
@@ -96,6 +100,7 @@ public class Islevsel {
         ogretmenSiniflarURL = rootURL + "/api/ogretmenSiniflar/"+id;
         kesisenKitaplarURL = rootURL + "/api/kesisenKitaplar/"+id;
         danismanKesisenKitaplarURL = rootURL + "/api/danismanKesisenKitaplar/"+id;
+        kesisenKitapKonularURL = rootURL + "/api/kesisenKitapKonular/"+id;
         bransMenuURL = rootURL + "/api/bransMenu/"+id;
         danismanMenuURL = rootURL + "/api/danismanMenu/"+id;
         sinifOgrenciOzetURL = rootURL + "/api/sinifOgrenciOzet/"+id;

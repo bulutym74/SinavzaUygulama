@@ -12,7 +12,7 @@
         android:title=""/>
 
     <!--<item
-        android:id="@+id/nav_puanHesaplama"
+        android:id="@+id/nav_puanHesapla"
         android:icon="@drawable/calculator"
         android:title=""/>
 

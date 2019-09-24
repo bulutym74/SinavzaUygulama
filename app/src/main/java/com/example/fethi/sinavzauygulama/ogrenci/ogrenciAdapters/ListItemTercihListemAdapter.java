@@ -20,10 +20,10 @@ import io.realm.exceptions.RealmException;
 
 public class ListItemTercihListemAdapter extends RecyclerView.Adapter<ListItemTercihListemAdapter.ViewHolder> {
 
-    Realm realm = Realm.getDefaultInstance();
+    private Realm realm = Realm.getDefaultInstance();
 
     private RealmResults<ListItemTercihSonucları> listItems;
-    private Context context;
+    Context context;
 
 
     public ListItemTercihListemAdapter(RealmResults<ListItemTercihSonucları> listItems, Context context) {
@@ -54,7 +54,7 @@ public class ListItemTercihListemAdapter extends RecyclerView.Adapter<ListItemTe
         holder.tv_unitur.setText(tercihItem.getUniTur());
         holder.tv_alan.setText(tercihItem.getAlan());
         holder.tv_puan.setText("" + tercihItem.getPuan());
-        holder.tv_sıralama.setText("" + tercihItem.getSıralama());
+        holder.tv_siralama.setText("" + tercihItem.getSiralama());
 
         if (listItems.get(position).isSelected()) {
             holder.imgadd.setVisibility(View.INVISIBLE);
@@ -83,7 +83,7 @@ public class ListItemTercihListemAdapter extends RecyclerView.Adapter<ListItemTe
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView tv_uni, tv_sehir, tv_bolum, tv_unitur, tv_alan, tv_puan, tv_sıralama;
+        public TextView tv_uni, tv_sehir, tv_bolum, tv_unitur, tv_alan, tv_puan, tv_siralama;
         ImageView imgadd, imgcheck;
 
         public ViewHolder(View itemView) {
@@ -95,7 +95,7 @@ public class ListItemTercihListemAdapter extends RecyclerView.Adapter<ListItemTe
             tv_unitur = itemView.findViewById(R.id.tv_unitur);
             tv_alan = itemView.findViewById(R.id.tv_alan);
             tv_puan = itemView.findViewById(R.id.tv_puan);
-            tv_sıralama = itemView.findViewById(R.id.tv_sıralama);
+            tv_siralama = itemView.findViewById(R.id.tv_siralama);
 
             imgadd = itemView.findViewById(R.id.playlist_add_img);
             imgcheck = itemView.findViewById(R.id.playlist_check_img);

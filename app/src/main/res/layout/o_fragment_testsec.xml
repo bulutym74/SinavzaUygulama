@@ -48,6 +48,11 @@
     </LinearLayout>
 
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
     <ExpandableListView
         android:id="@+id/expand_lv_testSec"
         android:layout_width="match_parent"
@@ -62,5 +67,7 @@
         android:groupIndicator="@null"
         android:paddingEnd="8dp"
         android:paddingStart="8dp"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </LinearLayout>

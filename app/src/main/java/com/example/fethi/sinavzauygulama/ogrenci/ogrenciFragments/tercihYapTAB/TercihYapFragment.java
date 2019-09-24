@@ -137,6 +137,9 @@ public class TercihYapFragment extends Fragment {
         transitionsContainer = arkaplan;
         toolbar = view.findViewById(R.id.toolbar);
 
+        //geri dönüşte veriler gelmiyor!!!!1ekle
+
+
         if (realm.where(ListItemTercihSonucları.class).count() == 0) {
 
             for (int i = 0; i < 5; i++) {

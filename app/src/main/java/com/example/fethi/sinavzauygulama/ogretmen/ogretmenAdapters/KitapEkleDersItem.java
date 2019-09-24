@@ -8,9 +8,10 @@ public class KitapEkleDersItem {
     private ArrayList<KitapEkleKitapItem> kitaplar;
     private int id = 0;
 
-    public KitapEkleDersItem(String dersAdi, ArrayList<KitapEkleKitapItem> kitaplar) {
+    public KitapEkleDersItem(String dersAdi, ArrayList<KitapEkleKitapItem> kitaplar,int id) {
         this.dersAdi = dersAdi;
         this.kitaplar = kitaplar;
+        this.id = id;
     }
 
     public String getDersAdi() {

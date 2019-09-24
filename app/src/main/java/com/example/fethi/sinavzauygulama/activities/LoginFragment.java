@@ -3,6 +3,9 @@ package com.example.fethi.sinavzauygulama.activities;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -19,10 +22,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.BuildConfig;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -49,21 +54,27 @@ public class LoginFragment extends Fragment {
     FloatingActionButton btn_giris;
     private int index;
     FrameLayout frameLayout;
-    Button btn_uye_ol, btn_sifremi_unuttum;
+    Button btn_uye_ol, btn_sifremi_unuttum,btn_guncelle;
+    LinearLayout guncelleLayout;
 
     AppCompatEditText email, password;
 
     Realm realm = Realm.getDefaultInstance();
     JSONObject res;
     String token;
+    Spinner spinner;
 
+    String versionNumber,guncelleUrl,myVersion;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.a_fragment_login, container, false);
 
-        Spinner spinner = view.findViewById(R.id.spinner);
+        spinner = view.findViewById(R.id.spinner);
+        guncelleLayout = view.findViewById(R.id.guncelleLayout);
+        btn_guncelle = view.findViewById(R.id.btn_guncelle);
+        btn_giris = view.findViewById(R.id.button_giris);
 
         email = view.findViewById(R.id.email);
         password = view.findViewById(R.id.password);
@@ -92,8 +103,23 @@ public class LoginFragment extends Fragment {
                 imm.hideSoftInputFromWindow(frameLayout.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
             }
         });
+        parseJSON();
 
-        btn_giris = view.findViewById(R.id.button_giris);
+        try {
+            PackageInfo pInfo = getApplicationContext().getPackageManager().getPackageInfo(getApplicationContext().getPackageName(), 0);
+            myVersion = pInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        btn_guncelle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse(guncelleUrl);
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
         btn_giris.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,17 +227,6 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        if (!realm.where(UserInfoItem.class).findAll().isEmpty()){
-
-            UserInfoItem user = realm.where(UserInfoItem.class).findAll().get(0);
-            email.setText(user.getEmail());
-            password.setText(user.getPassword());
-            spinner.setSelection(user.getTur());
-            index = user.getTur();
-
-            btn_giris.performClick();
-        }
-
         btn_uye_ol = view.findViewById(R.id.btn_uye_ol);
         btn_uye_ol.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -229,6 +244,76 @@ public class LoginFragment extends Fragment {
         });
 
         return view;
+    }
+    public void parseJSON() {
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        try {
+            Realm realm = Realm.getDefaultInstance();
+            token = realm.where(UserInfoItem.class).findAll().get(0).getToken();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest objectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                Islevsel.getVersionURL,
+                new JSONObject(),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(final JSONObject response) {
+
+                        try {
+                            res = response;
+                            versionNumber = res.get("versionNumber").toString();
+                            guncelleUrl = res.get("url").toString();
+
+                            if (myVersion.compareTo(versionNumber) < 0){
+                                guncelleLayout.setVisibility(View.VISIBLE);
+                                btn_giris.setVisibility(View.GONE);
+                            }
+                            else if (!realm.where(UserInfoItem.class).findAll().isEmpty()){
+
+                                UserInfoItem user = realm.where(UserInfoItem.class).findAll().get(0);
+                                email.setText(user.getEmail());
+                                password.setText(user.getPassword());
+                                spinner.setSelection(user.getTur());
+                                index = user.getTur();
+
+                                btn_giris.performClick();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        Toast toast = Toast.makeText(getApplicationContext(), "Bağlantı hatası!", Toast.LENGTH_SHORT);
+                        toast.setGravity(Gravity.BOTTOM, 0, 300);
+                        toast.show();
+
+                    }
+                }
+        ) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                final Map<String, String> headers = new HashMap<>();
+                headers.putAll(super.getHeaders());
+
+                headers.put("Authorization", "Bearer " + token);
+
+                return headers;
+            }
+        };
+        requestQueue.add(objectRequest);
+        objectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                60000,
+                3,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
     public void gecis() {

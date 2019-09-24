@@ -1,9 +1,7 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenAdapters;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.util.DisplayMetrics;
@@ -13,13 +11,9 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.fethi.sinavzauygulama.R;
-import com.example.fethi.sinavzauygulama.activities.OgrenciUyeOlKurumluFragment;
-import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.KitapItem;
-import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.TestItem;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.bransOgretmeniTAB.odevlendir.OgretmenBraTestSecFragment;
 import com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.danismanOdevlendir.OgretmenDanTestSecFragment;
 import com.transitionseverywhere.Fade;
@@ -28,12 +22,10 @@ import com.transitionseverywhere.TransitionSet;
 import com.transitionseverywhere.extra.Scale;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
 
-    private OdevSecKitapItem seciliKitap;
+    private ArrayList<OdevSecKonuItem> konular;
 
     public Context context;
     public LayoutInflater inflater;
@@ -42,35 +34,35 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
     private Fragment fragment;
     int durum;
 
-    public OgretmenExpLVAdapterTestSec(Context context, OdevSecKitapItem seciliKitap, Fragment fragment, int durum) {
+    public OgretmenExpLVAdapterTestSec(Context context, ArrayList<OdevSecKonuItem> konular, Fragment fragment, int durum) {
         this.context = context;
-        this.seciliKitap = seciliKitap;
+        this.konular = konular;
         this.fragment = fragment;
         this.durum = durum;
     }
 
     @Override
     public int getGroupCount() {
-        return seciliKitap.getKonular().size();
+        return konular.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
 
-        return seciliKitap.getKonular().get(groupPosition).getTestler().size();
+        return konular.get(groupPosition).getTestler().size();
 
     }
 
     @Override
     public Object getGroup(int groupPosition) {
 
-        return seciliKitap.getKonular().get(groupPosition);
+        return konular.get(groupPosition);
     }
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
 
-        return seciliKitap.getKonular().get(groupPosition).getTestler().get(childPosition);
+        return konular.get(groupPosition).getTestler().get(childPosition);
     }
 
     @Override
@@ -131,7 +123,6 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
                     else
                         test.setSelected(true);
                 }
-
 
                 konuItem.setSelected(true);
 
@@ -357,7 +348,7 @@ public class OgretmenExpLVAdapterTestSec extends BaseExpandableListAdapter {
 
     public void updateSoru() {
         int count = 0;
-        for (OdevSecKonuItem konu : seciliKitap.getKonular()) {
+        for (OdevSecKonuItem konu : konular) {
             for (OdevSecTestItem test : konu.getTestler()) {
                 if (test.isSelected())
                     count += test.getSoruSayisi();

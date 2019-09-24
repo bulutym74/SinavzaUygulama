@@ -53,7 +53,7 @@ public class ListItemTercihSonuclariAdapter extends RecyclerView.Adapter<ListIte
         holder.tv_unitur.setText(listItemTercihSonuclari.getUniTur());
         holder.tv_alan.setText(listItemTercihSonuclari.getAlan());
         holder.tv_puan.setText(""+listItemTercihSonuclari.getPuan());
-        holder.tv_sıralama.setText(""+listItemTercihSonuclari.getSıralama());
+        holder.tv_sıralama.setText(""+listItemTercihSonuclari.getSiralama());
 
         if (listItems.get(position).isSelected()) {
 
@@ -107,7 +107,7 @@ public class ListItemTercihSonuclariAdapter extends RecyclerView.Adapter<ListIte
             tv_unitur = itemView.findViewById(R.id.tv_unitur);
             tv_alan = itemView.findViewById(R.id.tv_alan);
             tv_puan = itemView.findViewById(R.id.tv_puan);
-            tv_sıralama = itemView.findViewById(R.id.tv_sıralama);
+            tv_sıralama = itemView.findViewById(R.id.tv_siralama);
 
             imgadd = itemView.findViewById(R.id.playlist_add_img);
             imgcheck = itemView.findViewById(R.id.playlist_check_img);

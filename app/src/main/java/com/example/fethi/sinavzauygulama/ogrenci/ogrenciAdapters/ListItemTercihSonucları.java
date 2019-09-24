@@ -12,12 +12,12 @@ public class ListItemTercihSonucları extends RealmObject {
     private String uniTur;
     private String alan;
     private Double puan;
-    private int sıralama;
+    private int siralama;
     public boolean selected = false;
 
     public ListItemTercihSonucları() {}
 
-    public ListItemTercihSonucları(String uni, String sehir, String bolum, String uniTur, String alan, Double puan, int sıralama) {
+    public ListItemTercihSonucları(String uni, String sehir, String bolum, String uniTur, String alan, Double puan, int siralama) {
 
         this.uni = uni;
         this.sehir = sehir;
@@ -25,7 +25,7 @@ public class ListItemTercihSonucları extends RealmObject {
         this.uniTur = uniTur;
         this.alan = alan;
         this.puan = puan;
-        this.sıralama = sıralama;
+        this.siralama = siralama;
     }
 
     public String getUni() {
@@ -76,12 +76,12 @@ public class ListItemTercihSonucları extends RealmObject {
         this.puan = puan;
     }
 
-    public int getSıralama() {
-        return sıralama;
+    public int getSiralama() {
+        return siralama;
     }
 
-    public void setSıralama(int sıralama) {
-        this.sıralama = sıralama;
+    public void setSiralama(int siralama) {
+        this.siralama = siralama;
     }
 
     public boolean isSelected() {

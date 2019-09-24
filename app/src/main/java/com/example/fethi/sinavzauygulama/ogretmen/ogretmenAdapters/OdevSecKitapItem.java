@@ -8,9 +8,10 @@ public class OdevSecKitapItem {
     private int id =0;
     private boolean selected = false;
 
-    public OdevSecKitapItem(String kitapAdi, ArrayList<OdevSecKonuItem> konular) {
+    public OdevSecKitapItem(String kitapAdi, ArrayList<OdevSecKonuItem> konular,int id) {
         this.kitapAdi = kitapAdi;
         this.konular = konular;
+        this.id = id;
     }
 
     public String getKitapAdi() {

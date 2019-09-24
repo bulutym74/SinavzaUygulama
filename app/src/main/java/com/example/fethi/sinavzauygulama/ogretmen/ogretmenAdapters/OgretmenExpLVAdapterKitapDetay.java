@@ -14,6 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.fethi.sinavzauygulama.R;
+import com.example.fethi.sinavzauygulama.activities.OgretmenListItemFiltre;
+import com.example.fethi.sinavzauygulama.ogrenci.ogrenciAdapters.DersItem;
 import com.transitionseverywhere.Fade;
 import com.transitionseverywhere.TransitionManager;
 import com.transitionseverywhere.TransitionSet;
@@ -26,11 +28,9 @@ public class OgretmenExpLVAdapterKitapDetay extends BaseExpandableListAdapter {
     ArrayList<KitapEkleDersItem> dersler;
     public Context context;
     public LayoutInflater inflater;
-    ImageView img_arrow;
     boolean visible;
 
-    public OgretmenExpLVAdapterKitapDetay(Context context,ArrayList<KitapEkleDersItem> dersler)
-    {
+    public OgretmenExpLVAdapterKitapDetay(Context context,ArrayList<KitapEkleDersItem> dersler) {
         this.context = context;
         this.dersler = dersler;
     }
@@ -82,15 +82,15 @@ public class OgretmenExpLVAdapterKitapDetay extends BaseExpandableListAdapter {
         viewHolder = new GroupViewHolder();
 
         viewHolder.textGroup = view.findViewById(R.id.txt_parent);
-        img_arrow = view.findViewById(R.id.img_arrow);
+        viewHolder.img_arrow = view.findViewById(R.id.img_arrow);
 
         viewHolder.textGroup.setText(dersItem.getDersAdi());
 
         if (isExpanded) {
-            img_arrow.setImageResource(R.drawable.ic_arrow_up);
+            viewHolder.img_arrow.setImageResource(R.drawable.ic_arrow_up);
         }
         else {
-            img_arrow.setImageResource(R.drawable.ic_arrow_down);
+            viewHolder.img_arrow.setImageResource(R.drawable.ic_arrow_down);
         }
 
         return view;
@@ -207,6 +207,7 @@ public class OgretmenExpLVAdapterKitapDetay extends BaseExpandableListAdapter {
 
     static class GroupViewHolder {
         TextView textGroup;
+        ImageView img_arrow;
     }
 
     static class ChildViewHolder {

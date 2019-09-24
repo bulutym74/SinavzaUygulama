@@ -103,7 +103,7 @@ public class OgretmenDanKitapSecFragment extends Fragment implements SwipeRefres
                     OdevSecDersItem tempDers = new OdevSecDersItem(ders.getDersAdi(), new ArrayList<OdevSecKitapItem>());
 
                     for (OdevSecKitapItem kitap : ders.getKitaplar()) {
-                        OdevSecKitapItem tempKitap = new OdevSecKitapItem(kitap.getKitapAdi(), new ArrayList<OdevSecKonuItem>());
+                        OdevSecKitapItem tempKitap = new OdevSecKitapItem(kitap.getKitapAdi(), new ArrayList<OdevSecKonuItem>(),kitap.getId());
                         for (OdevSecKonuItem konu : kitap.getKonular()) {
                             OdevSecKonuItem tempKonu = new OdevSecKonuItem(konu.getKonuAdi(), new ArrayList<OdevSecTestItem>());
 
@@ -150,9 +150,6 @@ public class OgretmenDanKitapSecFragment extends Fragment implements SwipeRefres
         }
         secili_soru.setText("" + count);
 
-        //if (dersler.size() == 0) parseJSON();
-        //else view_seciliSoru.setVisibility(View.VISIBLE);
-
         expand_adapter = new OgretmenExpLVAdapterKitapSec(getActivity(), dersler);
         expandlist_view_kitapsec.setAdapter(expand_adapter);
         expandlist_view_kitapsec.setClickable(true);
@@ -163,6 +160,7 @@ public class OgretmenDanKitapSecFragment extends Fragment implements SwipeRefres
 
                 OgretmenDanTestSecFragment nextFrag = new OgretmenDanTestSecFragment();
                 nextFrag.seciliKitap = dersler.get(groupPosition).getKitaplar().get(childPosition);
+                nextFrag.seciliSiniflar = seciliSiniflar;
 
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left)
@@ -249,20 +247,8 @@ public class OgretmenDanKitapSecFragment extends Fragment implements SwipeRefres
 
                                     for (int j = 0; j < ders.getJSONArray("kitaplar").length(); j++) {
                                         JSONObject kitap = ders.getJSONArray("kitaplar").getJSONObject(j);
-                                        OdevSecKitapItem kitapItem = new OdevSecKitapItem(kitap.getString("name"), new ArrayList<OdevSecKonuItem>());
+                                        OdevSecKitapItem kitapItem = new OdevSecKitapItem(kitap.getString("name"), new ArrayList<OdevSecKonuItem>(),kitap.getInt("kitapId"));
 
-                                        for (int k = 0; k < kitap.getJSONArray("konular").length(); k++) {
-                                            JSONObject konu = kitap.getJSONArray("konular").getJSONObject(k);
-                                            OdevSecKonuItem konuItem = new OdevSecKonuItem(konu.getString("name"), new ArrayList<OdevSecTestItem>());
-
-                                            for (int m = 0; m < konu.getJSONArray("testler").length(); m++) {
-                                                JSONObject test = konu.getJSONArray("testler").getJSONObject(m);
-                                                OdevSecTestItem testItem = new OdevSecTestItem(test.getString("name"), test.getInt("soru"), test.getInt("id"), test.getInt("status"));
-
-                                                konuItem.getTestler().add(testItem);
-                                            }
-                                            kitapItem.getKonular().add(konuItem);
-                                        }
                                         dersItem.getKitaplar().add(kitapItem);
                                     }
                                     dersler.add(dersItem);

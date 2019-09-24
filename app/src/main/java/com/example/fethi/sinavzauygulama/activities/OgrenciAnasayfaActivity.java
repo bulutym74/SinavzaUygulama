@@ -86,7 +86,7 @@ public class OgrenciAnasayfaActivity extends AppCompatActivity implements Bottom
                 }
                 break;
 
-            /*case R.id.nav_puanHesaplama:
+            /*case R.id.nav_puanHesapla:
                 if (!(currentFragment instanceof PuanHesaplamaFragment)) {
                     fragment = new PuanHesaplamaFragment();
                 }
