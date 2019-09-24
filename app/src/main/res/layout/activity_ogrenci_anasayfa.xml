@@ -33,6 +33,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/navigation_ogrenci" />
+        app:menu="@menu/navigation_ogrenci"
+        app:labelVisibilityMode="labeled"/>
 
 </android.support.constraint.ConstraintLayout>
