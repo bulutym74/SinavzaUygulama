@@ -1,5 +1,6 @@
 package com.example.fethi.sinavzauygulama.activities;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -261,6 +262,7 @@ public class LoginFragment extends Fragment {
                 Islevsel.getVersionURL,
                 new JSONObject(),
                 new Response.Listener<JSONObject>() {
+                    @SuppressLint("RestrictedApi")
                     @Override
                     public void onResponse(final JSONObject response) {
 
@@ -271,6 +273,7 @@ public class LoginFragment extends Fragment {
 
                             if (myVersion.compareTo(versionNumber) < 0){
                                 guncelleLayout.setVisibility(View.VISIBLE);
+                                btn_giris.setVisibility(View.GONE);
                             }
                             else if (!realm.where(UserInfoItem.class).findAll().isEmpty()){
 
