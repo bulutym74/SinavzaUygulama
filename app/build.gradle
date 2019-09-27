@@ -11,8 +11,8 @@ android {
         applicationId "com.my.app.sinavzauygulama"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 110
-        versionName "1.1.0"
+        versionCode 112
+        versionName "1.1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }

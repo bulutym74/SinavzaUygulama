@@ -271,7 +271,6 @@ public class LoginFragment extends Fragment {
 
                             if (myVersion.compareTo(versionNumber) < 0){
                                 guncelleLayout.setVisibility(View.VISIBLE);
-                                btn_giris.setVisibility(View.GONE);
                             }
                             else if (!realm.where(UserInfoItem.class).findAll().isEmpty()){
 
