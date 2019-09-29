@@ -160,9 +160,7 @@ public class OgretmenUyeOlKurumsuzFragment extends Fragment {
                                                 }
                                             }
                                         });
-                                        Intent intent = new Intent(getActivity(), OgretmenAnasayfaActivity.class);
-                                        intent.putExtra("tur",1);
-                                        intent.putExtra("ret",false);
+                                        Intent intent = new Intent(getActivity(), LoginActivity.class);
                                         startActivity(intent);
                                     }
                                 } catch (JSONException e) {

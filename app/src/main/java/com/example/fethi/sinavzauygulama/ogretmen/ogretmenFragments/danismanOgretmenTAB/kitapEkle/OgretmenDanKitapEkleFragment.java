@@ -1,5 +1,6 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.kitapEkle;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -231,6 +232,7 @@ public class OgretmenDanKitapEkleFragment extends Fragment implements SwipeRefre
         parseJSON();
     }
 
+    @SuppressLint("RestrictedApi")
     public void isEmpty() {
         if (siniflar.isEmpty()) {
             kitapYokView.setVisibility(View.VISIBLE);

@@ -1,5 +1,6 @@
 package com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.tercihYapTAB;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -194,6 +195,7 @@ public class TercihYapFragment extends Fragment {
         rv_tercihyap.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         bolum_filtrele.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
 
@@ -215,6 +217,7 @@ public class TercihYapFragment extends Fragment {
             }
         });
         uni_filtrele.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
 
@@ -237,6 +240,7 @@ public class TercihYapFragment extends Fragment {
             }
         });
         sehir_filtrele.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
 
@@ -259,6 +263,7 @@ public class TercihYapFragment extends Fragment {
             }
         });
         uniTur_filtrele.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
 
@@ -281,6 +286,7 @@ public class TercihYapFragment extends Fragment {
             }
         });
         puantur_filtrele.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
 
@@ -303,6 +309,7 @@ public class TercihYapFragment extends Fragment {
             }
         });
         iv_done.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
 

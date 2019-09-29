@@ -1,5 +1,6 @@
 package com.example.fethi.sinavzauygulama.ogrenci.ogrenciFragments.dahaFazlaTAB.profil;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -94,6 +95,7 @@ public class OgretmenDegistirFragment extends Fragment {
                 Islevsel.ogretmenDegistirURL,
                 new JSONObject(),
                 new Response.Listener<JSONObject>() {
+                    @SuppressLint("RestrictedApi")
                     @Override
                     public void onResponse(final JSONObject response) {
                         try {
@@ -189,6 +191,7 @@ public class OgretmenDegistirFragment extends Fragment {
 
                                             Handler handler = new Handler();
                                             handler.postDelayed(new Runnable() {
+                                                @SuppressLint("RestrictedApi")
                                                 public void run() {
                                                     activity.setVisibility(View.INVISIBLE);
                                                     activityTalep.setVisibility(View.VISIBLE);

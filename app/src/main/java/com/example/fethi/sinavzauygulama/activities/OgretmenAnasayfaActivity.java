@@ -2,6 +2,7 @@ package com.example.fethi.sinavzauygulama.activities;
 
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.design.bottomnavigation.LabelVisibilityMode;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -33,6 +34,7 @@ public class OgretmenAnasayfaActivity extends AppCompatActivity implements Botto
         setContentView(R.layout.o_activity_ogretmen_anasayfa);
 
         BottomNavigationView navigation = findViewById(R.id.navigation_ogretmen);
+        navigation.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_LABELED);
         navigation.setOnNavigationItemSelectedListener(this);
         BottomNavigationViewHelper.disableShiftMode(navigation);
 

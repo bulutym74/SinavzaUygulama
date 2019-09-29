@@ -1,5 +1,6 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.bransOgretmeniTAB.odevlendir;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -223,6 +224,7 @@ public class OgretmenBraOdevlendirFragment extends Fragment implements SwipeRefr
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
+    @SuppressLint("RestrictedApi")
     public void isEmpty() {
         if (siniflar.isEmpty()) {
             yokView.setVisibility(View.VISIBLE);

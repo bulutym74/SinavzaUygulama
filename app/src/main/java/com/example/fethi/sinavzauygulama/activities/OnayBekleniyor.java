@@ -1,5 +1,6 @@
 package com.example.fethi.sinavzauygulama.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -55,6 +56,7 @@ public class OnayBekleniyor extends AppCompatActivity {
     boolean ret = false;
     boolean sor = true;
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

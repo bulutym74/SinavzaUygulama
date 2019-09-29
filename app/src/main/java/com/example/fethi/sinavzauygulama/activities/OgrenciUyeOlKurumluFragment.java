@@ -1,5 +1,6 @@
 package com.example.fethi.sinavzauygulama.activities;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -137,6 +138,7 @@ public class OgrenciUyeOlKurumluFragment extends Fragment {
 
         linearLayout = view.findViewById(R.id.activity);
         linearLayout.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
                 card.setVisibility(View.GONE);
@@ -154,6 +156,7 @@ public class OgrenciUyeOlKurumluFragment extends Fragment {
         });
         sec_sinifi = view.findViewById(R.id.sec_sinifi);
         sec_sinifi.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
 

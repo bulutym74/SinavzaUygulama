@@ -1,5 +1,6 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.kitapEkle;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -206,6 +207,7 @@ public class OgretmenDanKitapDetayFragment extends Fragment implements SwipeRefr
 
         btn_filtrele = view.findViewById(R.id.iv_filtrele);
         btn_filtrele.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
 
@@ -262,6 +264,7 @@ public class OgretmenDanKitapDetayFragment extends Fragment implements SwipeRefr
 
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
+                    @SuppressLint("RestrictedApi")
                     public void run() {
                         Animation animHide = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.view_hide);
                         search_ekrani.startAnimation(animHide);

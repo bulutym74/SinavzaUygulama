@@ -1,5 +1,6 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.bransOgretmeniTAB.odevlendir;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -66,6 +67,7 @@ public class OgretmenBraKitapSecFragment extends Fragment implements SwipeRefres
     public TextView secili_soru;
     LinearLayout view_seciliSoru;
 
+    @SuppressLint("RestrictedApi")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -299,6 +301,7 @@ public class OgretmenBraKitapSecFragment extends Fragment implements SwipeRefres
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
     }
 
+    @SuppressLint("RestrictedApi")
     public void isEmpty() {
         if (dersler.isEmpty()) {
             ortakKitapYokView.setVisibility(View.VISIBLE);

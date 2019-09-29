@@ -22,7 +22,7 @@
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation_ogretmen"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@color/colorPrimary"
         android:paddingTop="10dp"

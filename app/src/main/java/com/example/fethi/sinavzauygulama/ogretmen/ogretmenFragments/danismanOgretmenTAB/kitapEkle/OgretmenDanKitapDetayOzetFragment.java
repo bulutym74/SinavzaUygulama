@@ -1,5 +1,6 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.danismanOgretmenTAB.kitapEkle;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
@@ -127,6 +128,7 @@ public class OgretmenDanKitapDetayOzetFragment extends Fragment {
         trh_bitis = view.findViewById(R.id.trh_bitis);
 
         cancel_siniflar.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
                 fab_odevOzeti.setVisibility(View.VISIBLE);
@@ -140,6 +142,7 @@ public class OgretmenDanKitapDetayOzetFragment extends Fragment {
             }
         });
         cancel_odevler.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
                 fab_odevOzeti.setVisibility(View.VISIBLE);
@@ -163,6 +166,7 @@ public class OgretmenDanKitapDetayOzetFragment extends Fragment {
         rv_siniflar.setAdapter(adapter);
 
         rv_siniflar.addOnItemTouchListener(new RecyclerTouchListener(getContext(), rv_siniflar, new RecyclerTouchListener.ClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view, int position) {
 
@@ -206,6 +210,7 @@ public class OgretmenDanKitapDetayOzetFragment extends Fragment {
         rv_odevler.setAdapter(adapter);
 
         rv_odevler.addOnItemTouchListener(new RecyclerTouchListener(getContext(), rv_odevler, new RecyclerTouchListener.ClickListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view, int position) {
 

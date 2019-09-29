@@ -1,5 +1,6 @@
 package com.example.fethi.sinavzauygulama.ogretmen.ogretmenFragments.bransOgretmeniTAB.ogrencilerim;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -440,6 +441,7 @@ public class OgretmenBraOnayBekleyenOdevlerFragment extends Fragment implements 
     }
 
 
+    @SuppressLint("RestrictedApi")
     public void isEmpty() {
         if (dersler.isEmpty()) {
             yokView.setVisibility(View.VISIBLE);
